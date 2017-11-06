@@ -1,4 +1,4 @@
-update=Mon 30 Oct 2017 15:29:04 AEST
+update=Mon 06 Nov 2017 18:05:10 AEST
 version=1
 last_client=kicad
 [pcbnew]
@@ -85,3 +85,4 @@ LibName53=/home/mark/kicad/libraries/custom_triac
 LibName54=/home/mark/kicad/libraries/internet_module
 LibName55=/home/mark/kicad/libraries/simcard
 LibName56=stm32
+LibName57=/home/mark/kicad/libraries/custom_scr
