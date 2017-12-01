@@ -1,0 +1,45 @@
+/*
+ * oled96.h
+ *
+ *  Created on: 30 Jul 2015
+ *      Author: Mark
+ */
+
+#ifndef OLED96_H_
+#define OLED96_H_
+
+#include <stdint.h>
+#include "main.h"
+typedef uint16_t uint;
+typedef uint8_t uchar;
+
+void Write_number(const uchar *n,uchar k,uchar station_dot);
+//void display_Contrast_level(uchar number);
+void adj_Contrast(int8_t adjustment_amt);
+void set_page(unsigned char add);
+void set_column(unsigned char add);
+void Set_Contrast_Control_Register(unsigned char mod);
+void clear_page(int page);
+void cls();
+void oled96_init(void);
+void Display_Chess(unsigned char value);
+void Display_Chinese(unsigned char ft[]);
+void Display_Chinese_Column(unsigned char ft[]);
+void Display_Picture(unsigned char pic[]);
+
+void oled96_loop(void);
+
+//#define Write_Address 0x78/*slave addresses with write*/
+//#define Read_Address 0x79/*slave addresses with read*/
+//#define SLAVE_ADDRESS 0x3C
+#define SLAVE_ADDRESS 0x78
+
+#define Start_column	0x00
+#define Start_page		0x00
+#define	StartLine_set	0x00
+
+#define TI_USCI_I2C_transmit(length, data) HAL_I2C_Master_Transmit(&hi2c1, SLAVE_ADDRESS, data, length, 1000)
+// the busy test is not required on STM32
+#define TI_USCI_I2C_notready() (0)
+
+#endif /* OLED96_H_ */

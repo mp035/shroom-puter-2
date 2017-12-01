@@ -1,0 +1,33 @@
+/*
+ * setup.c
+ *
+ *  Created on: 8 Feb 2017
+ *      Author: mark
+ */
+
+#include <stm32l0xx.h>
+#include "rcc.h"
+#include "spi.h"
+#include "gpio.h"
+#include "lcd.h"
+#include "systick.h"
+#include "i2c_master.h"
+
+void setup(int firsttime)
+{
+	SetClock16MhzInternal();
+	ENABLE_GPIO_PORT(A);
+	ENABLE_GPIO_PORT(B);
+	SetupSysTick(1);
+
+	GPIO_AS_AF(A,5);
+	GPIO_AS_AF(A,7);
+	GPIO_SELECT_AF(A,5,0);
+	GPIO_SELECT_AF(A,7,0);
+	Init_LCD();
+
+	setup_sht10();
+	read_temp_rh_sensor();
+
+
+}

@@ -1,0 +1,145 @@
+/*
+ * keypad.c
+ *
+ *  Created on: 06/04/2014
+ *      Author: mark
+ */
+
+
+#ifdef STM32L0
+#include "stm32l0xx.h"
+#else
+#include "stm32f0xx.h"
+#endif
+
+#include "gpio.h"
+#undef B
+
+// this group of defines are all that should need to be changed.
+// NOTE THAT SOME PINS REQUIRE THE OPEN DRAIN CONTROL TO BE DEFINED WHILE OTHERS
+// REQUIRE THE PULL UP ENABLE TO BE DEFINED.
+
+#define P1PR C  // data port for pin 1 on keypad
+#define P1PN 15 // data bit for pin 1 on keypad
+
+#define P2PR B // data port for pin 2 on keypad
+#define P2PN 0 // data bit for pin 2 on keypad
+
+#define P3PR C // data port for pin 3 on keypad
+#define P3PN 14 // data bit for pin 3 on keypad
+
+#define P4PR B // data port for pin 4 on keypad
+#define P4PN 1 // data bit for pin 4 on keypad
+
+#define P5PR A // data port for pin 5 on keypad
+#define P5PN 8 // data bit for pin 5 on keypad
+
+#define P6PR B // data port for pin 6 on keypad
+#define P6PN 6 // data bit for pin 6 on keypad
+
+#define P7PR B // data port for pin 7 on keypad
+#define P7PN 7 // data bit for pin 7 on keypad
+
+
+
+void init_keypad(void)
+{
+
+	// enable the required gpio ports
+	ENABLE_GPIO_PORT(A);
+	ENABLE_GPIO_PORT(B);
+
+	// set up column pins
+	GPIO_AS_OPEN_DRAIN(P3PR, P3PN);
+	GPIO_AS_OPEN_DRAIN(P1PR,P1PN);
+	GPIO_AS_OPEN_DRAIN(P5PR,P5PN);
+	
+	GPIO_AS_OUTPUT(P3PR,P3PN);
+	GPIO_AS_OUTPUT(P1PR,P1PN);
+	GPIO_AS_OUTPUT(P5PR,P5PN);
+
+	// set up row pins
+	GPIO_AS_INPUT(P2PR,P2PN);
+	GPIO_AS_INPUT(P7PR,P7PN);
+	GPIO_AS_INPUT(P6PR,P6PN);
+	GPIO_AS_INPUT(P4PR,P4PN);
+
+	GPIO_ENABLE_PULLUP(P2PR,P2PN);
+	GPIO_ENABLE_PULLUP(P7PR,P7PN);
+	GPIO_ENABLE_PULLUP(P6PR,P6PN);
+	GPIO_ENABLE_PULLUP(P4PR,P4PN);
+
+}
+
+unsigned char last_keypress = 0;
+unsigned char scan_for_keycode() // returns the ascii value of the key pressed, or '\0' if no key pressed.  The process aborts on the first key found, so combinations of keys can not be used.
+{
+	
+    // start by checking column 0
+    unsigned char keyvalue;
+	keyvalue = 0;
+    const unsigned char keycodes[3][4] = {{'1','4','7','*'},{'2','5','8','0'},{'3','6','9','#'}};
+    //const unsigned char colvalues[3][4] = {{P3PR,P3PN},{P1PR,P1PN},{P5PR,P5PN}};
+    unsigned int x;
+    for (x=0;(x<3) && (!keyvalue);x++)
+    {
+		switch(x)
+		{
+			case 0:
+				GPIO_CLR(P3PR,P3PN);
+				break;
+			case 1:
+				GPIO_CLR(P1PR,P1PN);
+				break;
+			case 2:
+				GPIO_CLR(P5PR,P5PN);
+				break;
+		}
+
+        //GPIOSetValue(colvalues[x][0], colvalues[x][1], 0);
+
+        if (!GPIO_READ(P2PR,P2PN))
+        {
+            keyvalue = keycodes[x][0];
+        }
+        else if (!GPIO_READ(P7PR,P7PN))
+        {
+            keyvalue = keycodes[x][1];
+        }
+        else if (!GPIO_READ(P6PR,P6PN))
+        {
+            keyvalue = keycodes[x][2];
+        }
+        else if (!GPIO_READ(P4PR,P4PN))
+        {
+            keyvalue = keycodes[x][3];
+        }
+
+		switch(x)
+		{
+			case 0:
+				GPIO_SET(P3PR,P3PN);
+				break;
+			case 1:
+				GPIO_SET(P1PR,P1PN);
+				break;
+			case 2:
+				GPIO_SET(P5PR,P5PN);
+				break;
+		}
+        //GPIOSetValue(colvalues[x][0], colvalues[x][1], 1);
+    }
+
+    if (keyvalue) // only return keycode once key is released
+    {
+        last_keypress = keyvalue;
+        keyvalue = 0;
+    }
+    else
+    {
+        keyvalue = last_keypress;
+        last_keypress = 0;
+    }
+
+    return keyvalue;
+}

@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">&#x0A;<refactoring comment="Rename resource &apos;climate_control/src/i2c.c&apos; to &apos;i2c_master.c&apos;" description="Rename resource &apos;i2c.c&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/i2c.c" name="i2c_master.c" stamp="1486970640451" updateReferences="true"/>&#x0A;<refactoring comment="Rename resource &apos;climate_control/inc/i2c.h&apos; to &apos;i2c_master.h&apos;" description="Rename resource &apos;i2c.h&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="inc/i2c.h" name="i2c_master.h" stamp="1486970656226" updateReferences="true"/>
+</session>
