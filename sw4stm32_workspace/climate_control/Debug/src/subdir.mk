@@ -6,13 +6,16 @@
 C_SRCS += \
 ../src/circular_buffer.c \
 ../src/eeprom.c \
+../src/fonts.c \
 ../src/gpio.c \
 ../src/i2c_master.c \
 ../src/keypad.c \
 ../src/main.c \
+../src/menu.c \
 ../src/oled96.c \
 ../src/print.c \
 ../src/rcc.c \
+../src/rotary_encoder.c \
 ../src/rtc.c \
 ../src/setup.c \
 ../src/sht10.c \
@@ -26,13 +29,16 @@ C_SRCS += \
 OBJS += \
 ./src/circular_buffer.o \
 ./src/eeprom.o \
+./src/fonts.o \
 ./src/gpio.o \
 ./src/i2c_master.o \
 ./src/keypad.o \
 ./src/main.o \
+./src/menu.o \
 ./src/oled96.o \
 ./src/print.o \
 ./src/rcc.o \
+./src/rotary_encoder.o \
 ./src/rtc.o \
 ./src/setup.o \
 ./src/sht10.o \
@@ -46,13 +52,16 @@ OBJS += \
 C_DEPS += \
 ./src/circular_buffer.d \
 ./src/eeprom.d \
+./src/fonts.d \
 ./src/gpio.d \
 ./src/i2c_master.d \
 ./src/keypad.d \
 ./src/main.d \
+./src/menu.d \
 ./src/oled96.d \
 ./src/print.d \
 ./src/rcc.d \
+./src/rotary_encoder.d \
 ./src/rtc.d \
 ./src/setup.d \
 ./src/sht10.d \
@@ -69,7 +78,7 @@ src/%.o: ../src/%.c
 	@echo 'Building file: $<'
 	@echo 'Invoking: MCU GCC Compiler'
 	@echo $(PWD)
-	arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft -DSTM32L0 -DNUCLEO_L031K6 -DSTM32 -DSTM32L031K6Tx -DDEBUG -DSTM32L031xx -I"/home/mark/repositories/shroom-puter-2/stm32_workspace/climate_control/inc" -I"/home/mark/repositories/shroom-puter-2/stm32_workspace/climate_control/CMSIS/core" -I"/home/mark/repositories/shroom-puter-2/stm32_workspace/climate_control/CMSIS/device" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"$(@:%.o=%.d)" -MT"$@" -o "$@" "$<"
+	arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft -DSTM32L0 -DNUCLEO_L031K6 -DSTM32 -DSTM32L031K6Tx -DDEBUG -DSTM32L031xx -I"/home/mark/repositories/shroom-puter-2/sw4stm32_workspace/climate_control/inc" -I"/home/mark/repositories/shroom-puter-2/sw4stm32_workspace/climate_control/CMSIS/core" -I"/home/mark/repositories/shroom-puter-2/sw4stm32_workspace/climate_control/CMSIS/device" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"$(@:%.o=%.d)" -MT"$@" -o "$@" "$<"
 	@echo 'Finished building: $<'
 	@echo ' '
 

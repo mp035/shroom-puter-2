@@ -22,6 +22,7 @@ typedef enum
     ,WIDGET_CONFIRM
     ,WIDGET_DRAW_CANCEL
     ,WIDGET_DRAW_CONFIRM
+    ,WIDGET_DRAW_BACK
 } return_instruction_type_e;
 
 typedef struct
@@ -42,6 +43,6 @@ typedef struct
 } widget_t;
 
 void draw_widget(widget_t* widget);
-void pass_key_to_widget(unsigned char keycode, widget_t* widget);
+void pass_encoder_to_widget(int value, int pressed, widget_t* widget);
 
 #endif /* WIDGETS_H_ */

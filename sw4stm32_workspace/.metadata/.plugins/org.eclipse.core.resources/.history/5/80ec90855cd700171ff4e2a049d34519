@@ -1,0 +1,26 @@
+/*
+ * menus.h
+ *
+ *  Created on: 2Dec.,2017
+ *      Author: mark
+ */
+
+#ifndef MENU_H_
+#define MENU_H_
+typedef struct {
+	const char* title;
+	const int action;
+	menu_t *submenu;
+} menuItem_t;
+
+
+typedef struct {
+	int numItems;
+	menuItem_t *items;
+	int currentItem;
+} menu_t;
+
+extern menu_t *currentMenu;
+
+
+#endif /* MENU_H_ */

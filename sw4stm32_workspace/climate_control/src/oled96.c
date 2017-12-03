@@ -135,7 +135,7 @@ void OledDisplayDigit(uint8_t digit_value)
 }
 
 
-void OledDisplayStringWithCursor(char *string, uint8_t cursorpos)
+void OledDisplayStringWithCursor(const char *string, int8_t cursorpos, int8_t cursorlength)
 {
 	set_page(oled_page);
 	set_column(oled_col);
@@ -155,7 +155,7 @@ void OledDisplayStringWithCursor(char *string, uint8_t cursorpos)
 	{
 			while(I2C_NOTREADY()); // wait for any pending transmissions
 			// draw the cursor if required
-			if (strpos++ == cursorpos)
+			if ((strpos >= cursorpos) && (strpos < (cursorpos+cursorlength)))
 			{
 				uint8_t block[9];
 				memcpy(block, font8x16_doslike[((*string++)-32)*2 +1], 9);
@@ -170,7 +170,8 @@ void OledDisplayStringWithCursor(char *string, uint8_t cursorpos)
 			{
 				I2C_TRANSMIT(9, font8x16_doslike[((*string++)-32)*2 +1]);
 			}
-				while(I2C_NOTREADY()); // wait for any pending transmissions
+			strpos++;
+			while(I2C_NOTREADY()); // wait for any pending transmissions
 			send_null();// one pixel of space after the char.
 
 			oled_col += 9;
@@ -184,9 +185,9 @@ void OledDisplayStringWithCursor(char *string, uint8_t cursorpos)
 	}
 }
 
-void OledDisplayString(char *string)
+void OledDisplayString(const char *string)
 {
-	OledDisplayStringWithCursor(string, -1);
+	OledDisplayStringWithCursor(string, -1, -1);
 }
 
 /*
@@ -372,8 +373,6 @@ void OledDisplayBitmap(const uint8_t bitmap[], uint8_t xpos, uint8_t ypos)
 	uint8_t ysize = bitmap[1]/8;
 	const uint8_t* my_array = bitmap + 2;
 	OledGotoXY(xpos,ypos);
-	set_page(oled_page);
-	set_column(oled_col);
 	int yrow;
 	for(yrow = 0; yrow < ysize; yrow++)
 	{
@@ -384,13 +383,11 @@ void OledDisplayBitmap(const uint8_t bitmap[], uint8_t xpos, uint8_t ypos)
 	}
 }
 
-void OledOverlayBitmaps(const uint8_t base[], const uint8_t white_overlay[], const uint8_t black_overlay[], uint8_t xpos, uint8_t ypos)
+void OledOverlayBitmaps(const uint8_t *base, const uint8_t *white_overlay, const uint8_t *black_overlay, uint8_t xpos, uint8_t ypos)
 {
 	uint8_t xsize = base[0];
 	uint8_t ysize = base[1]/8;
 	OledGotoXY(xpos,ypos);
-	set_page(oled_page);
-	set_column(oled_col);
 	int xcol;
 	int yrow;
 	for(yrow = 0; yrow < ysize; yrow++)
@@ -405,7 +402,7 @@ void OledOverlayBitmaps(const uint8_t base[], const uint8_t white_overlay[], con
 			if (black_overlay)
 				display_data |= black_overlay[yrow*xsize + xcol + 2];
 			while(I2C_NOTREADY()); // wait for any pending transmissions
-			WRITE_I2C_DATA(xsize, &display_data);
+			WRITE_I2C_DATA(1, &display_data);
 		}
 	}
 }
@@ -441,13 +438,16 @@ void OledTestLoop(void)
         DelayMs(500);
 
         OledGotoXY(0,16);
-        OledDisplayStringWithCursor ("IS GREAT!", 1);
+        OledDisplayStringWithCursor ("IS GREAT!", 1, 1);
 
         DelayMs(2000);
 
         static const uint8_t water[34] = {16,16,     0,0,0,0,0,192,240,248,254,240,192,0,0,0,0,0,0,0,0,0,31,63,127,127,127,112,57,31,0,0,0,0,};
+        static const uint8_t cross_black[34] = {16,16,0x02, 0x05, 0x0a, 0x14, 0x28, 0x50, 0xa0, 0x40, 0x40, 0xa0, 0x50, 0x28, 0x14, 0x0a, 0x05, 0x02, 0x40, 0xa0, 0x50, 0x28, 0x14, 0x0a, 0x05, 0x02, 0x02, 0x05, 0x0a, 0x14, 0x28, 0x50, 0xa0, 0x40};
+        static const uint8_t cross_white[34] = {16,16,0xfe, 0xfd, 0xfb, 0xf7, 0xef, 0xdf, 0xbf, 0x7f, 0x7f, 0xbf, 0xdf, 0xef, 0xf7, 0xfb, 0xfd, 0xfe, 0x7f, 0xbf, 0xdf, 0xef, 0xf7, 0xfb, 0xfd, 0xfe, 0xfe, 0xfd, 0xfb, 0xf7, 0xef, 0xdf, 0xbf, 0x7f};
+
         OledDisplayBitmap(water, 24,32);
-        OledDisplayBitmap(water, 67,32);
+        OledOverlayBitmaps(water, cross_white, cross_black, 67, 32);
 
         /*
 		while(1)

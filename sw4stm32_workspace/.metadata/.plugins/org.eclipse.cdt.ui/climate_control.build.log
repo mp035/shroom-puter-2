@@ -1,14 +1,14 @@
-17:01:47 **** Incremental Build of configuration Debug for project climate_control ****
+21:10:23 **** Incremental Build of configuration Debug for project climate_control ****
 make all 
-Building file: ../src/oled96.c
+Building file: ../src/setup.c
 Invoking: MCU GCC Compiler
-/home/mark/repositories/shroom-puter-2/stm32_workspace/climate_control/Debug
-arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft -DSTM32L0 -DNUCLEO_L031K6 -DSTM32 -DSTM32L031K6Tx -DDEBUG -DSTM32L031xx -I"/home/mark/repositories/shroom-puter-2/stm32_workspace/climate_control/inc" -I"/home/mark/repositories/shroom-puter-2/stm32_workspace/climate_control/CMSIS/core" -I"/home/mark/repositories/shroom-puter-2/stm32_workspace/climate_control/CMSIS/device" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"src/oled96.d" -MT"src/oled96.o" -o "src/oled96.o" "../src/oled96.c"
-Finished building: ../src/oled96.c
+/home/mark/repositories/shroom-puter-2/sw4stm32_workspace/climate_control/Debug
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft -DSTM32L0 -DNUCLEO_L031K6 -DSTM32 -DSTM32L031K6Tx -DDEBUG -DSTM32L031xx -I"/home/mark/repositories/shroom-puter-2/sw4stm32_workspace/climate_control/inc" -I"/home/mark/repositories/shroom-puter-2/sw4stm32_workspace/climate_control/CMSIS/core" -I"/home/mark/repositories/shroom-puter-2/sw4stm32_workspace/climate_control/CMSIS/device" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"src/setup.d" -MT"src/setup.o" -o "src/setup.o" "../src/setup.c"
+Finished building: ../src/setup.c
  
 Building target: climate_control.elf
 Invoking: MCU GCC Linker
-arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft -T"/home/mark/repositories/shroom-puter-2/stm32_workspace/climate_control/LinkerScript.ld" -Wl,-Map=output.map -Wl,--gc-sections -lm -o "climate_control.elf" @"objects.list"  
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft -T"/home/mark/repositories/shroom-puter-2/sw4stm32_workspace/climate_control/LinkerScript.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "climate_control.elf" @"objects.list"   -lm
 Finished building target: climate_control.elf
  
 make --no-print-directory post-build
@@ -16,8 +16,8 @@ Generating binary and Printing size information:
 arm-none-eabi-objcopy -O binary "climate_control.elf" "climate_control.bin"
 arm-none-eabi-size "climate_control.elf"
    text	   data	    bss	    dec	    hex	filename
-  26756	   1124	   1664	  29544	   7368	climate_control.elf
+  30744	   1136	   1736	  33616	   8350	climate_control.elf
  
 
-17:01:48 Build Finished (took 290ms)
+21:10:23 Build Finished (took 283ms)
 

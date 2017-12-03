@@ -25,6 +25,8 @@
 #include "print.h"
 #include "systick.h"
 #include "sht10.h"
+#include "rotary_encoder.h"
+#include "menu.h"
 			
 
 static const uint8_t water[34] = {16,16,     0,0,0,0,0,192,240,248,254,240,192,0,0,0,0,0,0,0,0,0,31,63,127,127,127,112,57,31,0,0,0,0,};
@@ -39,43 +41,7 @@ static const uint8_t blank[34] = {16,16,    0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 
 #define TEXTLINE(x) OledGotoXY(0, x * 16 )
 
-typedef enum
-{
-    APPL_DRAW_HOME
-    ,APPL_HOME
-    ,APPL_DRAW_DOOR_OPEN
-    ,APPL_DOOR_OPEN
-    ,APPL_DRAW_MENU
-    ,APPL_MENU
-    ,APPL_DRAW_TIME_SET
-    ,APPL_TIME_SET
-    ,APPL_DRAW_TEMP_MENU
-    ,APPL_TEMP_MENU
-    ,APPL_DRAW_TEMP_SET
-    ,APPL_TEMP_SET
-    ,APPL_DRAW_TEMP_BAND_SET
-    ,APPL_TEMP_BAND_SET
-    ,APPL_DRAW_RH_MENU
-    ,APPL_RH_MENU
-    ,APPL_DRAW_HUMIDITY_SET
-    ,APPL_HUMIDITY_SET
-    ,APPL_DRAW_HUMIDITY_BAND_SET
-    ,APPL_HUMIDITY_BAND_SET
-    ,APPL_DRAW_LIGHT_MENU
-    ,APPL_LIGHT_MENU
-    ,APPL_DRAW_LIGHT_ON_SET
-    ,APPL_LIGHT_ON_SET
-    ,APPL_DRAW_LIGHT_OFF_SET
-    ,APPL_LIGHT_OFF_SET
-    ,APPL_DRAW_FAN_MENU
-    ,APPL_FAN_MENU
-    ,APPL_DRAW_FAN_RUN_SET
-    ,APPL_FAN_RUN_SET
-    ,APPL_DRAW_FAN_OFF_SET
-    ,APPL_FAN_OFF_SET
-    ,APPL_DRAW_DISABLE_MENU
-    ,APPL_DISABLE_MENU
-} app_state_e;
+
 
 int32_t door_open_time_in_seconds;
 int16_t temperatureset = 250;
@@ -110,6 +76,9 @@ uint32_t next_app_gate = 0;
 // flags to hold state of each aspect
 bool disable_humidity = false, disable_light = false, disable_vent = false;
 volatile bool disable_temp = false;
+
+// accumulate the encoder value outside the isr
+uint8_t my_enc_value = 0;
 
 // internal flags to hold status for display
 uint8_t output_status = 0;
@@ -168,11 +137,11 @@ void setup_decimal_widget(int16_t numeric_value, widget_t *widget)
     widget->xpos = 21;
     widget->ypos = 16;
     widget->digits = 3;
-    if (numeric_value > 999) numeric_value = 999;
+    if (numeric_value > 999) numeric_value = 235; // for safety set temperature to 23.5C on error.
     widget->numeric_value = numeric_value;
     widget->decimal_position = 2;
     widget->cursor_position = 0;
-    widget->return_value = WIDGET_DRAW_CANCEL;
+    widget->return_value = WIDGET_NOTHING;
     widget->zero_pad = 1;
 }
 
@@ -186,7 +155,7 @@ void setup_3digit_integer_widget(int16_t numeric_value, widget_t *widget)
     widget->numeric_value = numeric_value;
     widget->decimal_position = 0;
     widget->cursor_position = 0;
-    widget->return_value = WIDGET_DRAW_CANCEL;
+    widget->return_value = WIDGET_NOTHING;
     widget->zero_pad = 1;
 }
 
@@ -198,7 +167,7 @@ void setup_time_widget(int16_t time_value, widget_t *widget)
     if (time_value > 2359) time_value = 2359;
     widget->numeric_value = time_value;
     widget->cursor_position = 0;
-    widget->return_value = WIDGET_DRAW_CANCEL;
+    widget->return_value = WIDGET_NOTHING;
 }
 
 void draw_setting_screen(char* title1, char* title2, widget_t *widget, char *units)
@@ -207,11 +176,11 @@ void draw_setting_screen(char* title1, char* title2, widget_t *widget, char *uni
     TEXTLINE(0);
     OledDisplayString(title1);
     int16_t posx,posy;
+    TEXTLINE(1);
     if (title2 == 0)
     {
-		TEXTLINE(1);
         OledDisplayString("            ");
-        posx = 49;
+        posx = 60;
         posy = 16;
         widget->xpos = 24;
         widget->ypos = posy;
@@ -219,8 +188,8 @@ void draw_setting_screen(char* title1, char* title2, widget_t *widget, char *uni
     else
     {
         OledDisplayString(title2);
-        posx = 49;
-        posy = 24;
+        posx = 60;
+        posy = 32;
         widget->xpos = 24;
         widget->ypos = posy;
     }
@@ -228,14 +197,23 @@ void draw_setting_screen(char* title1, char* title2, widget_t *widget, char *uni
     OledGotoXY(posx,posy);
     OledDisplayString(units);
 
-    OledGotoXY(0,48);
+    draw_widget(widget);
+}
+
+void update_setting_screen(widget_t *widget)
+{
+    TEXTLINE(3);
     if (widget->return_value == WIDGET_DRAW_CANCEL)
     {
-        OledDisplayString("  OK  ->CANCEL");
+        OledDisplayString("   ->CANCEL   ");
     }
     else if (widget->return_value == WIDGET_DRAW_CONFIRM)
     {
-        OledDisplayString("->OK    CANCEL");
+        OledDisplayString("    ->SAVE    ");
+    }
+    else if (widget->return_value == WIDGET_DRAW_BACK)
+    {
+        OledDisplayString("    ->BACK    ");
     }
     else
     {
@@ -243,15 +221,13 @@ void draw_setting_screen(char* title1, char* title2, widget_t *widget, char *uni
     }
 
     draw_widget(widget);
-
-    LCDRefresh(0);
 }
 
-void handle_settings_keys(uint8_t keyvalue, int16_t* temperature_parameter, uint16_t parameter_eeprom_address, app_state_e *applicaton_state, widget_t * widget, app_state_e draw_previous_screen_state, app_state_e draw_screen_state)
+void handle_settings_keys(int16_t* temperature_parameter, uint16_t parameter_eeprom_address, app_state_e *applicaton_state, widget_t * widget, app_state_e draw_previous_screen_state, app_state_e draw_screen_state)
 {
-    if (keyvalue) // 100ms debounce
+    if (RotaryEncoderHasActivity())
     {
-        pass_key_to_widget(keyvalue, widget);
+        pass_encoder_to_widget(RotaryEncoderGetValue(), RotaryEncoderGetPressed(), widget);
         switch(widget->return_value)
         {
         case WIDGET_CANCEL:
@@ -268,7 +244,6 @@ void handle_settings_keys(uint8_t keyvalue, int16_t* temperature_parameter, uint
     }
 }
 
-int32_t rate_of_rise = 0;
 
 int main (void)
 {
@@ -276,7 +251,7 @@ int main (void)
     setup(1);
 
 	// load eeprom values
-	AUTO_EE_READ_INIT(temperatureset, 250);
+	AUTO_EE_READ_INIT(temperatureset, 235);
 	AUTO_EE_READ_INIT(temperatureband, 10);
 	AUTO_EE_READ_INIT(humidityset, 950);
 	AUTO_EE_READ_INIT(humidityband, 10);
@@ -290,12 +265,114 @@ int main (void)
 
     widget_t numwidget;
 
-	uint8_t keyvalue;
+	uint8_t keyvalue = 0;
 	HUMIDITY(0);
 	VENTILATION(0);
 	LIGHTING(0);
 	HEATING(0);
 	COOLING(0);
+
+
+	// create menus
+	menu_t mainMenu;
+	menu_t tempMenu;
+	menu_t rhMenu;
+	menu_t lightMenu;
+	menu_t fanMenu;
+	menu_t disableMenu;
+
+	menuItem_t tempMenuItems[4] = {
+			{"GO BACK       ", APPL_MENU, &mainMenu},
+			{"TEMP SET POINT", APPL_SETUP_TEMP_SET, 0},
+			{"TEMP BAND     ", APPL_SETUP_TEMP_BAND_SET, 0},
+			{"EXIT MENU     ", APPL_DRAW_HOME, 0}
+	};
+	tempMenu.currentItem = 0;
+	tempMenu.items = tempMenuItems;
+	tempMenu.numItems = 4;
+
+	menuItem_t rhMenuItems[] = {
+			{"GO BACK       ", APPL_MENU, &mainMenu},
+			{"HUMIDITY SET  ", APPL_SETUP_HUMIDITY_SET, 0},
+			{"HUMIDITY  BAND", APPL_SETUP_HUMIDITY_BAND_SET, 0},
+			{"EXIT MENU     ", APPL_DRAW_HOME, 0}
+	};
+	rhMenu.currentItem = 0;
+	rhMenu.items = rhMenuItems;
+	rhMenu.numItems = 4;
+
+	menuItem_t lightMenuItems[] = {
+			{"GO BACK       ", APPL_MENU, &mainMenu},
+			{"LIGHT ON      ", APPL_SETUP_LIGHT_ON_SET, 0},
+			{"LIGHT OFF     ", APPL_SETUP_LIGHT_OFF_SET, 0},
+			{"EXIT MENU     ", APPL_DRAW_HOME, 0}
+	};
+	lightMenu.currentItem = 0;
+	lightMenu.items = lightMenuItems;
+	lightMenu.numItems = 4;
+
+	menuItem_t fanMenuItems[] = {
+			{"GO BACK       ", APPL_MENU, &mainMenu},
+			{"VENT RUN TIME ", APPL_SETUP_FAN_RUN_SET, 0},
+			{"VENT IDLE TIME", APPL_SETUP_FAN_OFF_SET, 0},
+			{"EXIT MENU     ", APPL_DRAW_HOME, 0}
+	};
+	fanMenu.currentItem = 0;
+	fanMenu.items = fanMenuItems;
+	fanMenu.numItems = 4;
+
+
+	menuItem_t mainMenuItems[] = {
+			{"EXIT MENU     ", APPL_DRAW_HOME, 0},
+			{"INHIBIT ITEMS ", APPL_DRAW_MENU,&disableMenu},
+			{"SET TIME      ", APPL_SETUP_TIME_SET, 0},
+			{"SET TEMP      ", APPL_MENU, &tempMenu},
+			{"SET HUMIDITY  ", APPL_MENU, &rhMenu},
+			{"SET LIGHTING  ", APPL_MENU, &lightMenu},
+			{"SET VENT      ", APPL_MENU, &fanMenu}
+	};
+	mainMenu.currentItem = 0;
+	mainMenu.items = mainMenuItems;
+	mainMenu.numItems = 7;
+
+
+	const char* enableAll = "ENABLE ALL    ";
+	const char* disableAll = "DISABLE ALL   ";
+
+	const char* enableTemp = "ENABLE TEMP   ";
+	const char* disableTemp = "DISABLE TEMP  ";
+
+	const char* enableRh = "ENABLE R/H    ";
+	const char* disableRh = "DISABLE R/H   ";
+
+	const char* enableLight = "ENABLE LIGHT  ";
+	const char* disableLight = "DISABLE LIGHT ";
+
+	const char* enableVent = "ENABLE VENT   ";
+	const char* disableVent = "DISABLE VENT  ";
+
+	menuItem_t disableMenuItems[]={
+			{"GO BACK       ", APPL_MENU, &mainMenu},
+			{disableAll, APPL_DISABLE_ALL,0},
+			{disableTemp, APPL_DISABLE_TEMP,0},
+			{disableRh, APPL_DISABLE_RH,0},
+			{disableLight, APPL_DISABLE_LIGHT,0},
+			{disableVent, APPL_DISABLE_VENT,0},
+			{"EXIT MENU     ", APPL_DRAW_HOME, 0}
+	};
+
+	disableMenu.items = disableMenuItems;
+	disableMenu.currentItem = 0;
+	disableMenu.numItems = 7;
+
+	menuItem_t *menuItemDisableAll = &disableMenuItems[1];
+	menuItem_t *menuItemDisableTemp = &disableMenuItems[2];
+	menuItem_t *menuItemDisableRh = &disableMenuItems[3];
+	menuItem_t *menuItemDisableLight = &disableMenuItems[4];
+	menuItem_t *menuItemDisableVent = &disableMenuItems[5];
+
+
+
 
     while (1)
     {
@@ -405,11 +482,8 @@ int main (void)
 
             	// Temperature control algorithms.
 
-            	static int32_t last_temp = 255;// set last temp at the most common setpoint to start with.
-            	//static int32_t rate_of_rise; // the number of degrees rise over 5 minutes
+            	static int32_t last_temp = 235;// set last temp at the most common setpoint to start with.
             	last_temp -= temperature;
-            	rate_of_rise -= (rate_of_rise / 60); // remove one average reading
-            	rate_of_rise += last_temp; // add this reading to the pool.
 
             	if (disable_temp)
             	{
@@ -481,14 +555,16 @@ int main (void)
         }
 
         /* wait until delay time has elapsed */
-        keyvalue = scan_for_keycode();
+        //keyvalue = scan_for_keycode();
         while (next_app_gate > GetSystickMs())
         {
             // ******************************* IDLE LOOP *********************************
-            if (keyvalue == 0)
-                keyvalue = scan_for_keycode(); // keep looking for keypresses while idle, but only if none have already been registered.
-            LCDService();
+            //if (keyvalue == 0)
+            //    keyvalue = scan_for_keycode(); // keep looking for keypresses while idle, but only if none have already been registered.
+            //LCDService();
         }
+        //if (RotaryEncoderHasActivity())
+        //keyvalue = RotaryEncoderGetValue();
         next_app_gate += 125;
         ReadRtc(); // update time values
 
@@ -497,6 +573,9 @@ int main (void)
         switch (application_state)
         {
         case APPL_DRAW_HOME:
+
+        	currentMenu = &mainMenu;
+
             if (trh_error)
             {
             	TEXTLINE(1);
@@ -515,7 +594,7 @@ int main (void)
                 printshort(temperature / 10, 3, 0);
                 OledDisplayChar('.');
                 printshort(temperature % 10, 1, 1);
-                OledDisplayChar(126);
+                OledDisplayChar(DEGREES_CHAR);
                 OledDisplayChar('C');
                 OledDisplayChar(' ');
                 OledDisplayChar(' ');
@@ -595,23 +674,29 @@ int main (void)
             else if (output_status & STATUS_VENTILATING) OledDisplayBitmap(fan, 63, ICON_Y);
             else OledDisplayBitmap(blank, 63, ICON_Y);
 
-            LCDRefresh(0);
+            //OledGotoXY(80,0);
+            //printchar(my_enc_value, 3, 1);
+
+            //LCDRefresh(0);
             application_state = APPL_HOME;
             break;
         case APPL_HOME:
-            if (keyvalue) // 100ms debounce
+
+        	//if (keyvalue){
+        	//	my_enc_value += keyvalue;
+        	//	keyvalue = 0;
+        	//	application_state = APPL_DRAW_HOME;
+        	//}
+
+        	if (RotaryEncoderHasActivity())
             {
-                if (keyvalue == '*')
+                if (RotaryEncoderGetValue() != 0)
                 {
                     application_state = APPL_DRAW_DOOR_OPEN;
                 }
-                else if (keyvalue == '#')
+                else if (RotaryEncoderGetPressed())
                 {
-                	application_state = APPL_DRAW_DISABLE_MENU;
-                }
-                else
-                {
-                    application_state = APPL_DRAW_MENU;
+                	application_state = APPL_DRAW_MENU;
                 }
             }
 
@@ -632,63 +717,31 @@ int main (void)
             application_state = APPL_DOOR_OPEN;
             break;
         case APPL_DOOR_OPEN:
-            if (keyvalue)
-            // 100ms debounce
+            if (RotaryEncoderHasActivity())
             {
+            	RotaryEncoderGetPressed();
+            	RotaryEncoderGetValue();
                 application_state = APPL_DRAW_HOME;
             }
             break;
         case APPL_DRAW_MENU:
-            OledCls();
-            TEXTLINE(0);
-            OledDisplayString("1-SET TIME    ");
-            TEXTLINE(1);
-            OledDisplayString("2-SET TEMP    ");
-            TEXTLINE(2);
-            OledDisplayString("3-SET R/H     ");
-            TEXTLINE(3);
-            OledDisplayString("4-SET LIGHT   ");
-            //OledDisplayString("5-SET FAN     ");
-            //OledDisplayString("*-EXIT MENU   ");
-
-            //OledCls();
-            //OledDisplayString("1-Light On  ");
-            //OledDisplayString("2-Set Time  ");
-            //OledDisplayString("3-Set Temp  ");
-            //OledDisplayString("4-Set R/H   ");
-            //OledDisplayString("5-Set Light ");
-            //OledDisplayString("6-Set Fan   ");
-            LCDRefresh(0);
+        	MenuDraw(currentMenu);
             application_state = APPL_MENU;
             break;
         case APPL_MENU:
-            switch (keyvalue)
-            // 100ms debounce
-            {
-            case '1': // SET TIME
-                setup_time_widget((hour * 100 + minute), &numwidget);
-                application_state = APPL_DRAW_TIME_SET;
-                break;
-            case '2': // SET TEMP
-                application_state = APPL_DRAW_TEMP_MENU;
-                break;
-            case '3': // SET RH
-                application_state = APPL_DRAW_RH_MENU;
-                break;
-            case '4': // SET LIGHT
-                application_state = APPL_DRAW_LIGHT_MENU;
-                break;
-            case '5': // SET FAN
-                application_state = APPL_DRAW_FAN_MENU;
-                break;
-            case '*': // EXIT MENU
-                application_state = APPL_DRAW_HOME;
-                break;
-            }
-            break;
-        case APPL_DRAW_TIME_SET:
+        	if (RotaryEncoderHasActivity())
+        	{
+        		MenuHandleEncoder(currentMenu,RotaryEncoderGetValue(), RotaryEncoderGetPressed(), &application_state);
+        	}
+        	break;
+        case APPL_SETUP_TIME_SET:
+        	setup_time_widget((hour * 100 + minute), &numwidget);
             draw_setting_screen(" CURRENT TIME ", " (24HR TIME)  ", &numwidget,
                     "");
+        	application_state = APPL_DRAW_TIME_SET;
+        	break;
+        case APPL_DRAW_TIME_SET:
+        	update_setting_screen(&numwidget);
             application_state = APPL_TIME_SET;
             break;
         case APPL_TIME_SET:
@@ -697,7 +750,7 @@ int main (void)
             // the values if it changes.
 
             temptime = 0xFFFF;
-            handle_settings_keys(keyvalue, (int16_t*)&temptime, 0xFFFF, &application_state,
+            handle_settings_keys((int16_t*)&temptime, 0xFFFF, &application_state,
                     &numwidget, APPL_DRAW_MENU, APPL_DRAW_TIME_SET);
             if (temptime != 0xFFFF)
             {
@@ -731,12 +784,8 @@ int main (void)
             // 100ms debounce
             {
             case '1': // TEMPERATURE SETPOINT
-                setup_decimal_widget(temperatureset, &numwidget);
-                application_state = APPL_DRAW_TEMP_SET;
                 break;
             case '2': // TEMPERATURE BAND
-                setup_decimal_widget(temperatureband, &numwidget);
-                application_state = APPL_DRAW_TEMP_BAND_SET;
                 break;
             case '#': // LAST MENU
                 application_state = APPL_DRAW_MENU;
@@ -746,21 +795,31 @@ int main (void)
                 break;
             }
             break;
+		case APPL_SETUP_TEMP_SET:
+			setup_decimal_widget(temperatureset, &numwidget);
+            draw_setting_screen(" TEMPERATURE  ", 0, &numwidget, DEGREES_STR "C");
+			application_state = APPL_DRAW_TEMP_SET;
+			break;
         case APPL_DRAW_TEMP_SET:
-            draw_setting_screen(" TEMPERATURE  ", 0, &numwidget, "\x80" "C");
+        	update_setting_screen(&numwidget);
             application_state = APPL_TEMP_SET;
             break;
         case APPL_TEMP_SET:
-            handle_settings_keys(keyvalue, &temperatureset, ADDR_temperatureset, &application_state,
-                    &numwidget, APPL_DRAW_TEMP_MENU, APPL_DRAW_TEMP_SET);
+            handle_settings_keys(&temperatureset, ADDR_temperatureset, &application_state,
+                    &numwidget, APPL_DRAW_MENU, APPL_DRAW_TEMP_SET);
             break;
+        case APPL_SETUP_TEMP_BAND_SET:
+        	setup_decimal_widget(temperatureband, &numwidget);
+        	application_state = APPL_DRAW_TEMP_BAND_SET;
+            draw_setting_screen(" TEMPERATURE  ", "     BAND     " , &numwidget, DEGREES_STR "C");
+        	break;
         case APPL_DRAW_TEMP_BAND_SET:
-            draw_setting_screen(" TEMPERATURE  ", "     BAND     " , &numwidget, "\x80" "C");
+            update_setting_screen(&numwidget);
             application_state = APPL_TEMP_BAND_SET;
             break;
         case APPL_TEMP_BAND_SET:
-            handle_settings_keys(keyvalue, &temperatureband, ADDR_temperatureband, &application_state,
-                    &numwidget, APPL_DRAW_TEMP_MENU, APPL_DRAW_TEMP_BAND_SET);
+            handle_settings_keys(&temperatureband, ADDR_temperatureband, &application_state,
+                    &numwidget, APPL_DRAW_MENU, APPL_DRAW_TEMP_BAND_SET);
             break;
         case APPL_DRAW_RH_MENU:
             OledCls();
@@ -793,20 +852,30 @@ int main (void)
                 break;
             }
             break;
+        case APPL_SETUP_HUMIDITY_SET:
+                setup_decimal_widget(humidityset, &numwidget);
+                draw_setting_screen(" HUMIDITY SET ", 0, &numwidget, "%");
+                application_state = APPL_DRAW_HUMIDITY_SET;
+        	break;
         case APPL_DRAW_HUMIDITY_SET:
-            draw_setting_screen(" HUMIDITY SET ", 0, &numwidget, "%");
+            update_setting_screen(&numwidget);
             application_state = APPL_HUMIDITY_SET;
             break;
         case APPL_HUMIDITY_SET:
-            handle_settings_keys(keyvalue, &humidityset, ADDR_humidityset, &application_state,
-                    &numwidget, APPL_DRAW_RH_MENU, APPL_DRAW_HUMIDITY_SET);
+            handle_settings_keys(&humidityset, ADDR_humidityset, &application_state,
+                    &numwidget, APPL_DRAW_MENU, APPL_DRAW_HUMIDITY_SET);
+            break;
+        case APPL_SETUP_HUMIDITY_BAND_SET:
+        	setup_decimal_widget(humidityband, &numwidget);
+            draw_setting_screen("HUMIDITY BAND ", 0, &numwidget,"%");
+        	application_state = APPL_DRAW_HUMIDITY_BAND_SET;
             break;
         case APPL_DRAW_HUMIDITY_BAND_SET:
-            draw_setting_screen("HUMIDITY BAND ", 0, &numwidget,"%");
+            update_setting_screen(&numwidget);
             application_state = APPL_HUMIDITY_BAND_SET;
             break;
         case APPL_HUMIDITY_BAND_SET:
-            handle_settings_keys(keyvalue, &humidityband, ADDR_humidityband, &application_state, &numwidget, APPL_DRAW_RH_MENU, APPL_DRAW_HUMIDITY_BAND_SET);
+            handle_settings_keys(&humidityband, ADDR_humidityband, &application_state, &numwidget, APPL_DRAW_MENU, APPL_DRAW_HUMIDITY_BAND_SET);
             break;
         case APPL_DRAW_LIGHT_MENU:
             OledCls();
@@ -839,23 +908,31 @@ int main (void)
                 break;
             }
             break;
+        case APPL_SETUP_LIGHT_ON_SET:
+        	setup_time_widget(startlight, &numwidget);
+        	application_state = APPL_DRAW_LIGHT_ON_SET;
+        	draw_setting_screen("   LIGHT ON   ", " (24HR TIME)  ", &numwidget, "");
+        	break;
         case APPL_DRAW_LIGHT_ON_SET:
-            draw_setting_screen("   LIGHT ON   ", " (24HR TIME)  ", &numwidget,
-                    "");
+            update_setting_screen(&numwidget);
             application_state = APPL_LIGHT_ON_SET;
             break;
         case APPL_LIGHT_ON_SET:
-            handle_settings_keys(keyvalue, &startlight, ADDR_startlight, &application_state,
-                    &numwidget, APPL_DRAW_LIGHT_MENU, APPL_DRAW_LIGHT_ON_SET);
+            handle_settings_keys(&startlight, ADDR_startlight, &application_state,
+                    &numwidget, APPL_DRAW_MENU, APPL_DRAW_LIGHT_ON_SET);
             break;
+        case APPL_SETUP_LIGHT_OFF_SET:
+        	setup_time_widget(stoplight, &numwidget);
+            draw_setting_screen("  LIGHT OFF   ", " (24HR TIME)  ", &numwidget, "");
+        	application_state = APPL_DRAW_LIGHT_OFF_SET;
+        	break;
         case APPL_DRAW_LIGHT_OFF_SET:
-            draw_setting_screen("  LIGHT OFF   ", " (24HR TIME)  ", &numwidget,
-                    "");
+            update_setting_screen(&numwidget);
             application_state = APPL_LIGHT_OFF_SET;
             break;
         case APPL_LIGHT_OFF_SET:
-            handle_settings_keys(keyvalue, &stoplight, ADDR_stoplight, &application_state,
-                    &numwidget, APPL_DRAW_LIGHT_MENU, APPL_DRAW_LIGHT_OFF_SET);
+            handle_settings_keys(&stoplight, ADDR_stoplight, &application_state,
+                    &numwidget, APPL_DRAW_MENU, APPL_DRAW_LIGHT_OFF_SET);
             break;
         case APPL_DRAW_FAN_MENU:
             OledCls();
@@ -888,22 +965,30 @@ int main (void)
                 break;
             }
             break;
+        case APPL_SETUP_FAN_RUN_SET:
+        	setup_3digit_integer_widget(fanrunminutes, &numwidget);
+        	draw_setting_screen(" FAN RUN TIME ", " (IN MINUTES) ", &numwidget, "min");
+        	application_state = APPL_DRAW_FAN_RUN_SET;
+        	break;
         case APPL_DRAW_FAN_RUN_SET:
-            draw_setting_screen(" FAN RUN TIME ", " (IN MINUTES) ", &numwidget,
-                    "min");
+            update_setting_screen(&numwidget);
             application_state = APPL_FAN_RUN_SET;
             break;
         case APPL_FAN_RUN_SET:
-            handle_settings_keys(keyvalue, &fanrunminutes, ADDR_fanrunminutes, &application_state,
+            handle_settings_keys(&fanrunminutes, ADDR_fanrunminutes, &application_state,
                     &numwidget, APPL_DRAW_FAN_MENU, APPL_DRAW_FAN_RUN_SET);
             break;
+        case APPL_SETUP_FAN_OFF_SET:
+        	setup_3digit_integer_widget(fanidleminutes, &numwidget);
+        	draw_setting_screen("FAN IDLE TIME ", " (IN MINUTES) ", &numwidget, "min");
+        	application_state = APPL_DRAW_FAN_OFF_SET;
+        	break;
         case APPL_DRAW_FAN_OFF_SET:
-            draw_setting_screen("FAN IDLE TIME ", " (IN MINUTES) ", &numwidget,
-                    "min");
+            update_setting_screen(&numwidget);
             application_state = APPL_FAN_OFF_SET;
             break;
         case APPL_FAN_OFF_SET:
-            handle_settings_keys(keyvalue, &fanidleminutes, ADDR_fanidleminutes, &application_state,
+            handle_settings_keys(&fanidleminutes, ADDR_fanidleminutes, &application_state,
                     &numwidget, APPL_DRAW_FAN_MENU, APPL_DRAW_FAN_OFF_SET);
             break;
         case APPL_DRAW_DISABLE_MENU:
@@ -937,48 +1022,72 @@ int main (void)
 			LCDRefresh(0);
 			application_state = APPL_DISABLE_MENU;
 			break;
-		case APPL_DISABLE_MENU:
-			switch (keyvalue)
-			// 100ms debounce
-			{
-			case '1': // EN/DIS ALL
-				if (disable_temp && disable_humidity &&  disable_light && disable_vent)
-				{
-					disable_temp = false;
-					disable_humidity = false;
-					disable_light = false;
-					disable_vent = false;
-				}
-				else
-				{
-					disable_temp = true;
-					disable_humidity = true;
-					disable_light = true;
-					disable_vent = true;
-				}
-				application_state = APPL_DRAW_DISABLE_MENU;
-				break;
-			case '2': // SET TEMP
-				disable_temp = ! disable_temp;
-				application_state = APPL_DRAW_DISABLE_MENU;
-				break;
-			case '3': // SET RH
-				disable_humidity = ! disable_humidity;
-				application_state = APPL_DRAW_DISABLE_MENU;
-				break;
-			case '4': // SET LIGHT
-				disable_light = ! disable_light;
-				application_state = APPL_DRAW_DISABLE_MENU;
-				break;
-			case '5': // SET FAN
-				disable_vent = ! disable_vent;
-				application_state = APPL_DRAW_DISABLE_MENU;
-				break;
-			case '*': // EXIT MENU
-				application_state = APPL_DRAW_HOME;
-				break;
-			}
-			break;
+        case APPL_DISABLE_ALL: // EN/DIS ALL
+        	if (disable_temp && disable_humidity &&  disable_light && disable_vent)
+        	{
+        		disable_temp = false;
+        		disable_humidity = false;
+        		disable_light = false;
+        		disable_vent = false;
+
+        		menuItemDisableAll->title = disableAll;
+        		menuItemDisableTemp->title = disableTemp;
+        		menuItemDisableRh->title = disableRh;
+        		menuItemDisableLight->title = disableLight;
+        		menuItemDisableVent->title = disableVent;
+        	}
+        	else
+        	{
+        		disable_temp = true;
+        		disable_humidity = true;
+        		disable_light = true;
+        		disable_vent = true;
+
+        		menuItemDisableAll->title = enableAll;
+        		menuItemDisableTemp->title = enableTemp;
+        		menuItemDisableRh->title = enableRh;
+        		menuItemDisableLight->title = enableLight;
+        		menuItemDisableVent->title = enableVent;
+        	}
+
+        	application_state = APPL_DRAW_MENU;
+        	break;
+        case APPL_DISABLE_TEMP: // SET TEMP
+        	disable_temp = ! disable_temp;
+        	if(disable_temp)
+        		menuItemDisableTemp->title = enableTemp;
+        	else
+        		menuItemDisableTemp->title = disableTemp;
+
+        	application_state = APPL_DRAW_MENU;
+        	break;
+        case APPL_DISABLE_RH: // SET RH
+        	disable_humidity = ! disable_humidity;
+        	if(disable_humidity)
+        		menuItemDisableRh->title = enableRh;
+        	else
+        		menuItemDisableRh->title = disableRh;
+
+        	application_state = APPL_DRAW_MENU;
+        	break;
+        case APPL_DISABLE_LIGHT: // SET LIGHT
+        	disable_light = ! disable_light;
+        	if(disable_light)
+        		menuItemDisableLight->title = enableLight;
+        	else
+        		menuItemDisableLight->title = disableLight;
+
+        	application_state = APPL_DRAW_MENU;
+        	break;
+        case APPL_DISABLE_VENT: // SET FAN
+        	disable_vent = ! disable_vent;
+        	if(disable_vent)
+        		menuItemDisableVent->title = enableVent;
+        	else
+        		menuItemDisableVent->title = disableVent;
+
+        	application_state = APPL_DRAW_MENU;
+        	break;
 
         } // switch application_state
     } // while (1)

@@ -11,6 +11,7 @@
 #include <stdint.h>
 #include "main.h"
 #include "i2c_master.h"
+#include "fonts.h" // for degrees symbol char code
 typedef uint16_t uint;
 typedef uint8_t uchar;
 
@@ -37,8 +38,8 @@ void OledDisplayBitmap(const uint8_t bitmap[], uint8_t xpos, uint8_t ypos);
 void OledInit(void);
 void OledCls();
 void OledAdjContrast(int8_t adjustment_amt); // plus or minus amt.
-void OledDisplayString(char *string);
-void OledDisplayStringWithCursor(char *string, uint8_t cursorpos);
+void OledDisplayString(const char *string);
+void OledDisplayStringWithCursor(const char *string, int8_t cursorpos, int8_t cursorlength);
 void OledDisplayDigit(uint8_t digit_value);
 void OledDisplayChar(char character);
 void OledGotoXY(uint8_t x, uint8_t y);

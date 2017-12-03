@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;climate_control/inc/menus.h&apos; to &apos;menu.h&apos;" description="Rename resource &apos;menus.h&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="inc/menus.h" name="menu.h" stamp="1512179506845" updateReferences="true"/>
+</session>
