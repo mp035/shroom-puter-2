@@ -7,7 +7,6 @@
 
 #include <stm32l0xx.h>
 #include "rcc.h"
-#include "spi.h"
 #include "gpio.h"
 #include "systick.h"
 #include "rtc.h"
@@ -15,6 +14,7 @@
 #include "oled96.h"
 #include "i2c_master.h"
 #include "rotary_encoder.h"
+#include "uart2.h"
 
 void setup(int firsttime)
 {
@@ -26,6 +26,11 @@ void setup(int firsttime)
 
 	EnableLseOscillator(); // to drive RTC
 	RtcInit();
+
+	// setup Uart
+	GPIO_AS_AF(A,2);
+	GPIO_SELECT_AF(A,2,4);
+	Uart2Init(9600, false, false);
 
 	// setup rotary encoder
 	RotaryEncoderInit();

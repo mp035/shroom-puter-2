@@ -21,12 +21,12 @@
 #include "sht10.h"
 #include "oled96.h"
 #include "rtc.h"
-#include "keypad.h"
 #include "print.h"
 #include "systick.h"
 #include "sht10.h"
 #include "rotary_encoder.h"
 #include "menu.h"
+//#include "uart2.h"
 			
 
 static const uint8_t water[34] = {16,16,     0,0,0,0,0,192,240,248,254,240,192,0,0,0,0,0,0,0,0,0,31,63,127,127,127,112,57,31,0,0,0,0,};
@@ -563,10 +563,9 @@ int main (void)
             //    keyvalue = scan_for_keycode(); // keep looking for keypresses while idle, but only if none have already been registered.
             //LCDService();
         }
-        //if (RotaryEncoderHasActivity())
-        //keyvalue = RotaryEncoderGetValue();
         next_app_gate += 125;
         ReadRtc(); // update time values
+        if (Uart2TxFree()) Uart2Tx(&output_status, 1);
 
         // ************************ THIS IS THE MAIN STATE MACHINE FOR THE MENU/DISPLAY SYSTEM ***********************
         uint16_t temptime;

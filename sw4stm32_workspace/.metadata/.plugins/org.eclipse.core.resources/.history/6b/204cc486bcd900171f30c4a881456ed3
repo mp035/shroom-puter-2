@@ -1,0 +1,32 @@
+/**
+  ******************************************************************************
+  * @file    main.c
+  * @author  Ac6
+  * @version V1.0
+  * @date    01-December-2013
+  * @brief   Default main function.
+  ******************************************************************************
+*/
+
+
+#include "stm32l0xx.h"
+#include "gpio.h"
+#include "rcc.h"
+#include "uart2.h"
+
+void setup(void)
+{
+	SetClock16MhzInternal();
+	ENABLE_GPIO_PORT(A);
+	ENABLE_GPIO_PORT(B);
+	// setup Uart
+	GPIO_AS_AF(A,3);
+	GPIO_SELECT_AF(A,3,4);
+	Uart2Init(9600, false, false);
+}
+
+int main(void)
+{
+
+	for(;;);
+}

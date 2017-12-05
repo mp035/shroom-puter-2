@@ -1,0 +1,23 @@
+23:14:33 **** Incremental Build of configuration Debug for project relay_unit ****
+make all 
+Building file: ../src/main.c
+Invoking: MCU GCC Compiler
+/home/mark/repositories/shroom-puter-2/sw4stm32_workspace/relay_unit/Debug
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L0 -DSTM32L031K6Tx -DDEBUG -DSTM32L031xx -I"/home/mark/repositories/shroom-puter-2/sw4stm32_workspace/relay_unit/inc" -I"/home/mark/repositories/shroom-puter-2/sw4stm32_workspace/relay_unit/CMSIS/device" -I"/home/mark/repositories/shroom-puter-2/sw4stm32_workspace/relay_unit/CMSIS/core" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+Finished building: ../src/main.c
+ 
+Building target: relay_unit.elf
+Invoking: MCU GCC Linker
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft -T"/home/mark/repositories/shroom-puter-2/sw4stm32_workspace/relay_unit/LinkerScript.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "relay_unit.elf" @"objects.list"   -lm
+Finished building target: relay_unit.elf
+ 
+make --no-print-directory post-build
+Generating binary and Printing size information:
+arm-none-eabi-objcopy -O binary "relay_unit.elf" "relay_unit.bin"
+arm-none-eabi-size "relay_unit.elf"
+   text	   data	    bss	    dec	    hex	filename
+   1724	   1128	   1312	   4164	   1044	relay_unit.elf
+ 
+
+23:14:33 Build Finished (took 219ms)
+

@@ -1,10 +1,164 @@
-21:10:23 **** Incremental Build of configuration Debug for project climate_control ****
+23:13:51 **** Incremental Build of configuration Debug for project climate_control ****
 make all 
+Building file: ../src/circular_buffer.c
+Invoking: MCU GCC Compiler
+/home/mark/repositories/shroom-puter-2/sw4stm32_workspace/climate_control/Debug
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft -DSTM32L0 -DNUCLEO_L031K6 -DSTM32 -DSTM32L031K6Tx -DDEBUG -DSTM32L031xx -I"/home/mark/repositories/shroom-puter-2/sw4stm32_workspace/climate_control/inc" -I"/home/mark/repositories/shroom-puter-2/sw4stm32_workspace/climate_control/CMSIS/core" -I"/home/mark/repositories/shroom-puter-2/sw4stm32_workspace/climate_control/CMSIS/device" -Os -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"src/circular_buffer.d" -MT"src/circular_buffer.o" -o "src/circular_buffer.o" "../src/circular_buffer.c"
+Finished building: ../src/circular_buffer.c
+ 
+Building file: ../src/eeprom.c
+Invoking: MCU GCC Compiler
+/home/mark/repositories/shroom-puter-2/sw4stm32_workspace/climate_control/Debug
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft -DSTM32L0 -DNUCLEO_L031K6 -DSTM32 -DSTM32L031K6Tx -DDEBUG -DSTM32L031xx -I"/home/mark/repositories/shroom-puter-2/sw4stm32_workspace/climate_control/inc" -I"/home/mark/repositories/shroom-puter-2/sw4stm32_workspace/climate_control/CMSIS/core" -I"/home/mark/repositories/shroom-puter-2/sw4stm32_workspace/climate_control/CMSIS/device" -Os -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"src/eeprom.d" -MT"src/eeprom.o" -o "src/eeprom.o" "../src/eeprom.c"
+Finished building: ../src/eeprom.c
+ 
+Building file: ../src/fonts.c
+Invoking: MCU GCC Compiler
+/home/mark/repositories/shroom-puter-2/sw4stm32_workspace/climate_control/Debug
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft -DSTM32L0 -DNUCLEO_L031K6 -DSTM32 -DSTM32L031K6Tx -DDEBUG -DSTM32L031xx -I"/home/mark/repositories/shroom-puter-2/sw4stm32_workspace/climate_control/inc" -I"/home/mark/repositories/shroom-puter-2/sw4stm32_workspace/climate_control/CMSIS/core" -I"/home/mark/repositories/shroom-puter-2/sw4stm32_workspace/climate_control/CMSIS/device" -Os -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"src/fonts.d" -MT"src/fonts.o" -o "src/fonts.o" "../src/fonts.c"
+Finished building: ../src/fonts.c
+ 
+Building file: ../src/gpio.c
+Invoking: MCU GCC Compiler
+/home/mark/repositories/shroom-puter-2/sw4stm32_workspace/climate_control/Debug
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft -DSTM32L0 -DNUCLEO_L031K6 -DSTM32 -DSTM32L031K6Tx -DDEBUG -DSTM32L031xx -I"/home/mark/repositories/shroom-puter-2/sw4stm32_workspace/climate_control/inc" -I"/home/mark/repositories/shroom-puter-2/sw4stm32_workspace/climate_control/CMSIS/core" -I"/home/mark/repositories/shroom-puter-2/sw4stm32_workspace/climate_control/CMSIS/device" -Os -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"src/gpio.d" -MT"src/gpio.o" -o "src/gpio.o" "../src/gpio.c"
+Finished building: ../src/gpio.c
+ 
+Building file: ../src/i2c_master.c
+Invoking: MCU GCC Compiler
+/home/mark/repositories/shroom-puter-2/sw4stm32_workspace/climate_control/Debug
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft -DSTM32L0 -DNUCLEO_L031K6 -DSTM32 -DSTM32L031K6Tx -DDEBUG -DSTM32L031xx -I"/home/mark/repositories/shroom-puter-2/sw4stm32_workspace/climate_control/inc" -I"/home/mark/repositories/shroom-puter-2/sw4stm32_workspace/climate_control/CMSIS/core" -I"/home/mark/repositories/shroom-puter-2/sw4stm32_workspace/climate_control/CMSIS/device" -Os -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"src/i2c_master.d" -MT"src/i2c_master.o" -o "src/i2c_master.o" "../src/i2c_master.c"
+Finished building: ../src/i2c_master.c
+ 
+Building file: ../src/main.c
+Invoking: MCU GCC Compiler
+/home/mark/repositories/shroom-puter-2/sw4stm32_workspace/climate_control/Debug
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft -DSTM32L0 -DNUCLEO_L031K6 -DSTM32 -DSTM32L031K6Tx -DDEBUG -DSTM32L031xx -I"/home/mark/repositories/shroom-puter-2/sw4stm32_workspace/climate_control/inc" -I"/home/mark/repositories/shroom-puter-2/sw4stm32_workspace/climate_control/CMSIS/core" -I"/home/mark/repositories/shroom-puter-2/sw4stm32_workspace/climate_control/CMSIS/device" -Os -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+../src/main.c: In function 'main':
+../src/main.c:568:13: warning: implicit declaration of function 'Uart2TxFree' [-Wimplicit-function-declaration]
+         if (Uart2TxFree()) Uart2Tx(&output_status, 1);
+             ^~~~~~~~~~~
+../src/main.c:568:28: warning: implicit declaration of function 'Uart2Tx' [-Wimplicit-function-declaration]
+         if (Uart2TxFree()) Uart2Tx(&output_status, 1);
+                            ^~~~~~~
+../src/main.c:977:34: warning: passing argument 1 of 'handle_settings_keys' discards 'volatile' qualifier from pointer target type [-Wdiscarded-qualifiers]
+             handle_settings_keys(&fanrunminutes, ADDR_fanrunminutes, &application_state,
+                                  ^
+../src/main.c:226:6: note: expected 'int16_t * {aka short int *}' but argument is of type 'volatile int16_t * {aka volatile short int *}'
+ void handle_settings_keys(int16_t* temperature_parameter, uint16_t parameter_eeprom_address, app_state_e *applicaton_state, widget_t * widget, app_state_e draw_previous_screen_state, app_state_e draw_screen_state)
+      ^~~~~~~~~~~~~~~~~~~~
+../src/main.c:990:34: warning: passing argument 1 of 'handle_settings_keys' discards 'volatile' qualifier from pointer target type [-Wdiscarded-qualifiers]
+             handle_settings_keys(&fanidleminutes, ADDR_fanidleminutes, &application_state,
+                                  ^
+../src/main.c:226:6: note: expected 'int16_t * {aka short int *}' but argument is of type 'volatile int16_t * {aka volatile short int *}'
+ void handle_settings_keys(int16_t* temperature_parameter, uint16_t parameter_eeprom_address, app_state_e *applicaton_state, widget_t * widget, app_state_e draw_previous_screen_state, app_state_e draw_screen_state)
+      ^~~~~~~~~~~~~~~~~~~~
+../src/main.c:572:9: warning: enumeration value 'APPL_DISABLE_MENU' not handled in switch [-Wswitch]
+         switch (application_state)
+         ^~~~~~
+At top level:
+../src/main.c:37:22: warning: 'light_off' defined but not used [-Wunused-const-variable=]
+ static const uint8_t light_off[34] = {16,16,    0,0,0,248,204,2,3,129,193,225,115,58,158,254,7,3,0,96,112,56,31,14,127,243,241,240,124,14,3,0,0,0,};
+                      ^~~~~~~~~
+Finished building: ../src/main.c
+ 
+Building file: ../src/menu.c
+Invoking: MCU GCC Compiler
+/home/mark/repositories/shroom-puter-2/sw4stm32_workspace/climate_control/Debug
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft -DSTM32L0 -DNUCLEO_L031K6 -DSTM32 -DSTM32L031K6Tx -DDEBUG -DSTM32L031xx -I"/home/mark/repositories/shroom-puter-2/sw4stm32_workspace/climate_control/inc" -I"/home/mark/repositories/shroom-puter-2/sw4stm32_workspace/climate_control/CMSIS/core" -I"/home/mark/repositories/shroom-puter-2/sw4stm32_workspace/climate_control/CMSIS/device" -Os -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"src/menu.d" -MT"src/menu.o" -o "src/menu.o" "../src/menu.c"
+Finished building: ../src/menu.c
+ 
+Building file: ../src/oled96.c
+Invoking: MCU GCC Compiler
+/home/mark/repositories/shroom-puter-2/sw4stm32_workspace/climate_control/Debug
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft -DSTM32L0 -DNUCLEO_L031K6 -DSTM32 -DSTM32L031K6Tx -DDEBUG -DSTM32L031xx -I"/home/mark/repositories/shroom-puter-2/sw4stm32_workspace/climate_control/inc" -I"/home/mark/repositories/shroom-puter-2/sw4stm32_workspace/climate_control/CMSIS/core" -I"/home/mark/repositories/shroom-puter-2/sw4stm32_workspace/climate_control/CMSIS/device" -Os -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"src/oled96.d" -MT"src/oled96.o" -o "src/oled96.o" "../src/oled96.c"
+../src/oled96.c: In function 'OledDisplayStringWithCursor':
+../src/oled96.c:144:15: warning: initialization discards 'const' qualifier from pointer target type [-Wdiscarded-qualifiers]
+  char *copy = string;
+               ^~~~~~
+Finished building: ../src/oled96.c
+ 
+Building file: ../src/print.c
+Invoking: MCU GCC Compiler
+/home/mark/repositories/shroom-puter-2/sw4stm32_workspace/climate_control/Debug
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft -DSTM32L0 -DNUCLEO_L031K6 -DSTM32 -DSTM32L031K6Tx -DDEBUG -DSTM32L031xx -I"/home/mark/repositories/shroom-puter-2/sw4stm32_workspace/climate_control/inc" -I"/home/mark/repositories/shroom-puter-2/sw4stm32_workspace/climate_control/CMSIS/core" -I"/home/mark/repositories/shroom-puter-2/sw4stm32_workspace/climate_control/CMSIS/device" -Os -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"src/print.d" -MT"src/print.o" -o "src/print.o" "../src/print.c"
+Finished building: ../src/print.c
+ 
+Building file: ../src/rcc.c
+Invoking: MCU GCC Compiler
+/home/mark/repositories/shroom-puter-2/sw4stm32_workspace/climate_control/Debug
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft -DSTM32L0 -DNUCLEO_L031K6 -DSTM32 -DSTM32L031K6Tx -DDEBUG -DSTM32L031xx -I"/home/mark/repositories/shroom-puter-2/sw4stm32_workspace/climate_control/inc" -I"/home/mark/repositories/shroom-puter-2/sw4stm32_workspace/climate_control/CMSIS/core" -I"/home/mark/repositories/shroom-puter-2/sw4stm32_workspace/climate_control/CMSIS/device" -Os -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"src/rcc.d" -MT"src/rcc.o" -o "src/rcc.o" "../src/rcc.c"
+Finished building: ../src/rcc.c
+ 
+Building file: ../src/rotary_encoder.c
+Invoking: MCU GCC Compiler
+/home/mark/repositories/shroom-puter-2/sw4stm32_workspace/climate_control/Debug
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft -DSTM32L0 -DNUCLEO_L031K6 -DSTM32 -DSTM32L031K6Tx -DDEBUG -DSTM32L031xx -I"/home/mark/repositories/shroom-puter-2/sw4stm32_workspace/climate_control/inc" -I"/home/mark/repositories/shroom-puter-2/sw4stm32_workspace/climate_control/CMSIS/core" -I"/home/mark/repositories/shroom-puter-2/sw4stm32_workspace/climate_control/CMSIS/device" -Os -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"src/rotary_encoder.d" -MT"src/rotary_encoder.o" -o "src/rotary_encoder.o" "../src/rotary_encoder.c"
+Finished building: ../src/rotary_encoder.c
+ 
+Building file: ../src/rtc.c
+Invoking: MCU GCC Compiler
+/home/mark/repositories/shroom-puter-2/sw4stm32_workspace/climate_control/Debug
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft -DSTM32L0 -DNUCLEO_L031K6 -DSTM32 -DSTM32L031K6Tx -DDEBUG -DSTM32L031xx -I"/home/mark/repositories/shroom-puter-2/sw4stm32_workspace/climate_control/inc" -I"/home/mark/repositories/shroom-puter-2/sw4stm32_workspace/climate_control/CMSIS/core" -I"/home/mark/repositories/shroom-puter-2/sw4stm32_workspace/climate_control/CMSIS/device" -Os -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"src/rtc.d" -MT"src/rtc.o" -o "src/rtc.o" "../src/rtc.c"
+Finished building: ../src/rtc.c
+ 
 Building file: ../src/setup.c
 Invoking: MCU GCC Compiler
 /home/mark/repositories/shroom-puter-2/sw4stm32_workspace/climate_control/Debug
-arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft -DSTM32L0 -DNUCLEO_L031K6 -DSTM32 -DSTM32L031K6Tx -DDEBUG -DSTM32L031xx -I"/home/mark/repositories/shroom-puter-2/sw4stm32_workspace/climate_control/inc" -I"/home/mark/repositories/shroom-puter-2/sw4stm32_workspace/climate_control/CMSIS/core" -I"/home/mark/repositories/shroom-puter-2/sw4stm32_workspace/climate_control/CMSIS/device" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"src/setup.d" -MT"src/setup.o" -o "src/setup.o" "../src/setup.c"
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft -DSTM32L0 -DNUCLEO_L031K6 -DSTM32 -DSTM32L031K6Tx -DDEBUG -DSTM32L031xx -I"/home/mark/repositories/shroom-puter-2/sw4stm32_workspace/climate_control/inc" -I"/home/mark/repositories/shroom-puter-2/sw4stm32_workspace/climate_control/CMSIS/core" -I"/home/mark/repositories/shroom-puter-2/sw4stm32_workspace/climate_control/CMSIS/device" -Os -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"src/setup.d" -MT"src/setup.o" -o "src/setup.o" "../src/setup.c"
 Finished building: ../src/setup.c
+ 
+Building file: ../src/sht10.c
+Invoking: MCU GCC Compiler
+/home/mark/repositories/shroom-puter-2/sw4stm32_workspace/climate_control/Debug
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft -DSTM32L0 -DNUCLEO_L031K6 -DSTM32 -DSTM32L031K6Tx -DDEBUG -DSTM32L031xx -I"/home/mark/repositories/shroom-puter-2/sw4stm32_workspace/climate_control/inc" -I"/home/mark/repositories/shroom-puter-2/sw4stm32_workspace/climate_control/CMSIS/core" -I"/home/mark/repositories/shroom-puter-2/sw4stm32_workspace/climate_control/CMSIS/device" -Os -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"src/sht10.d" -MT"src/sht10.o" -o "src/sht10.o" "../src/sht10.c"
+Finished building: ../src/sht10.c
+ 
+Building file: ../src/syscalls.c
+Invoking: MCU GCC Compiler
+/home/mark/repositories/shroom-puter-2/sw4stm32_workspace/climate_control/Debug
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft -DSTM32L0 -DNUCLEO_L031K6 -DSTM32 -DSTM32L031K6Tx -DDEBUG -DSTM32L031xx -I"/home/mark/repositories/shroom-puter-2/sw4stm32_workspace/climate_control/inc" -I"/home/mark/repositories/shroom-puter-2/sw4stm32_workspace/climate_control/CMSIS/core" -I"/home/mark/repositories/shroom-puter-2/sw4stm32_workspace/climate_control/CMSIS/device" -Os -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"src/syscalls.d" -MT"src/syscalls.o" -o "src/syscalls.o" "../src/syscalls.c"
+Finished building: ../src/syscalls.c
+ 
+Building file: ../src/system_stm32l0xx.c
+Invoking: MCU GCC Compiler
+/home/mark/repositories/shroom-puter-2/sw4stm32_workspace/climate_control/Debug
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft -DSTM32L0 -DNUCLEO_L031K6 -DSTM32 -DSTM32L031K6Tx -DDEBUG -DSTM32L031xx -I"/home/mark/repositories/shroom-puter-2/sw4stm32_workspace/climate_control/inc" -I"/home/mark/repositories/shroom-puter-2/sw4stm32_workspace/climate_control/CMSIS/core" -I"/home/mark/repositories/shroom-puter-2/sw4stm32_workspace/climate_control/CMSIS/device" -Os -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"src/system_stm32l0xx.d" -MT"src/system_stm32l0xx.o" -o "src/system_stm32l0xx.o" "../src/system_stm32l0xx.c"
+Finished building: ../src/system_stm32l0xx.c
+ 
+Building file: ../src/systick.c
+Invoking: MCU GCC Compiler
+/home/mark/repositories/shroom-puter-2/sw4stm32_workspace/climate_control/Debug
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft -DSTM32L0 -DNUCLEO_L031K6 -DSTM32 -DSTM32L031K6Tx -DDEBUG -DSTM32L031xx -I"/home/mark/repositories/shroom-puter-2/sw4stm32_workspace/climate_control/inc" -I"/home/mark/repositories/shroom-puter-2/sw4stm32_workspace/climate_control/CMSIS/core" -I"/home/mark/repositories/shroom-puter-2/sw4stm32_workspace/climate_control/CMSIS/device" -Os -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"src/systick.d" -MT"src/systick.o" -o "src/systick.o" "../src/systick.c"
+Finished building: ../src/systick.c
+ 
+Building file: ../src/timer.c
+Invoking: MCU GCC Compiler
+/home/mark/repositories/shroom-puter-2/sw4stm32_workspace/climate_control/Debug
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft -DSTM32L0 -DNUCLEO_L031K6 -DSTM32 -DSTM32L031K6Tx -DDEBUG -DSTM32L031xx -I"/home/mark/repositories/shroom-puter-2/sw4stm32_workspace/climate_control/inc" -I"/home/mark/repositories/shroom-puter-2/sw4stm32_workspace/climate_control/CMSIS/core" -I"/home/mark/repositories/shroom-puter-2/sw4stm32_workspace/climate_control/CMSIS/device" -Os -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"src/timer.d" -MT"src/timer.o" -o "src/timer.o" "../src/timer.c"
+Finished building: ../src/timer.c
+ 
+Building file: ../src/uart2.c
+Invoking: MCU GCC Compiler
+/home/mark/repositories/shroom-puter-2/sw4stm32_workspace/climate_control/Debug
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft -DSTM32L0 -DNUCLEO_L031K6 -DSTM32 -DSTM32L031K6Tx -DDEBUG -DSTM32L031xx -I"/home/mark/repositories/shroom-puter-2/sw4stm32_workspace/climate_control/inc" -I"/home/mark/repositories/shroom-puter-2/sw4stm32_workspace/climate_control/CMSIS/core" -I"/home/mark/repositories/shroom-puter-2/sw4stm32_workspace/climate_control/CMSIS/device" -Os -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"src/uart2.d" -MT"src/uart2.o" -o "src/uart2.o" "../src/uart2.c"
+Finished building: ../src/uart2.c
+ 
+Building file: ../src/widgets.c
+Invoking: MCU GCC Compiler
+/home/mark/repositories/shroom-puter-2/sw4stm32_workspace/climate_control/Debug
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft -DSTM32L0 -DNUCLEO_L031K6 -DSTM32 -DSTM32L031K6Tx -DDEBUG -DSTM32L031xx -I"/home/mark/repositories/shroom-puter-2/sw4stm32_workspace/climate_control/inc" -I"/home/mark/repositories/shroom-puter-2/sw4stm32_workspace/climate_control/CMSIS/core" -I"/home/mark/repositories/shroom-puter-2/sw4stm32_workspace/climate_control/CMSIS/device" -Os -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"src/widgets.d" -MT"src/widgets.o" -o "src/widgets.o" "../src/widgets.c"
+../src/widgets.c: In function 'draw_widget':
+../src/widgets.c:43:5: warning: enumeration value 'LABEL' not handled in switch [-Wswitch]
+     switch(widget->widget_type)
+     ^~~~~~
+../src/widgets.c:43:5: warning: enumeration value 'BUTTON' not handled in switch [-Wswitch]
+../src/widgets.c: In function 'pass_encoder_to_widget':
+../src/widgets.c:107:5: warning: enumeration value 'LABEL' not handled in switch [-Wswitch]
+     switch(widget->widget_type)
+     ^~~~~~
+../src/widgets.c:107:5: warning: enumeration value 'BUTTON' not handled in switch [-Wswitch]
+Finished building: ../src/widgets.c
  
 Building target: climate_control.elf
 Invoking: MCU GCC Linker
@@ -16,8 +170,8 @@ Generating binary and Printing size information:
 arm-none-eabi-objcopy -O binary "climate_control.elf" "climate_control.bin"
 arm-none-eabi-size "climate_control.elf"
    text	   data	    bss	    dec	    hex	filename
-  30744	   1136	   1736	  33616	   8350	climate_control.elf
+  24320	   1184	   1936	  27440	   6b30	climate_control.elf
  
 
-21:10:23 Build Finished (took 283ms)
+23:13:52 Build Finished (took 1s.640ms)
 

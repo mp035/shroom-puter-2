@@ -14,7 +14,7 @@
 	<section name="RenameInformationPopup">
 	</section>
 	<section name="OptionalMessageDialog.hide.">
-		<item value="0" key="askReindex.detail"/>
+		<item value="1" key="askReindex.detail"/>
 	</section>
 	<section name="CRenameRefactoringInputPage">
 	</section>
