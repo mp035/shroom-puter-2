@@ -68,7 +68,7 @@ uint32_t next_app_gate = 0;
 
 // some macros which automatically handle the eeprom adresses of the variables
 #define AUTO_EE_READ_INIT(variable, default_value) variable = eeprom_read(ADDR_##variable);\
-													if (variable == 0 || variable == 0xFFFFFFFF) variable = default_value;\
+													if (variable == 0) variable = default_value;\
 
 #define AUTO_EE_WRITE(variable) eeprom_write(ADDR_##variable, variable);
 #define AUTO_EE_READ(variable) variable = eeprom_read(ADDR_##variable);

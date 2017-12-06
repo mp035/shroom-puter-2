@@ -1,24 +1,37 @@
-16:32:46 **** Incremental Build of configuration Debug for project display_unit ****
+18:57:58 **** Incremental Build of configuration Debug for project display_unit ****
 make all 
-Building file: ../src/widgets.c
+Building file: ../src/eeprom.c
 Invoking: MCU GCC Compiler
-/home/mark/temp/sw4stm32_workspace/display_unit/Debug
-arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L0 -DSTM32L031K6Tx -DNUCLEO_L031K6 -DDEBUG -DSTM32L031xx -I"/home/mark/temp/sw4stm32_workspace/display_unit/Utilities" -I"/home/mark/temp/sw4stm32_workspace/display_unit/inc" -I"/home/mark/temp/sw4stm32_workspace/display_unit/CMSIS/device" -I"/home/mark/temp/sw4stm32_workspace/display_unit/CMSIS/core" -Os -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"src/widgets.d" -MT"src/widgets.o" -o "src/widgets.o" "../src/widgets.c"
-../src/widgets.c: In function 'draw_widget':
-../src/widgets.c:43:5: warning: enumeration value 'LABEL' not handled in switch [-Wswitch]
-     switch(widget->widget_type)
-     ^~~~~~
-../src/widgets.c:43:5: warning: enumeration value 'BUTTON' not handled in switch [-Wswitch]
-../src/widgets.c: In function 'pass_encoder_to_widget':
-../src/widgets.c:107:5: warning: enumeration value 'LABEL' not handled in switch [-Wswitch]
-     switch(widget->widget_type)
-     ^~~~~~
-../src/widgets.c:107:5: warning: enumeration value 'BUTTON' not handled in switch [-Wswitch]
-Finished building: ../src/widgets.c
+/home/mark/repositories/shroom-puter-2/sw4stm32_workspace/display_unit/Debug
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L0 -DSTM32L031K6Tx -DNUCLEO_L031K6 -DDEBUG -DSTM32L031xx -I"/home/mark/repositories/shroom-puter-2/sw4stm32_workspace/display_unit/Utilities" -I"/home/mark/repositories/shroom-puter-2/sw4stm32_workspace/display_unit/inc" -I"/home/mark/repositories/shroom-puter-2/sw4stm32_workspace/display_unit/CMSIS/device" -I"/home/mark/repositories/shroom-puter-2/sw4stm32_workspace/display_unit/CMSIS/core" -Os -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"src/eeprom.d" -MT"src/eeprom.o" -o "src/eeprom.o" "../src/eeprom.c"
+Finished building: ../src/eeprom.c
+ 
+Building file: ../src/main.c
+Invoking: MCU GCC Compiler
+/home/mark/repositories/shroom-puter-2/sw4stm32_workspace/display_unit/Debug
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L0 -DSTM32L031K6Tx -DNUCLEO_L031K6 -DDEBUG -DSTM32L031xx -I"/home/mark/repositories/shroom-puter-2/sw4stm32_workspace/display_unit/Utilities" -I"/home/mark/repositories/shroom-puter-2/sw4stm32_workspace/display_unit/inc" -I"/home/mark/repositories/shroom-puter-2/sw4stm32_workspace/display_unit/CMSIS/device" -I"/home/mark/repositories/shroom-puter-2/sw4stm32_workspace/display_unit/CMSIS/core" -Os -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+../src/main.c: In function 'main':
+../src/main.c:863:34: warning: passing argument 1 of 'handle_settings_keys' discards 'volatile' qualifier from pointer target type [-Wdiscarded-qualifiers]
+             handle_settings_keys(&fanrunminutes, ADDR_fanrunminutes, &application_state,
+                                  ^
+../src/main.c:230:6: note: expected 'int16_t * {aka short int *}' but argument is of type 'volatile int16_t * {aka volatile short int *}'
+ void handle_settings_keys(int16_t* temperature_parameter, uint16_t parameter_eeprom_address, app_state_e *applicaton_state, widget_t * widget, app_state_e draw_previous_screen_state, app_state_e draw_screen_state)
+      ^~~~~~~~~~~~~~~~~~~~
+../src/main.c:876:34: warning: passing argument 1 of 'handle_settings_keys' discards 'volatile' qualifier from pointer target type [-Wdiscarded-qualifiers]
+             handle_settings_keys(&fanidleminutes, ADDR_fanidleminutes, &application_state,
+                                  ^
+../src/main.c:230:6: note: expected 'int16_t * {aka short int *}' but argument is of type 'volatile int16_t * {aka volatile short int *}'
+ void handle_settings_keys(int16_t* temperature_parameter, uint16_t parameter_eeprom_address, app_state_e *applicaton_state, widget_t * widget, app_state_e draw_previous_screen_state, app_state_e draw_screen_state)
+      ^~~~~~~~~~~~~~~~~~~~
+At top level:
+../src/main.c:37:22: warning: 'light_off' defined but not used [-Wunused-const-variable=]
+ static const uint8_t light_off[34] = {16,16,    0,0,0,248,204,2,3,129,193,225,115,58,158,254,7,3,0,96,112,56,31,14,127,243,241,240,124,14,3,0,0,0,};
+                      ^~~~~~~~~
+Finished building: ../src/main.c
  
 Building target: display_unit.elf
 Invoking: MCU GCC Linker
-arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft -T"/home/mark/temp/sw4stm32_workspace/display_unit/LinkerScript.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "display_unit.elf" @"objects.list"   -lm
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft -T"/home/mark/repositories/shroom-puter-2/sw4stm32_workspace/display_unit/LinkerScript.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "display_unit.elf" @"objects.list"   -lm
 Finished building target: display_unit.elf
  
 make --no-print-directory post-build
@@ -26,8 +39,8 @@ Generating binary and Printing size information:
 arm-none-eabi-objcopy -O binary "display_unit.elf" "display_unit.bin"
 arm-none-eabi-size "display_unit.elf"
    text	   data	    bss	    dec	    hex	filename
-  23648	   1184	   1936	  26768	   6890	display_unit.elf
+  23748	   1184	   1936	  26868	   68f4	display_unit.elf
  
 
-16:32:47 Build Finished (took 264ms)
+18:57:59 Build Finished (took 510ms)
 
