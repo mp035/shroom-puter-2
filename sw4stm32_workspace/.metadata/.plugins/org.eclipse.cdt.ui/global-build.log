@@ -1,14 +1,434 @@
-23:14:33 **** Incremental Build of configuration Debug for project relay_unit ****
+15:02:26 **** Build of configuration Debug for project relay_unit ****
 make all 
+Building file: ../startup/startup_stm32l031xx.s
+Invoking: MCU GCC Assembler
+/home/mark/temp/sw4stm32_workspace/relay_unit/Debug
+arm-none-eabi-as -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft -I"/home/mark/temp/sw4stm32_workspace/relay_unit/HAL_Driver/Inc/Legacy" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/Utilities" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/inc" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/device" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/core" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/HAL_Driver/Inc" -g -o "startup/startup_stm32l031xx.o" "../startup/startup_stm32l031xx.s"
+Finished building: ../startup/startup_stm32l031xx.s
+ 
 Building file: ../src/main.c
 Invoking: MCU GCC Compiler
-/home/mark/repositories/shroom-puter-2/sw4stm32_workspace/relay_unit/Debug
-arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L0 -DSTM32L031K6Tx -DDEBUG -DSTM32L031xx -I"/home/mark/repositories/shroom-puter-2/sw4stm32_workspace/relay_unit/inc" -I"/home/mark/repositories/shroom-puter-2/sw4stm32_workspace/relay_unit/CMSIS/device" -I"/home/mark/repositories/shroom-puter-2/sw4stm32_workspace/relay_unit/CMSIS/core" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+/home/mark/temp/sw4stm32_workspace/relay_unit/Debug
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L0 -DSTM32L031K6Tx -DNUCLEO_L031K6 -DDEBUG -DSTM32L031xx -DUSE_HAL_DRIVER -I"/home/mark/temp/sw4stm32_workspace/relay_unit/HAL_Driver/Inc/Legacy" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/Utilities" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/inc" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/device" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/core" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/HAL_Driver/Inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
 Finished building: ../src/main.c
+ 
+Building file: ../src/stm32l0xx_it.c
+Invoking: MCU GCC Compiler
+/home/mark/temp/sw4stm32_workspace/relay_unit/Debug
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L0 -DSTM32L031K6Tx -DNUCLEO_L031K6 -DDEBUG -DSTM32L031xx -DUSE_HAL_DRIVER -I"/home/mark/temp/sw4stm32_workspace/relay_unit/HAL_Driver/Inc/Legacy" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/Utilities" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/inc" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/device" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/core" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/HAL_Driver/Inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"src/stm32l0xx_it.d" -MT"src/stm32l0xx_it.o" -o "src/stm32l0xx_it.o" "../src/stm32l0xx_it.c"
+Finished building: ../src/stm32l0xx_it.c
+ 
+Building file: ../src/syscalls.c
+Invoking: MCU GCC Compiler
+/home/mark/temp/sw4stm32_workspace/relay_unit/Debug
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L0 -DSTM32L031K6Tx -DNUCLEO_L031K6 -DDEBUG -DSTM32L031xx -DUSE_HAL_DRIVER -I"/home/mark/temp/sw4stm32_workspace/relay_unit/HAL_Driver/Inc/Legacy" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/Utilities" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/inc" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/device" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/core" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/HAL_Driver/Inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"src/syscalls.d" -MT"src/syscalls.o" -o "src/syscalls.o" "../src/syscalls.c"
+Finished building: ../src/syscalls.c
+ 
+Building file: ../src/system_stm32l0xx.c
+Invoking: MCU GCC Compiler
+/home/mark/temp/sw4stm32_workspace/relay_unit/Debug
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L0 -DSTM32L031K6Tx -DNUCLEO_L031K6 -DDEBUG -DSTM32L031xx -DUSE_HAL_DRIVER -I"/home/mark/temp/sw4stm32_workspace/relay_unit/HAL_Driver/Inc/Legacy" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/Utilities" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/inc" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/device" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/core" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/HAL_Driver/Inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"src/system_stm32l0xx.d" -MT"src/system_stm32l0xx.o" -o "src/system_stm32l0xx.o" "../src/system_stm32l0xx.c"
+Finished building: ../src/system_stm32l0xx.c
+ 
+Building file: ../Utilities/stm32l0xx_nucleo_32.c
+Invoking: MCU GCC Compiler
+/home/mark/temp/sw4stm32_workspace/relay_unit/Debug
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L0 -DSTM32L031K6Tx -DNUCLEO_L031K6 -DDEBUG -DSTM32L031xx -DUSE_HAL_DRIVER -I"/home/mark/temp/sw4stm32_workspace/relay_unit/HAL_Driver/Inc/Legacy" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/Utilities" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/inc" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/device" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/core" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/HAL_Driver/Inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"Utilities/stm32l0xx_nucleo_32.d" -MT"Utilities/stm32l0xx_nucleo_32.o" -o "Utilities/stm32l0xx_nucleo_32.o" "../Utilities/stm32l0xx_nucleo_32.c"
+Finished building: ../Utilities/stm32l0xx_nucleo_32.c
+ 
+Building file: ../HAL_Driver/Src/stm32l0xx_hal.c
+Invoking: MCU GCC Compiler
+/home/mark/temp/sw4stm32_workspace/relay_unit/Debug
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L0 -DSTM32L031K6Tx -DNUCLEO_L031K6 -DDEBUG -DSTM32L031xx -DUSE_HAL_DRIVER -I"/home/mark/temp/sw4stm32_workspace/relay_unit/HAL_Driver/Inc/Legacy" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/Utilities" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/inc" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/device" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/core" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/HAL_Driver/Inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"HAL_Driver/Src/stm32l0xx_hal.d" -MT"HAL_Driver/Src/stm32l0xx_hal.o" -o "HAL_Driver/Src/stm32l0xx_hal.o" "../HAL_Driver/Src/stm32l0xx_hal.c"
+Finished building: ../HAL_Driver/Src/stm32l0xx_hal.c
+ 
+Building file: ../HAL_Driver/Src/stm32l0xx_hal_adc.c
+Invoking: MCU GCC Compiler
+/home/mark/temp/sw4stm32_workspace/relay_unit/Debug
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L0 -DSTM32L031K6Tx -DNUCLEO_L031K6 -DDEBUG -DSTM32L031xx -DUSE_HAL_DRIVER -I"/home/mark/temp/sw4stm32_workspace/relay_unit/HAL_Driver/Inc/Legacy" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/Utilities" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/inc" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/device" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/core" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/HAL_Driver/Inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"HAL_Driver/Src/stm32l0xx_hal_adc.d" -MT"HAL_Driver/Src/stm32l0xx_hal_adc.o" -o "HAL_Driver/Src/stm32l0xx_hal_adc.o" "../HAL_Driver/Src/stm32l0xx_hal_adc.c"
+Finished building: ../HAL_Driver/Src/stm32l0xx_hal_adc.c
+ 
+Building file: ../HAL_Driver/Src/stm32l0xx_hal_adc_ex.c
+Invoking: MCU GCC Compiler
+/home/mark/temp/sw4stm32_workspace/relay_unit/Debug
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L0 -DSTM32L031K6Tx -DNUCLEO_L031K6 -DDEBUG -DSTM32L031xx -DUSE_HAL_DRIVER -I"/home/mark/temp/sw4stm32_workspace/relay_unit/HAL_Driver/Inc/Legacy" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/Utilities" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/inc" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/device" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/core" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/HAL_Driver/Inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"HAL_Driver/Src/stm32l0xx_hal_adc_ex.d" -MT"HAL_Driver/Src/stm32l0xx_hal_adc_ex.o" -o "HAL_Driver/Src/stm32l0xx_hal_adc_ex.o" "../HAL_Driver/Src/stm32l0xx_hal_adc_ex.c"
+Finished building: ../HAL_Driver/Src/stm32l0xx_hal_adc_ex.c
+ 
+Building file: ../HAL_Driver/Src/stm32l0xx_hal_comp.c
+Invoking: MCU GCC Compiler
+/home/mark/temp/sw4stm32_workspace/relay_unit/Debug
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L0 -DSTM32L031K6Tx -DNUCLEO_L031K6 -DDEBUG -DSTM32L031xx -DUSE_HAL_DRIVER -I"/home/mark/temp/sw4stm32_workspace/relay_unit/HAL_Driver/Inc/Legacy" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/Utilities" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/inc" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/device" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/core" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/HAL_Driver/Inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"HAL_Driver/Src/stm32l0xx_hal_comp.d" -MT"HAL_Driver/Src/stm32l0xx_hal_comp.o" -o "HAL_Driver/Src/stm32l0xx_hal_comp.o" "../HAL_Driver/Src/stm32l0xx_hal_comp.c"
+Finished building: ../HAL_Driver/Src/stm32l0xx_hal_comp.c
+ 
+Building file: ../HAL_Driver/Src/stm32l0xx_hal_comp_ex.c
+Invoking: MCU GCC Compiler
+/home/mark/temp/sw4stm32_workspace/relay_unit/Debug
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L0 -DSTM32L031K6Tx -DNUCLEO_L031K6 -DDEBUG -DSTM32L031xx -DUSE_HAL_DRIVER -I"/home/mark/temp/sw4stm32_workspace/relay_unit/HAL_Driver/Inc/Legacy" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/Utilities" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/inc" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/device" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/core" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/HAL_Driver/Inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"HAL_Driver/Src/stm32l0xx_hal_comp_ex.d" -MT"HAL_Driver/Src/stm32l0xx_hal_comp_ex.o" -o "HAL_Driver/Src/stm32l0xx_hal_comp_ex.o" "../HAL_Driver/Src/stm32l0xx_hal_comp_ex.c"
+Finished building: ../HAL_Driver/Src/stm32l0xx_hal_comp_ex.c
+ 
+Building file: ../HAL_Driver/Src/stm32l0xx_hal_cortex.c
+Invoking: MCU GCC Compiler
+/home/mark/temp/sw4stm32_workspace/relay_unit/Debug
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L0 -DSTM32L031K6Tx -DNUCLEO_L031K6 -DDEBUG -DSTM32L031xx -DUSE_HAL_DRIVER -I"/home/mark/temp/sw4stm32_workspace/relay_unit/HAL_Driver/Inc/Legacy" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/Utilities" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/inc" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/device" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/core" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/HAL_Driver/Inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"HAL_Driver/Src/stm32l0xx_hal_cortex.d" -MT"HAL_Driver/Src/stm32l0xx_hal_cortex.o" -o "HAL_Driver/Src/stm32l0xx_hal_cortex.o" "../HAL_Driver/Src/stm32l0xx_hal_cortex.c"
+Finished building: ../HAL_Driver/Src/stm32l0xx_hal_cortex.c
+ 
+Building file: ../HAL_Driver/Src/stm32l0xx_hal_crc.c
+Invoking: MCU GCC Compiler
+/home/mark/temp/sw4stm32_workspace/relay_unit/Debug
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L0 -DSTM32L031K6Tx -DNUCLEO_L031K6 -DDEBUG -DSTM32L031xx -DUSE_HAL_DRIVER -I"/home/mark/temp/sw4stm32_workspace/relay_unit/HAL_Driver/Inc/Legacy" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/Utilities" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/inc" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/device" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/core" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/HAL_Driver/Inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"HAL_Driver/Src/stm32l0xx_hal_crc.d" -MT"HAL_Driver/Src/stm32l0xx_hal_crc.o" -o "HAL_Driver/Src/stm32l0xx_hal_crc.o" "../HAL_Driver/Src/stm32l0xx_hal_crc.c"
+Finished building: ../HAL_Driver/Src/stm32l0xx_hal_crc.c
+ 
+Building file: ../HAL_Driver/Src/stm32l0xx_hal_crc_ex.c
+Invoking: MCU GCC Compiler
+/home/mark/temp/sw4stm32_workspace/relay_unit/Debug
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L0 -DSTM32L031K6Tx -DNUCLEO_L031K6 -DDEBUG -DSTM32L031xx -DUSE_HAL_DRIVER -I"/home/mark/temp/sw4stm32_workspace/relay_unit/HAL_Driver/Inc/Legacy" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/Utilities" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/inc" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/device" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/core" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/HAL_Driver/Inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"HAL_Driver/Src/stm32l0xx_hal_crc_ex.d" -MT"HAL_Driver/Src/stm32l0xx_hal_crc_ex.o" -o "HAL_Driver/Src/stm32l0xx_hal_crc_ex.o" "../HAL_Driver/Src/stm32l0xx_hal_crc_ex.c"
+Finished building: ../HAL_Driver/Src/stm32l0xx_hal_crc_ex.c
+ 
+Building file: ../HAL_Driver/Src/stm32l0xx_hal_cryp.c
+Invoking: MCU GCC Compiler
+/home/mark/temp/sw4stm32_workspace/relay_unit/Debug
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L0 -DSTM32L031K6Tx -DNUCLEO_L031K6 -DDEBUG -DSTM32L031xx -DUSE_HAL_DRIVER -I"/home/mark/temp/sw4stm32_workspace/relay_unit/HAL_Driver/Inc/Legacy" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/Utilities" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/inc" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/device" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/core" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/HAL_Driver/Inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"HAL_Driver/Src/stm32l0xx_hal_cryp.d" -MT"HAL_Driver/Src/stm32l0xx_hal_cryp.o" -o "HAL_Driver/Src/stm32l0xx_hal_cryp.o" "../HAL_Driver/Src/stm32l0xx_hal_cryp.c"
+Finished building: ../HAL_Driver/Src/stm32l0xx_hal_cryp.c
+ 
+Building file: ../HAL_Driver/Src/stm32l0xx_hal_cryp_ex.c
+Invoking: MCU GCC Compiler
+/home/mark/temp/sw4stm32_workspace/relay_unit/Debug
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L0 -DSTM32L031K6Tx -DNUCLEO_L031K6 -DDEBUG -DSTM32L031xx -DUSE_HAL_DRIVER -I"/home/mark/temp/sw4stm32_workspace/relay_unit/HAL_Driver/Inc/Legacy" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/Utilities" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/inc" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/device" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/core" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/HAL_Driver/Inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"HAL_Driver/Src/stm32l0xx_hal_cryp_ex.d" -MT"HAL_Driver/Src/stm32l0xx_hal_cryp_ex.o" -o "HAL_Driver/Src/stm32l0xx_hal_cryp_ex.o" "../HAL_Driver/Src/stm32l0xx_hal_cryp_ex.c"
+Finished building: ../HAL_Driver/Src/stm32l0xx_hal_cryp_ex.c
+ 
+Building file: ../HAL_Driver/Src/stm32l0xx_hal_dac.c
+Invoking: MCU GCC Compiler
+/home/mark/temp/sw4stm32_workspace/relay_unit/Debug
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L0 -DSTM32L031K6Tx -DNUCLEO_L031K6 -DDEBUG -DSTM32L031xx -DUSE_HAL_DRIVER -I"/home/mark/temp/sw4stm32_workspace/relay_unit/HAL_Driver/Inc/Legacy" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/Utilities" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/inc" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/device" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/core" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/HAL_Driver/Inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"HAL_Driver/Src/stm32l0xx_hal_dac.d" -MT"HAL_Driver/Src/stm32l0xx_hal_dac.o" -o "HAL_Driver/Src/stm32l0xx_hal_dac.o" "../HAL_Driver/Src/stm32l0xx_hal_dac.c"
+Finished building: ../HAL_Driver/Src/stm32l0xx_hal_dac.c
+ 
+Building file: ../HAL_Driver/Src/stm32l0xx_hal_dac_ex.c
+Invoking: MCU GCC Compiler
+/home/mark/temp/sw4stm32_workspace/relay_unit/Debug
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L0 -DSTM32L031K6Tx -DNUCLEO_L031K6 -DDEBUG -DSTM32L031xx -DUSE_HAL_DRIVER -I"/home/mark/temp/sw4stm32_workspace/relay_unit/HAL_Driver/Inc/Legacy" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/Utilities" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/inc" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/device" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/core" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/HAL_Driver/Inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"HAL_Driver/Src/stm32l0xx_hal_dac_ex.d" -MT"HAL_Driver/Src/stm32l0xx_hal_dac_ex.o" -o "HAL_Driver/Src/stm32l0xx_hal_dac_ex.o" "../HAL_Driver/Src/stm32l0xx_hal_dac_ex.c"
+Finished building: ../HAL_Driver/Src/stm32l0xx_hal_dac_ex.c
+ 
+Building file: ../HAL_Driver/Src/stm32l0xx_hal_dma.c
+Invoking: MCU GCC Compiler
+/home/mark/temp/sw4stm32_workspace/relay_unit/Debug
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L0 -DSTM32L031K6Tx -DNUCLEO_L031K6 -DDEBUG -DSTM32L031xx -DUSE_HAL_DRIVER -I"/home/mark/temp/sw4stm32_workspace/relay_unit/HAL_Driver/Inc/Legacy" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/Utilities" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/inc" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/device" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/core" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/HAL_Driver/Inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"HAL_Driver/Src/stm32l0xx_hal_dma.d" -MT"HAL_Driver/Src/stm32l0xx_hal_dma.o" -o "HAL_Driver/Src/stm32l0xx_hal_dma.o" "../HAL_Driver/Src/stm32l0xx_hal_dma.c"
+Finished building: ../HAL_Driver/Src/stm32l0xx_hal_dma.c
+ 
+Building file: ../HAL_Driver/Src/stm32l0xx_hal_firewall.c
+Invoking: MCU GCC Compiler
+/home/mark/temp/sw4stm32_workspace/relay_unit/Debug
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L0 -DSTM32L031K6Tx -DNUCLEO_L031K6 -DDEBUG -DSTM32L031xx -DUSE_HAL_DRIVER -I"/home/mark/temp/sw4stm32_workspace/relay_unit/HAL_Driver/Inc/Legacy" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/Utilities" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/inc" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/device" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/core" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/HAL_Driver/Inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"HAL_Driver/Src/stm32l0xx_hal_firewall.d" -MT"HAL_Driver/Src/stm32l0xx_hal_firewall.o" -o "HAL_Driver/Src/stm32l0xx_hal_firewall.o" "../HAL_Driver/Src/stm32l0xx_hal_firewall.c"
+Finished building: ../HAL_Driver/Src/stm32l0xx_hal_firewall.c
+ 
+Building file: ../HAL_Driver/Src/stm32l0xx_hal_flash.c
+Invoking: MCU GCC Compiler
+/home/mark/temp/sw4stm32_workspace/relay_unit/Debug
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L0 -DSTM32L031K6Tx -DNUCLEO_L031K6 -DDEBUG -DSTM32L031xx -DUSE_HAL_DRIVER -I"/home/mark/temp/sw4stm32_workspace/relay_unit/HAL_Driver/Inc/Legacy" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/Utilities" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/inc" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/device" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/core" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/HAL_Driver/Inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"HAL_Driver/Src/stm32l0xx_hal_flash.d" -MT"HAL_Driver/Src/stm32l0xx_hal_flash.o" -o "HAL_Driver/Src/stm32l0xx_hal_flash.o" "../HAL_Driver/Src/stm32l0xx_hal_flash.c"
+Finished building: ../HAL_Driver/Src/stm32l0xx_hal_flash.c
+ 
+Building file: ../HAL_Driver/Src/stm32l0xx_hal_flash_ex.c
+Invoking: MCU GCC Compiler
+/home/mark/temp/sw4stm32_workspace/relay_unit/Debug
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L0 -DSTM32L031K6Tx -DNUCLEO_L031K6 -DDEBUG -DSTM32L031xx -DUSE_HAL_DRIVER -I"/home/mark/temp/sw4stm32_workspace/relay_unit/HAL_Driver/Inc/Legacy" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/Utilities" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/inc" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/device" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/core" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/HAL_Driver/Inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"HAL_Driver/Src/stm32l0xx_hal_flash_ex.d" -MT"HAL_Driver/Src/stm32l0xx_hal_flash_ex.o" -o "HAL_Driver/Src/stm32l0xx_hal_flash_ex.o" "../HAL_Driver/Src/stm32l0xx_hal_flash_ex.c"
+Finished building: ../HAL_Driver/Src/stm32l0xx_hal_flash_ex.c
+ 
+Building file: ../HAL_Driver/Src/stm32l0xx_hal_flash_ramfunc.c
+Invoking: MCU GCC Compiler
+/home/mark/temp/sw4stm32_workspace/relay_unit/Debug
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L0 -DSTM32L031K6Tx -DNUCLEO_L031K6 -DDEBUG -DSTM32L031xx -DUSE_HAL_DRIVER -I"/home/mark/temp/sw4stm32_workspace/relay_unit/HAL_Driver/Inc/Legacy" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/Utilities" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/inc" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/device" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/core" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/HAL_Driver/Inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"HAL_Driver/Src/stm32l0xx_hal_flash_ramfunc.d" -MT"HAL_Driver/Src/stm32l0xx_hal_flash_ramfunc.o" -o "HAL_Driver/Src/stm32l0xx_hal_flash_ramfunc.o" "../HAL_Driver/Src/stm32l0xx_hal_flash_ramfunc.c"
+Finished building: ../HAL_Driver/Src/stm32l0xx_hal_flash_ramfunc.c
+ 
+Building file: ../HAL_Driver/Src/stm32l0xx_hal_gpio.c
+Invoking: MCU GCC Compiler
+/home/mark/temp/sw4stm32_workspace/relay_unit/Debug
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L0 -DSTM32L031K6Tx -DNUCLEO_L031K6 -DDEBUG -DSTM32L031xx -DUSE_HAL_DRIVER -I"/home/mark/temp/sw4stm32_workspace/relay_unit/HAL_Driver/Inc/Legacy" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/Utilities" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/inc" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/device" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/core" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/HAL_Driver/Inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"HAL_Driver/Src/stm32l0xx_hal_gpio.d" -MT"HAL_Driver/Src/stm32l0xx_hal_gpio.o" -o "HAL_Driver/Src/stm32l0xx_hal_gpio.o" "../HAL_Driver/Src/stm32l0xx_hal_gpio.c"
+Finished building: ../HAL_Driver/Src/stm32l0xx_hal_gpio.c
+ 
+Building file: ../HAL_Driver/Src/stm32l0xx_hal_i2c.c
+Invoking: MCU GCC Compiler
+/home/mark/temp/sw4stm32_workspace/relay_unit/Debug
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L0 -DSTM32L031K6Tx -DNUCLEO_L031K6 -DDEBUG -DSTM32L031xx -DUSE_HAL_DRIVER -I"/home/mark/temp/sw4stm32_workspace/relay_unit/HAL_Driver/Inc/Legacy" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/Utilities" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/inc" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/device" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/core" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/HAL_Driver/Inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"HAL_Driver/Src/stm32l0xx_hal_i2c.d" -MT"HAL_Driver/Src/stm32l0xx_hal_i2c.o" -o "HAL_Driver/Src/stm32l0xx_hal_i2c.o" "../HAL_Driver/Src/stm32l0xx_hal_i2c.c"
+Finished building: ../HAL_Driver/Src/stm32l0xx_hal_i2c.c
+ 
+Building file: ../HAL_Driver/Src/stm32l0xx_hal_i2c_ex.c
+Invoking: MCU GCC Compiler
+/home/mark/temp/sw4stm32_workspace/relay_unit/Debug
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L0 -DSTM32L031K6Tx -DNUCLEO_L031K6 -DDEBUG -DSTM32L031xx -DUSE_HAL_DRIVER -I"/home/mark/temp/sw4stm32_workspace/relay_unit/HAL_Driver/Inc/Legacy" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/Utilities" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/inc" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/device" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/core" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/HAL_Driver/Inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"HAL_Driver/Src/stm32l0xx_hal_i2c_ex.d" -MT"HAL_Driver/Src/stm32l0xx_hal_i2c_ex.o" -o "HAL_Driver/Src/stm32l0xx_hal_i2c_ex.o" "../HAL_Driver/Src/stm32l0xx_hal_i2c_ex.c"
+Finished building: ../HAL_Driver/Src/stm32l0xx_hal_i2c_ex.c
+ 
+Building file: ../HAL_Driver/Src/stm32l0xx_hal_i2s.c
+Invoking: MCU GCC Compiler
+/home/mark/temp/sw4stm32_workspace/relay_unit/Debug
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L0 -DSTM32L031K6Tx -DNUCLEO_L031K6 -DDEBUG -DSTM32L031xx -DUSE_HAL_DRIVER -I"/home/mark/temp/sw4stm32_workspace/relay_unit/HAL_Driver/Inc/Legacy" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/Utilities" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/inc" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/device" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/core" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/HAL_Driver/Inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"HAL_Driver/Src/stm32l0xx_hal_i2s.d" -MT"HAL_Driver/Src/stm32l0xx_hal_i2s.o" -o "HAL_Driver/Src/stm32l0xx_hal_i2s.o" "../HAL_Driver/Src/stm32l0xx_hal_i2s.c"
+Finished building: ../HAL_Driver/Src/stm32l0xx_hal_i2s.c
+ 
+Building file: ../HAL_Driver/Src/stm32l0xx_hal_irda.c
+Invoking: MCU GCC Compiler
+/home/mark/temp/sw4stm32_workspace/relay_unit/Debug
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L0 -DSTM32L031K6Tx -DNUCLEO_L031K6 -DDEBUG -DSTM32L031xx -DUSE_HAL_DRIVER -I"/home/mark/temp/sw4stm32_workspace/relay_unit/HAL_Driver/Inc/Legacy" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/Utilities" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/inc" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/device" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/core" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/HAL_Driver/Inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"HAL_Driver/Src/stm32l0xx_hal_irda.d" -MT"HAL_Driver/Src/stm32l0xx_hal_irda.o" -o "HAL_Driver/Src/stm32l0xx_hal_irda.o" "../HAL_Driver/Src/stm32l0xx_hal_irda.c"
+Finished building: ../HAL_Driver/Src/stm32l0xx_hal_irda.c
+ 
+Building file: ../HAL_Driver/Src/stm32l0xx_hal_iwdg.c
+Invoking: MCU GCC Compiler
+/home/mark/temp/sw4stm32_workspace/relay_unit/Debug
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L0 -DSTM32L031K6Tx -DNUCLEO_L031K6 -DDEBUG -DSTM32L031xx -DUSE_HAL_DRIVER -I"/home/mark/temp/sw4stm32_workspace/relay_unit/HAL_Driver/Inc/Legacy" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/Utilities" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/inc" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/device" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/core" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/HAL_Driver/Inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"HAL_Driver/Src/stm32l0xx_hal_iwdg.d" -MT"HAL_Driver/Src/stm32l0xx_hal_iwdg.o" -o "HAL_Driver/Src/stm32l0xx_hal_iwdg.o" "../HAL_Driver/Src/stm32l0xx_hal_iwdg.c"
+Finished building: ../HAL_Driver/Src/stm32l0xx_hal_iwdg.c
+ 
+Building file: ../HAL_Driver/Src/stm32l0xx_hal_lcd.c
+Invoking: MCU GCC Compiler
+/home/mark/temp/sw4stm32_workspace/relay_unit/Debug
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L0 -DSTM32L031K6Tx -DNUCLEO_L031K6 -DDEBUG -DSTM32L031xx -DUSE_HAL_DRIVER -I"/home/mark/temp/sw4stm32_workspace/relay_unit/HAL_Driver/Inc/Legacy" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/Utilities" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/inc" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/device" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/core" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/HAL_Driver/Inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"HAL_Driver/Src/stm32l0xx_hal_lcd.d" -MT"HAL_Driver/Src/stm32l0xx_hal_lcd.o" -o "HAL_Driver/Src/stm32l0xx_hal_lcd.o" "../HAL_Driver/Src/stm32l0xx_hal_lcd.c"
+Finished building: ../HAL_Driver/Src/stm32l0xx_hal_lcd.c
+ 
+Building file: ../HAL_Driver/Src/stm32l0xx_hal_lptim.c
+Invoking: MCU GCC Compiler
+/home/mark/temp/sw4stm32_workspace/relay_unit/Debug
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L0 -DSTM32L031K6Tx -DNUCLEO_L031K6 -DDEBUG -DSTM32L031xx -DUSE_HAL_DRIVER -I"/home/mark/temp/sw4stm32_workspace/relay_unit/HAL_Driver/Inc/Legacy" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/Utilities" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/inc" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/device" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/core" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/HAL_Driver/Inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"HAL_Driver/Src/stm32l0xx_hal_lptim.d" -MT"HAL_Driver/Src/stm32l0xx_hal_lptim.o" -o "HAL_Driver/Src/stm32l0xx_hal_lptim.o" "../HAL_Driver/Src/stm32l0xx_hal_lptim.c"
+Finished building: ../HAL_Driver/Src/stm32l0xx_hal_lptim.c
+ 
+Building file: ../HAL_Driver/Src/stm32l0xx_hal_msp_template.c
+Invoking: MCU GCC Compiler
+/home/mark/temp/sw4stm32_workspace/relay_unit/Debug
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L0 -DSTM32L031K6Tx -DNUCLEO_L031K6 -DDEBUG -DSTM32L031xx -DUSE_HAL_DRIVER -I"/home/mark/temp/sw4stm32_workspace/relay_unit/HAL_Driver/Inc/Legacy" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/Utilities" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/inc" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/device" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/core" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/HAL_Driver/Inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"HAL_Driver/Src/stm32l0xx_hal_msp_template.d" -MT"HAL_Driver/Src/stm32l0xx_hal_msp_template.o" -o "HAL_Driver/Src/stm32l0xx_hal_msp_template.o" "../HAL_Driver/Src/stm32l0xx_hal_msp_template.c"
+Finished building: ../HAL_Driver/Src/stm32l0xx_hal_msp_template.c
+ 
+Building file: ../HAL_Driver/Src/stm32l0xx_hal_pcd.c
+Invoking: MCU GCC Compiler
+/home/mark/temp/sw4stm32_workspace/relay_unit/Debug
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L0 -DSTM32L031K6Tx -DNUCLEO_L031K6 -DDEBUG -DSTM32L031xx -DUSE_HAL_DRIVER -I"/home/mark/temp/sw4stm32_workspace/relay_unit/HAL_Driver/Inc/Legacy" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/Utilities" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/inc" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/device" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/core" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/HAL_Driver/Inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"HAL_Driver/Src/stm32l0xx_hal_pcd.d" -MT"HAL_Driver/Src/stm32l0xx_hal_pcd.o" -o "HAL_Driver/Src/stm32l0xx_hal_pcd.o" "../HAL_Driver/Src/stm32l0xx_hal_pcd.c"
+Finished building: ../HAL_Driver/Src/stm32l0xx_hal_pcd.c
+ 
+Building file: ../HAL_Driver/Src/stm32l0xx_hal_pcd_ex.c
+Invoking: MCU GCC Compiler
+/home/mark/temp/sw4stm32_workspace/relay_unit/Debug
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L0 -DSTM32L031K6Tx -DNUCLEO_L031K6 -DDEBUG -DSTM32L031xx -DUSE_HAL_DRIVER -I"/home/mark/temp/sw4stm32_workspace/relay_unit/HAL_Driver/Inc/Legacy" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/Utilities" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/inc" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/device" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/core" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/HAL_Driver/Inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"HAL_Driver/Src/stm32l0xx_hal_pcd_ex.d" -MT"HAL_Driver/Src/stm32l0xx_hal_pcd_ex.o" -o "HAL_Driver/Src/stm32l0xx_hal_pcd_ex.o" "../HAL_Driver/Src/stm32l0xx_hal_pcd_ex.c"
+Finished building: ../HAL_Driver/Src/stm32l0xx_hal_pcd_ex.c
+ 
+Building file: ../HAL_Driver/Src/stm32l0xx_hal_pwr.c
+Invoking: MCU GCC Compiler
+/home/mark/temp/sw4stm32_workspace/relay_unit/Debug
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L0 -DSTM32L031K6Tx -DNUCLEO_L031K6 -DDEBUG -DSTM32L031xx -DUSE_HAL_DRIVER -I"/home/mark/temp/sw4stm32_workspace/relay_unit/HAL_Driver/Inc/Legacy" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/Utilities" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/inc" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/device" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/core" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/HAL_Driver/Inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"HAL_Driver/Src/stm32l0xx_hal_pwr.d" -MT"HAL_Driver/Src/stm32l0xx_hal_pwr.o" -o "HAL_Driver/Src/stm32l0xx_hal_pwr.o" "../HAL_Driver/Src/stm32l0xx_hal_pwr.c"
+Finished building: ../HAL_Driver/Src/stm32l0xx_hal_pwr.c
+ 
+Building file: ../HAL_Driver/Src/stm32l0xx_hal_pwr_ex.c
+Invoking: MCU GCC Compiler
+/home/mark/temp/sw4stm32_workspace/relay_unit/Debug
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L0 -DSTM32L031K6Tx -DNUCLEO_L031K6 -DDEBUG -DSTM32L031xx -DUSE_HAL_DRIVER -I"/home/mark/temp/sw4stm32_workspace/relay_unit/HAL_Driver/Inc/Legacy" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/Utilities" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/inc" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/device" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/core" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/HAL_Driver/Inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"HAL_Driver/Src/stm32l0xx_hal_pwr_ex.d" -MT"HAL_Driver/Src/stm32l0xx_hal_pwr_ex.o" -o "HAL_Driver/Src/stm32l0xx_hal_pwr_ex.o" "../HAL_Driver/Src/stm32l0xx_hal_pwr_ex.c"
+Finished building: ../HAL_Driver/Src/stm32l0xx_hal_pwr_ex.c
+ 
+Building file: ../HAL_Driver/Src/stm32l0xx_hal_rcc.c
+Invoking: MCU GCC Compiler
+/home/mark/temp/sw4stm32_workspace/relay_unit/Debug
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L0 -DSTM32L031K6Tx -DNUCLEO_L031K6 -DDEBUG -DSTM32L031xx -DUSE_HAL_DRIVER -I"/home/mark/temp/sw4stm32_workspace/relay_unit/HAL_Driver/Inc/Legacy" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/Utilities" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/inc" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/device" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/core" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/HAL_Driver/Inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"HAL_Driver/Src/stm32l0xx_hal_rcc.d" -MT"HAL_Driver/Src/stm32l0xx_hal_rcc.o" -o "HAL_Driver/Src/stm32l0xx_hal_rcc.o" "../HAL_Driver/Src/stm32l0xx_hal_rcc.c"
+Finished building: ../HAL_Driver/Src/stm32l0xx_hal_rcc.c
+ 
+Building file: ../HAL_Driver/Src/stm32l0xx_hal_rcc_ex.c
+Invoking: MCU GCC Compiler
+/home/mark/temp/sw4stm32_workspace/relay_unit/Debug
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L0 -DSTM32L031K6Tx -DNUCLEO_L031K6 -DDEBUG -DSTM32L031xx -DUSE_HAL_DRIVER -I"/home/mark/temp/sw4stm32_workspace/relay_unit/HAL_Driver/Inc/Legacy" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/Utilities" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/inc" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/device" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/core" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/HAL_Driver/Inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"HAL_Driver/Src/stm32l0xx_hal_rcc_ex.d" -MT"HAL_Driver/Src/stm32l0xx_hal_rcc_ex.o" -o "HAL_Driver/Src/stm32l0xx_hal_rcc_ex.o" "../HAL_Driver/Src/stm32l0xx_hal_rcc_ex.c"
+Finished building: ../HAL_Driver/Src/stm32l0xx_hal_rcc_ex.c
+ 
+Building file: ../HAL_Driver/Src/stm32l0xx_hal_rng.c
+Invoking: MCU GCC Compiler
+/home/mark/temp/sw4stm32_workspace/relay_unit/Debug
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L0 -DSTM32L031K6Tx -DNUCLEO_L031K6 -DDEBUG -DSTM32L031xx -DUSE_HAL_DRIVER -I"/home/mark/temp/sw4stm32_workspace/relay_unit/HAL_Driver/Inc/Legacy" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/Utilities" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/inc" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/device" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/core" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/HAL_Driver/Inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"HAL_Driver/Src/stm32l0xx_hal_rng.d" -MT"HAL_Driver/Src/stm32l0xx_hal_rng.o" -o "HAL_Driver/Src/stm32l0xx_hal_rng.o" "../HAL_Driver/Src/stm32l0xx_hal_rng.c"
+Finished building: ../HAL_Driver/Src/stm32l0xx_hal_rng.c
+ 
+Building file: ../HAL_Driver/Src/stm32l0xx_hal_rtc.c
+Invoking: MCU GCC Compiler
+/home/mark/temp/sw4stm32_workspace/relay_unit/Debug
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L0 -DSTM32L031K6Tx -DNUCLEO_L031K6 -DDEBUG -DSTM32L031xx -DUSE_HAL_DRIVER -I"/home/mark/temp/sw4stm32_workspace/relay_unit/HAL_Driver/Inc/Legacy" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/Utilities" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/inc" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/device" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/core" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/HAL_Driver/Inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"HAL_Driver/Src/stm32l0xx_hal_rtc.d" -MT"HAL_Driver/Src/stm32l0xx_hal_rtc.o" -o "HAL_Driver/Src/stm32l0xx_hal_rtc.o" "../HAL_Driver/Src/stm32l0xx_hal_rtc.c"
+Finished building: ../HAL_Driver/Src/stm32l0xx_hal_rtc.c
+ 
+Building file: ../HAL_Driver/Src/stm32l0xx_hal_rtc_ex.c
+Invoking: MCU GCC Compiler
+/home/mark/temp/sw4stm32_workspace/relay_unit/Debug
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L0 -DSTM32L031K6Tx -DNUCLEO_L031K6 -DDEBUG -DSTM32L031xx -DUSE_HAL_DRIVER -I"/home/mark/temp/sw4stm32_workspace/relay_unit/HAL_Driver/Inc/Legacy" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/Utilities" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/inc" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/device" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/core" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/HAL_Driver/Inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"HAL_Driver/Src/stm32l0xx_hal_rtc_ex.d" -MT"HAL_Driver/Src/stm32l0xx_hal_rtc_ex.o" -o "HAL_Driver/Src/stm32l0xx_hal_rtc_ex.o" "../HAL_Driver/Src/stm32l0xx_hal_rtc_ex.c"
+Finished building: ../HAL_Driver/Src/stm32l0xx_hal_rtc_ex.c
+ 
+Building file: ../HAL_Driver/Src/stm32l0xx_hal_smartcard.c
+Invoking: MCU GCC Compiler
+/home/mark/temp/sw4stm32_workspace/relay_unit/Debug
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L0 -DSTM32L031K6Tx -DNUCLEO_L031K6 -DDEBUG -DSTM32L031xx -DUSE_HAL_DRIVER -I"/home/mark/temp/sw4stm32_workspace/relay_unit/HAL_Driver/Inc/Legacy" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/Utilities" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/inc" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/device" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/core" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/HAL_Driver/Inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"HAL_Driver/Src/stm32l0xx_hal_smartcard.d" -MT"HAL_Driver/Src/stm32l0xx_hal_smartcard.o" -o "HAL_Driver/Src/stm32l0xx_hal_smartcard.o" "../HAL_Driver/Src/stm32l0xx_hal_smartcard.c"
+Finished building: ../HAL_Driver/Src/stm32l0xx_hal_smartcard.c
+ 
+Building file: ../HAL_Driver/Src/stm32l0xx_hal_smartcard_ex.c
+Invoking: MCU GCC Compiler
+/home/mark/temp/sw4stm32_workspace/relay_unit/Debug
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L0 -DSTM32L031K6Tx -DNUCLEO_L031K6 -DDEBUG -DSTM32L031xx -DUSE_HAL_DRIVER -I"/home/mark/temp/sw4stm32_workspace/relay_unit/HAL_Driver/Inc/Legacy" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/Utilities" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/inc" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/device" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/core" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/HAL_Driver/Inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"HAL_Driver/Src/stm32l0xx_hal_smartcard_ex.d" -MT"HAL_Driver/Src/stm32l0xx_hal_smartcard_ex.o" -o "HAL_Driver/Src/stm32l0xx_hal_smartcard_ex.o" "../HAL_Driver/Src/stm32l0xx_hal_smartcard_ex.c"
+Finished building: ../HAL_Driver/Src/stm32l0xx_hal_smartcard_ex.c
+ 
+Building file: ../HAL_Driver/Src/stm32l0xx_hal_smbus.c
+Invoking: MCU GCC Compiler
+/home/mark/temp/sw4stm32_workspace/relay_unit/Debug
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L0 -DSTM32L031K6Tx -DNUCLEO_L031K6 -DDEBUG -DSTM32L031xx -DUSE_HAL_DRIVER -I"/home/mark/temp/sw4stm32_workspace/relay_unit/HAL_Driver/Inc/Legacy" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/Utilities" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/inc" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/device" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/core" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/HAL_Driver/Inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"HAL_Driver/Src/stm32l0xx_hal_smbus.d" -MT"HAL_Driver/Src/stm32l0xx_hal_smbus.o" -o "HAL_Driver/Src/stm32l0xx_hal_smbus.o" "../HAL_Driver/Src/stm32l0xx_hal_smbus.c"
+Finished building: ../HAL_Driver/Src/stm32l0xx_hal_smbus.c
+ 
+Building file: ../HAL_Driver/Src/stm32l0xx_hal_spi.c
+Invoking: MCU GCC Compiler
+/home/mark/temp/sw4stm32_workspace/relay_unit/Debug
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L0 -DSTM32L031K6Tx -DNUCLEO_L031K6 -DDEBUG -DSTM32L031xx -DUSE_HAL_DRIVER -I"/home/mark/temp/sw4stm32_workspace/relay_unit/HAL_Driver/Inc/Legacy" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/Utilities" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/inc" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/device" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/core" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/HAL_Driver/Inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"HAL_Driver/Src/stm32l0xx_hal_spi.d" -MT"HAL_Driver/Src/stm32l0xx_hal_spi.o" -o "HAL_Driver/Src/stm32l0xx_hal_spi.o" "../HAL_Driver/Src/stm32l0xx_hal_spi.c"
+Finished building: ../HAL_Driver/Src/stm32l0xx_hal_spi.c
+ 
+Building file: ../HAL_Driver/Src/stm32l0xx_hal_tim.c
+Invoking: MCU GCC Compiler
+/home/mark/temp/sw4stm32_workspace/relay_unit/Debug
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L0 -DSTM32L031K6Tx -DNUCLEO_L031K6 -DDEBUG -DSTM32L031xx -DUSE_HAL_DRIVER -I"/home/mark/temp/sw4stm32_workspace/relay_unit/HAL_Driver/Inc/Legacy" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/Utilities" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/inc" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/device" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/core" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/HAL_Driver/Inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"HAL_Driver/Src/stm32l0xx_hal_tim.d" -MT"HAL_Driver/Src/stm32l0xx_hal_tim.o" -o "HAL_Driver/Src/stm32l0xx_hal_tim.o" "../HAL_Driver/Src/stm32l0xx_hal_tim.c"
+Finished building: ../HAL_Driver/Src/stm32l0xx_hal_tim.c
+ 
+Building file: ../HAL_Driver/Src/stm32l0xx_hal_tim_ex.c
+Invoking: MCU GCC Compiler
+/home/mark/temp/sw4stm32_workspace/relay_unit/Debug
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L0 -DSTM32L031K6Tx -DNUCLEO_L031K6 -DDEBUG -DSTM32L031xx -DUSE_HAL_DRIVER -I"/home/mark/temp/sw4stm32_workspace/relay_unit/HAL_Driver/Inc/Legacy" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/Utilities" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/inc" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/device" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/core" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/HAL_Driver/Inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"HAL_Driver/Src/stm32l0xx_hal_tim_ex.d" -MT"HAL_Driver/Src/stm32l0xx_hal_tim_ex.o" -o "HAL_Driver/Src/stm32l0xx_hal_tim_ex.o" "../HAL_Driver/Src/stm32l0xx_hal_tim_ex.c"
+Finished building: ../HAL_Driver/Src/stm32l0xx_hal_tim_ex.c
+ 
+Building file: ../HAL_Driver/Src/stm32l0xx_hal_tsc.c
+Invoking: MCU GCC Compiler
+/home/mark/temp/sw4stm32_workspace/relay_unit/Debug
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L0 -DSTM32L031K6Tx -DNUCLEO_L031K6 -DDEBUG -DSTM32L031xx -DUSE_HAL_DRIVER -I"/home/mark/temp/sw4stm32_workspace/relay_unit/HAL_Driver/Inc/Legacy" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/Utilities" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/inc" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/device" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/core" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/HAL_Driver/Inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"HAL_Driver/Src/stm32l0xx_hal_tsc.d" -MT"HAL_Driver/Src/stm32l0xx_hal_tsc.o" -o "HAL_Driver/Src/stm32l0xx_hal_tsc.o" "../HAL_Driver/Src/stm32l0xx_hal_tsc.c"
+Finished building: ../HAL_Driver/Src/stm32l0xx_hal_tsc.c
+ 
+Building file: ../HAL_Driver/Src/stm32l0xx_hal_uart.c
+Invoking: MCU GCC Compiler
+/home/mark/temp/sw4stm32_workspace/relay_unit/Debug
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L0 -DSTM32L031K6Tx -DNUCLEO_L031K6 -DDEBUG -DSTM32L031xx -DUSE_HAL_DRIVER -I"/home/mark/temp/sw4stm32_workspace/relay_unit/HAL_Driver/Inc/Legacy" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/Utilities" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/inc" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/device" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/core" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/HAL_Driver/Inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"HAL_Driver/Src/stm32l0xx_hal_uart.d" -MT"HAL_Driver/Src/stm32l0xx_hal_uart.o" -o "HAL_Driver/Src/stm32l0xx_hal_uart.o" "../HAL_Driver/Src/stm32l0xx_hal_uart.c"
+Finished building: ../HAL_Driver/Src/stm32l0xx_hal_uart.c
+ 
+Building file: ../HAL_Driver/Src/stm32l0xx_hal_uart_ex.c
+Invoking: MCU GCC Compiler
+/home/mark/temp/sw4stm32_workspace/relay_unit/Debug
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L0 -DSTM32L031K6Tx -DNUCLEO_L031K6 -DDEBUG -DSTM32L031xx -DUSE_HAL_DRIVER -I"/home/mark/temp/sw4stm32_workspace/relay_unit/HAL_Driver/Inc/Legacy" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/Utilities" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/inc" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/device" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/core" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/HAL_Driver/Inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"HAL_Driver/Src/stm32l0xx_hal_uart_ex.d" -MT"HAL_Driver/Src/stm32l0xx_hal_uart_ex.o" -o "HAL_Driver/Src/stm32l0xx_hal_uart_ex.o" "../HAL_Driver/Src/stm32l0xx_hal_uart_ex.c"
+Finished building: ../HAL_Driver/Src/stm32l0xx_hal_uart_ex.c
+ 
+Building file: ../HAL_Driver/Src/stm32l0xx_hal_usart.c
+Invoking: MCU GCC Compiler
+/home/mark/temp/sw4stm32_workspace/relay_unit/Debug
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L0 -DSTM32L031K6Tx -DNUCLEO_L031K6 -DDEBUG -DSTM32L031xx -DUSE_HAL_DRIVER -I"/home/mark/temp/sw4stm32_workspace/relay_unit/HAL_Driver/Inc/Legacy" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/Utilities" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/inc" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/device" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/core" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/HAL_Driver/Inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"HAL_Driver/Src/stm32l0xx_hal_usart.d" -MT"HAL_Driver/Src/stm32l0xx_hal_usart.o" -o "HAL_Driver/Src/stm32l0xx_hal_usart.o" "../HAL_Driver/Src/stm32l0xx_hal_usart.c"
+Finished building: ../HAL_Driver/Src/stm32l0xx_hal_usart.c
+ 
+Building file: ../HAL_Driver/Src/stm32l0xx_hal_wwdg.c
+Invoking: MCU GCC Compiler
+/home/mark/temp/sw4stm32_workspace/relay_unit/Debug
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L0 -DSTM32L031K6Tx -DNUCLEO_L031K6 -DDEBUG -DSTM32L031xx -DUSE_HAL_DRIVER -I"/home/mark/temp/sw4stm32_workspace/relay_unit/HAL_Driver/Inc/Legacy" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/Utilities" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/inc" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/device" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/core" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/HAL_Driver/Inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"HAL_Driver/Src/stm32l0xx_hal_wwdg.d" -MT"HAL_Driver/Src/stm32l0xx_hal_wwdg.o" -o "HAL_Driver/Src/stm32l0xx_hal_wwdg.o" "../HAL_Driver/Src/stm32l0xx_hal_wwdg.c"
+Finished building: ../HAL_Driver/Src/stm32l0xx_hal_wwdg.c
+ 
+Building file: ../HAL_Driver/Src/stm32l0xx_ll_adc.c
+Invoking: MCU GCC Compiler
+/home/mark/temp/sw4stm32_workspace/relay_unit/Debug
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L0 -DSTM32L031K6Tx -DNUCLEO_L031K6 -DDEBUG -DSTM32L031xx -DUSE_HAL_DRIVER -I"/home/mark/temp/sw4stm32_workspace/relay_unit/HAL_Driver/Inc/Legacy" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/Utilities" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/inc" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/device" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/core" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/HAL_Driver/Inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"HAL_Driver/Src/stm32l0xx_ll_adc.d" -MT"HAL_Driver/Src/stm32l0xx_ll_adc.o" -o "HAL_Driver/Src/stm32l0xx_ll_adc.o" "../HAL_Driver/Src/stm32l0xx_ll_adc.c"
+Finished building: ../HAL_Driver/Src/stm32l0xx_ll_adc.c
+ 
+Building file: ../HAL_Driver/Src/stm32l0xx_ll_comp.c
+Invoking: MCU GCC Compiler
+/home/mark/temp/sw4stm32_workspace/relay_unit/Debug
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L0 -DSTM32L031K6Tx -DNUCLEO_L031K6 -DDEBUG -DSTM32L031xx -DUSE_HAL_DRIVER -I"/home/mark/temp/sw4stm32_workspace/relay_unit/HAL_Driver/Inc/Legacy" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/Utilities" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/inc" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/device" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/core" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/HAL_Driver/Inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"HAL_Driver/Src/stm32l0xx_ll_comp.d" -MT"HAL_Driver/Src/stm32l0xx_ll_comp.o" -o "HAL_Driver/Src/stm32l0xx_ll_comp.o" "../HAL_Driver/Src/stm32l0xx_ll_comp.c"
+Finished building: ../HAL_Driver/Src/stm32l0xx_ll_comp.c
+ 
+Building file: ../HAL_Driver/Src/stm32l0xx_ll_crc.c
+Invoking: MCU GCC Compiler
+/home/mark/temp/sw4stm32_workspace/relay_unit/Debug
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L0 -DSTM32L031K6Tx -DNUCLEO_L031K6 -DDEBUG -DSTM32L031xx -DUSE_HAL_DRIVER -I"/home/mark/temp/sw4stm32_workspace/relay_unit/HAL_Driver/Inc/Legacy" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/Utilities" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/inc" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/device" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/core" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/HAL_Driver/Inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"HAL_Driver/Src/stm32l0xx_ll_crc.d" -MT"HAL_Driver/Src/stm32l0xx_ll_crc.o" -o "HAL_Driver/Src/stm32l0xx_ll_crc.o" "../HAL_Driver/Src/stm32l0xx_ll_crc.c"
+Finished building: ../HAL_Driver/Src/stm32l0xx_ll_crc.c
+ 
+Building file: ../HAL_Driver/Src/stm32l0xx_ll_crs.c
+Invoking: MCU GCC Compiler
+/home/mark/temp/sw4stm32_workspace/relay_unit/Debug
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L0 -DSTM32L031K6Tx -DNUCLEO_L031K6 -DDEBUG -DSTM32L031xx -DUSE_HAL_DRIVER -I"/home/mark/temp/sw4stm32_workspace/relay_unit/HAL_Driver/Inc/Legacy" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/Utilities" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/inc" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/device" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/core" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/HAL_Driver/Inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"HAL_Driver/Src/stm32l0xx_ll_crs.d" -MT"HAL_Driver/Src/stm32l0xx_ll_crs.o" -o "HAL_Driver/Src/stm32l0xx_ll_crs.o" "../HAL_Driver/Src/stm32l0xx_ll_crs.c"
+Finished building: ../HAL_Driver/Src/stm32l0xx_ll_crs.c
+ 
+Building file: ../HAL_Driver/Src/stm32l0xx_ll_dac.c
+Invoking: MCU GCC Compiler
+/home/mark/temp/sw4stm32_workspace/relay_unit/Debug
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L0 -DSTM32L031K6Tx -DNUCLEO_L031K6 -DDEBUG -DSTM32L031xx -DUSE_HAL_DRIVER -I"/home/mark/temp/sw4stm32_workspace/relay_unit/HAL_Driver/Inc/Legacy" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/Utilities" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/inc" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/device" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/core" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/HAL_Driver/Inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"HAL_Driver/Src/stm32l0xx_ll_dac.d" -MT"HAL_Driver/Src/stm32l0xx_ll_dac.o" -o "HAL_Driver/Src/stm32l0xx_ll_dac.o" "../HAL_Driver/Src/stm32l0xx_ll_dac.c"
+Finished building: ../HAL_Driver/Src/stm32l0xx_ll_dac.c
+ 
+Building file: ../HAL_Driver/Src/stm32l0xx_ll_dma.c
+Invoking: MCU GCC Compiler
+/home/mark/temp/sw4stm32_workspace/relay_unit/Debug
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L0 -DSTM32L031K6Tx -DNUCLEO_L031K6 -DDEBUG -DSTM32L031xx -DUSE_HAL_DRIVER -I"/home/mark/temp/sw4stm32_workspace/relay_unit/HAL_Driver/Inc/Legacy" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/Utilities" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/inc" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/device" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/core" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/HAL_Driver/Inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"HAL_Driver/Src/stm32l0xx_ll_dma.d" -MT"HAL_Driver/Src/stm32l0xx_ll_dma.o" -o "HAL_Driver/Src/stm32l0xx_ll_dma.o" "../HAL_Driver/Src/stm32l0xx_ll_dma.c"
+Finished building: ../HAL_Driver/Src/stm32l0xx_ll_dma.c
+ 
+Building file: ../HAL_Driver/Src/stm32l0xx_ll_exti.c
+Invoking: MCU GCC Compiler
+/home/mark/temp/sw4stm32_workspace/relay_unit/Debug
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L0 -DSTM32L031K6Tx -DNUCLEO_L031K6 -DDEBUG -DSTM32L031xx -DUSE_HAL_DRIVER -I"/home/mark/temp/sw4stm32_workspace/relay_unit/HAL_Driver/Inc/Legacy" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/Utilities" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/inc" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/device" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/core" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/HAL_Driver/Inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"HAL_Driver/Src/stm32l0xx_ll_exti.d" -MT"HAL_Driver/Src/stm32l0xx_ll_exti.o" -o "HAL_Driver/Src/stm32l0xx_ll_exti.o" "../HAL_Driver/Src/stm32l0xx_ll_exti.c"
+Finished building: ../HAL_Driver/Src/stm32l0xx_ll_exti.c
+ 
+Building file: ../HAL_Driver/Src/stm32l0xx_ll_gpio.c
+Invoking: MCU GCC Compiler
+/home/mark/temp/sw4stm32_workspace/relay_unit/Debug
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L0 -DSTM32L031K6Tx -DNUCLEO_L031K6 -DDEBUG -DSTM32L031xx -DUSE_HAL_DRIVER -I"/home/mark/temp/sw4stm32_workspace/relay_unit/HAL_Driver/Inc/Legacy" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/Utilities" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/inc" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/device" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/core" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/HAL_Driver/Inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"HAL_Driver/Src/stm32l0xx_ll_gpio.d" -MT"HAL_Driver/Src/stm32l0xx_ll_gpio.o" -o "HAL_Driver/Src/stm32l0xx_ll_gpio.o" "../HAL_Driver/Src/stm32l0xx_ll_gpio.c"
+Finished building: ../HAL_Driver/Src/stm32l0xx_ll_gpio.c
+ 
+Building file: ../HAL_Driver/Src/stm32l0xx_ll_i2c.c
+Invoking: MCU GCC Compiler
+/home/mark/temp/sw4stm32_workspace/relay_unit/Debug
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L0 -DSTM32L031K6Tx -DNUCLEO_L031K6 -DDEBUG -DSTM32L031xx -DUSE_HAL_DRIVER -I"/home/mark/temp/sw4stm32_workspace/relay_unit/HAL_Driver/Inc/Legacy" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/Utilities" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/inc" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/device" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/core" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/HAL_Driver/Inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"HAL_Driver/Src/stm32l0xx_ll_i2c.d" -MT"HAL_Driver/Src/stm32l0xx_ll_i2c.o" -o "HAL_Driver/Src/stm32l0xx_ll_i2c.o" "../HAL_Driver/Src/stm32l0xx_ll_i2c.c"
+Finished building: ../HAL_Driver/Src/stm32l0xx_ll_i2c.c
+ 
+Building file: ../HAL_Driver/Src/stm32l0xx_ll_lptim.c
+Invoking: MCU GCC Compiler
+/home/mark/temp/sw4stm32_workspace/relay_unit/Debug
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L0 -DSTM32L031K6Tx -DNUCLEO_L031K6 -DDEBUG -DSTM32L031xx -DUSE_HAL_DRIVER -I"/home/mark/temp/sw4stm32_workspace/relay_unit/HAL_Driver/Inc/Legacy" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/Utilities" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/inc" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/device" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/core" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/HAL_Driver/Inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"HAL_Driver/Src/stm32l0xx_ll_lptim.d" -MT"HAL_Driver/Src/stm32l0xx_ll_lptim.o" -o "HAL_Driver/Src/stm32l0xx_ll_lptim.o" "../HAL_Driver/Src/stm32l0xx_ll_lptim.c"
+Finished building: ../HAL_Driver/Src/stm32l0xx_ll_lptim.c
+ 
+Building file: ../HAL_Driver/Src/stm32l0xx_ll_lpuart.c
+Invoking: MCU GCC Compiler
+/home/mark/temp/sw4stm32_workspace/relay_unit/Debug
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L0 -DSTM32L031K6Tx -DNUCLEO_L031K6 -DDEBUG -DSTM32L031xx -DUSE_HAL_DRIVER -I"/home/mark/temp/sw4stm32_workspace/relay_unit/HAL_Driver/Inc/Legacy" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/Utilities" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/inc" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/device" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/core" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/HAL_Driver/Inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"HAL_Driver/Src/stm32l0xx_ll_lpuart.d" -MT"HAL_Driver/Src/stm32l0xx_ll_lpuart.o" -o "HAL_Driver/Src/stm32l0xx_ll_lpuart.o" "../HAL_Driver/Src/stm32l0xx_ll_lpuart.c"
+Finished building: ../HAL_Driver/Src/stm32l0xx_ll_lpuart.c
+ 
+Building file: ../HAL_Driver/Src/stm32l0xx_ll_pwr.c
+Invoking: MCU GCC Compiler
+/home/mark/temp/sw4stm32_workspace/relay_unit/Debug
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L0 -DSTM32L031K6Tx -DNUCLEO_L031K6 -DDEBUG -DSTM32L031xx -DUSE_HAL_DRIVER -I"/home/mark/temp/sw4stm32_workspace/relay_unit/HAL_Driver/Inc/Legacy" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/Utilities" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/inc" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/device" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/core" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/HAL_Driver/Inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"HAL_Driver/Src/stm32l0xx_ll_pwr.d" -MT"HAL_Driver/Src/stm32l0xx_ll_pwr.o" -o "HAL_Driver/Src/stm32l0xx_ll_pwr.o" "../HAL_Driver/Src/stm32l0xx_ll_pwr.c"
+Finished building: ../HAL_Driver/Src/stm32l0xx_ll_pwr.c
+ 
+Building file: ../HAL_Driver/Src/stm32l0xx_ll_rcc.c
+Invoking: MCU GCC Compiler
+/home/mark/temp/sw4stm32_workspace/relay_unit/Debug
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L0 -DSTM32L031K6Tx -DNUCLEO_L031K6 -DDEBUG -DSTM32L031xx -DUSE_HAL_DRIVER -I"/home/mark/temp/sw4stm32_workspace/relay_unit/HAL_Driver/Inc/Legacy" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/Utilities" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/inc" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/device" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/core" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/HAL_Driver/Inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"HAL_Driver/Src/stm32l0xx_ll_rcc.d" -MT"HAL_Driver/Src/stm32l0xx_ll_rcc.o" -o "HAL_Driver/Src/stm32l0xx_ll_rcc.o" "../HAL_Driver/Src/stm32l0xx_ll_rcc.c"
+Finished building: ../HAL_Driver/Src/stm32l0xx_ll_rcc.c
+ 
+Building file: ../HAL_Driver/Src/stm32l0xx_ll_rng.c
+Invoking: MCU GCC Compiler
+/home/mark/temp/sw4stm32_workspace/relay_unit/Debug
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L0 -DSTM32L031K6Tx -DNUCLEO_L031K6 -DDEBUG -DSTM32L031xx -DUSE_HAL_DRIVER -I"/home/mark/temp/sw4stm32_workspace/relay_unit/HAL_Driver/Inc/Legacy" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/Utilities" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/inc" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/device" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/core" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/HAL_Driver/Inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"HAL_Driver/Src/stm32l0xx_ll_rng.d" -MT"HAL_Driver/Src/stm32l0xx_ll_rng.o" -o "HAL_Driver/Src/stm32l0xx_ll_rng.o" "../HAL_Driver/Src/stm32l0xx_ll_rng.c"
+Finished building: ../HAL_Driver/Src/stm32l0xx_ll_rng.c
+ 
+Building file: ../HAL_Driver/Src/stm32l0xx_ll_rtc.c
+Invoking: MCU GCC Compiler
+/home/mark/temp/sw4stm32_workspace/relay_unit/Debug
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L0 -DSTM32L031K6Tx -DNUCLEO_L031K6 -DDEBUG -DSTM32L031xx -DUSE_HAL_DRIVER -I"/home/mark/temp/sw4stm32_workspace/relay_unit/HAL_Driver/Inc/Legacy" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/Utilities" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/inc" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/device" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/core" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/HAL_Driver/Inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"HAL_Driver/Src/stm32l0xx_ll_rtc.d" -MT"HAL_Driver/Src/stm32l0xx_ll_rtc.o" -o "HAL_Driver/Src/stm32l0xx_ll_rtc.o" "../HAL_Driver/Src/stm32l0xx_ll_rtc.c"
+Finished building: ../HAL_Driver/Src/stm32l0xx_ll_rtc.c
+ 
+Building file: ../HAL_Driver/Src/stm32l0xx_ll_spi.c
+Invoking: MCU GCC Compiler
+/home/mark/temp/sw4stm32_workspace/relay_unit/Debug
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L0 -DSTM32L031K6Tx -DNUCLEO_L031K6 -DDEBUG -DSTM32L031xx -DUSE_HAL_DRIVER -I"/home/mark/temp/sw4stm32_workspace/relay_unit/HAL_Driver/Inc/Legacy" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/Utilities" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/inc" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/device" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/core" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/HAL_Driver/Inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"HAL_Driver/Src/stm32l0xx_ll_spi.d" -MT"HAL_Driver/Src/stm32l0xx_ll_spi.o" -o "HAL_Driver/Src/stm32l0xx_ll_spi.o" "../HAL_Driver/Src/stm32l0xx_ll_spi.c"
+Finished building: ../HAL_Driver/Src/stm32l0xx_ll_spi.c
+ 
+Building file: ../HAL_Driver/Src/stm32l0xx_ll_tim.c
+Invoking: MCU GCC Compiler
+/home/mark/temp/sw4stm32_workspace/relay_unit/Debug
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L0 -DSTM32L031K6Tx -DNUCLEO_L031K6 -DDEBUG -DSTM32L031xx -DUSE_HAL_DRIVER -I"/home/mark/temp/sw4stm32_workspace/relay_unit/HAL_Driver/Inc/Legacy" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/Utilities" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/inc" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/device" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/core" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/HAL_Driver/Inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"HAL_Driver/Src/stm32l0xx_ll_tim.d" -MT"HAL_Driver/Src/stm32l0xx_ll_tim.o" -o "HAL_Driver/Src/stm32l0xx_ll_tim.o" "../HAL_Driver/Src/stm32l0xx_ll_tim.c"
+Finished building: ../HAL_Driver/Src/stm32l0xx_ll_tim.c
+ 
+Building file: ../HAL_Driver/Src/stm32l0xx_ll_usart.c
+Invoking: MCU GCC Compiler
+/home/mark/temp/sw4stm32_workspace/relay_unit/Debug
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L0 -DSTM32L031K6Tx -DNUCLEO_L031K6 -DDEBUG -DSTM32L031xx -DUSE_HAL_DRIVER -I"/home/mark/temp/sw4stm32_workspace/relay_unit/HAL_Driver/Inc/Legacy" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/Utilities" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/inc" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/device" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/core" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/HAL_Driver/Inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"HAL_Driver/Src/stm32l0xx_ll_usart.d" -MT"HAL_Driver/Src/stm32l0xx_ll_usart.o" -o "HAL_Driver/Src/stm32l0xx_ll_usart.o" "../HAL_Driver/Src/stm32l0xx_ll_usart.c"
+Finished building: ../HAL_Driver/Src/stm32l0xx_ll_usart.c
+ 
+Building file: ../HAL_Driver/Src/stm32l0xx_ll_utils.c
+Invoking: MCU GCC Compiler
+/home/mark/temp/sw4stm32_workspace/relay_unit/Debug
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L0 -DSTM32L031K6Tx -DNUCLEO_L031K6 -DDEBUG -DSTM32L031xx -DUSE_HAL_DRIVER -I"/home/mark/temp/sw4stm32_workspace/relay_unit/HAL_Driver/Inc/Legacy" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/Utilities" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/inc" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/device" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/core" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/HAL_Driver/Inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"HAL_Driver/Src/stm32l0xx_ll_utils.d" -MT"HAL_Driver/Src/stm32l0xx_ll_utils.o" -o "HAL_Driver/Src/stm32l0xx_ll_utils.o" "../HAL_Driver/Src/stm32l0xx_ll_utils.c"
+Finished building: ../HAL_Driver/Src/stm32l0xx_ll_utils.c
  
 Building target: relay_unit.elf
 Invoking: MCU GCC Linker
-arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft -T"/home/mark/repositories/shroom-puter-2/sw4stm32_workspace/relay_unit/LinkerScript.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "relay_unit.elf" @"objects.list"   -lm
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft -T"/home/mark/temp/sw4stm32_workspace/relay_unit/LinkerScript.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "relay_unit.elf" @"objects.list"   -lm
 Finished building target: relay_unit.elf
  
 make --no-print-directory post-build
@@ -16,5 +436,320 @@ Generating binary and Printing size information:
 arm-none-eabi-objcopy -O binary "relay_unit.elf" "relay_unit.bin"
 arm-none-eabi-size "relay_unit.elf"
    text	   data	    bss	    dec	    hex	filename
-   1724	   1128	   1312	   4164	   1044	relay_unit.elf
+   1012	   1080	   1604	   3696	    e70	relay_unit.elf
+ 
+15:02:35 **** Incremental Build of configuration Debug for project relay_unit ****
+make all 
+make: Nothing to be done for 'all'.
+15:03:50 **** Clean-only build of configuration Debug for project relay_unit ****
+make clean 
+rm -rf *
+ 
+15:03:50 **** Incremental Build of configuration Debug for project relay_unit ****
+make all 
+Building file: ../startup/startup_stm32l031xx.s
+Invoking: MCU GCC Assembler
+/home/mark/temp/sw4stm32_workspace/relay_unit/Debug
+arm-none-eabi-as -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft -I"/home/mark/temp/sw4stm32_workspace/relay_unit/HAL_Driver/Inc/Legacy" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/Utilities" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/inc" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/device" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/core" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/HAL_Driver/Inc" -g -o "startup/startup_stm32l031xx.o" "../startup/startup_stm32l031xx.s"
+Finished building: ../startup/startup_stm32l031xx.s
+ 
+Building file: ../src/circular_buffer.c
+Invoking: MCU GCC Compiler
+/home/mark/temp/sw4stm32_workspace/relay_unit/Debug
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L0 -DSTM32L031K6Tx -DNUCLEO_L031K6 -DDEBUG -DSTM32L031xx -DUSE_HAL_DRIVER -I"/home/mark/temp/sw4stm32_workspace/relay_unit/HAL_Driver/Inc/Legacy" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/Utilities" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/inc" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/device" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/core" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/HAL_Driver/Inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"src/circular_buffer.d" -MT"src/circular_buffer.o" -o "src/circular_buffer.o" "../src/circular_buffer.c"
+Finished building: ../src/circular_buffer.c
+ 
+Building file: ../src/main.c
+Invoking: MCU GCC Compiler
+/home/mark/temp/sw4stm32_workspace/relay_unit/Debug
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L0 -DSTM32L031K6Tx -DNUCLEO_L031K6 -DDEBUG -DSTM32L031xx -DUSE_HAL_DRIVER -I"/home/mark/temp/sw4stm32_workspace/relay_unit/HAL_Driver/Inc/Legacy" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/Utilities" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/inc" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/device" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/core" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/HAL_Driver/Inc" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+In file included from ../src/main.c:12:0:
+/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/device/stm32l0xx.h:222:28: fatal error: stm32l0xx_hal.h: No such file or directory
+  #include "stm32l0xx_hal.h"
+                            ^
+src/subdir.mk:36: recipe for target 'src/main.o' failed
+compilation terminated.
+make: *** [src/main.o] Error 1
+15:04:59 **** Incremental Build of configuration Debug for project relay_unit ****
+make all 
+Building file: ../startup/startup_stm32l031xx.s
+Invoking: MCU GCC Assembler
+/home/mark/temp/sw4stm32_workspace/relay_unit/Debug
+arm-none-eabi-as -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft -I"/home/mark/temp/sw4stm32_workspace/relay_unit/Utilities" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/inc" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/device" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/core" -g -o "startup/startup_stm32l031xx.o" "../startup/startup_stm32l031xx.s"
+Finished building: ../startup/startup_stm32l031xx.s
+ 
+Building file: ../src/circular_buffer.c
+Invoking: MCU GCC Compiler
+/home/mark/temp/sw4stm32_workspace/relay_unit/Debug
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L0 -DSTM32L031K6Tx -DNUCLEO_L031K6 -DDEBUG -DSTM32L031xx -I"/home/mark/temp/sw4stm32_workspace/relay_unit/Utilities" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/inc" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/device" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/core" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"src/circular_buffer.d" -MT"src/circular_buffer.o" -o "src/circular_buffer.o" "../src/circular_buffer.c"
+Finished building: ../src/circular_buffer.c
+ 
+Building file: ../src/main.c
+Invoking: MCU GCC Compiler
+/home/mark/temp/sw4stm32_workspace/relay_unit/Debug
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L0 -DSTM32L031K6Tx -DNUCLEO_L031K6 -DDEBUG -DSTM32L031xx -I"/home/mark/temp/sw4stm32_workspace/relay_unit/Utilities" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/inc" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/device" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/core" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+Finished building: ../src/main.c
+ 
+Building file: ../src/rcc.c
+Invoking: MCU GCC Compiler
+/home/mark/temp/sw4stm32_workspace/relay_unit/Debug
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L0 -DSTM32L031K6Tx -DNUCLEO_L031K6 -DDEBUG -DSTM32L031xx -I"/home/mark/temp/sw4stm32_workspace/relay_unit/Utilities" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/inc" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/device" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/core" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"src/rcc.d" -MT"src/rcc.o" -o "src/rcc.o" "../src/rcc.c"
+Finished building: ../src/rcc.c
+ 
+Building file: ../src/syscalls.c
+Invoking: MCU GCC Compiler
+/home/mark/temp/sw4stm32_workspace/relay_unit/Debug
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L0 -DSTM32L031K6Tx -DNUCLEO_L031K6 -DDEBUG -DSTM32L031xx -I"/home/mark/temp/sw4stm32_workspace/relay_unit/Utilities" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/inc" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/device" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/core" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"src/syscalls.d" -MT"src/syscalls.o" -o "src/syscalls.o" "../src/syscalls.c"
+Finished building: ../src/syscalls.c
+ 
+Building file: ../src/system_stm32l0xx.c
+Invoking: MCU GCC Compiler
+/home/mark/temp/sw4stm32_workspace/relay_unit/Debug
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L0 -DSTM32L031K6Tx -DNUCLEO_L031K6 -DDEBUG -DSTM32L031xx -I"/home/mark/temp/sw4stm32_workspace/relay_unit/Utilities" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/inc" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/device" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/core" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"src/system_stm32l0xx.d" -MT"src/system_stm32l0xx.o" -o "src/system_stm32l0xx.o" "../src/system_stm32l0xx.c"
+Finished building: ../src/system_stm32l0xx.c
+ 
+Building file: ../src/systick.c
+Invoking: MCU GCC Compiler
+/home/mark/temp/sw4stm32_workspace/relay_unit/Debug
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L0 -DSTM32L031K6Tx -DNUCLEO_L031K6 -DDEBUG -DSTM32L031xx -I"/home/mark/temp/sw4stm32_workspace/relay_unit/Utilities" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/inc" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/device" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/core" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"src/systick.d" -MT"src/systick.o" -o "src/systick.o" "../src/systick.c"
+Finished building: ../src/systick.c
+ 
+Building file: ../src/uart2.c
+Invoking: MCU GCC Compiler
+/home/mark/temp/sw4stm32_workspace/relay_unit/Debug
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L0 -DSTM32L031K6Tx -DNUCLEO_L031K6 -DDEBUG -DSTM32L031xx -I"/home/mark/temp/sw4stm32_workspace/relay_unit/Utilities" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/inc" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/device" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/core" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"src/uart2.d" -MT"src/uart2.o" -o "src/uart2.o" "../src/uart2.c"
+Finished building: ../src/uart2.c
+ 
+Building target: relay_unit.elf
+Invoking: MCU GCC Linker
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft -T"/home/mark/temp/sw4stm32_workspace/relay_unit/LinkerScript.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "relay_unit.elf" @"objects.list"   -lm
+Finished building target: relay_unit.elf
+ 
+make --no-print-directory post-build
+Generating binary and Printing size information:
+arm-none-eabi-objcopy -O binary "relay_unit.elf" "relay_unit.bin"
+arm-none-eabi-size "relay_unit.elf"
+   text	   data	    bss	    dec	    hex	filename
+   2044	   1128	   1824	   4996	   1384	relay_unit.elf
+ 
+15:06:44 **** Incremental Build of configuration Debug for project relay_unit ****
+make all 
+Building file: ../src/main.c
+Invoking: MCU GCC Compiler
+/home/mark/temp/sw4stm32_workspace/relay_unit/Debug
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L0 -DSTM32L031K6Tx -DNUCLEO_L031K6 -DDEBUG -DSTM32L031xx -I"/home/mark/temp/sw4stm32_workspace/relay_unit/Utilities" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/inc" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/device" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/core" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+Finished building: ../src/main.c
+ 
+Building target: relay_unit.elf
+Invoking: MCU GCC Linker
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft -T"/home/mark/temp/sw4stm32_workspace/relay_unit/LinkerScript.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "relay_unit.elf" @"objects.list"   -lm
+src/main.o: In function `setup':
+/home/mark/temp/sw4stm32_workspace/relay_unit/Debug/../src/main.c:35: undefined reference to `GpioSelectAf'
+collect2: error: ld returned 1 exit status
+make: *** [relay_unit.elf] Error 1
+makefile:34: recipe for target 'relay_unit.elf' failed
+15:07:54 **** Incremental Build of configuration Debug for project relay_unit ****
+make all 
+Building file: ../src/gpio.c
+Invoking: MCU GCC Compiler
+/home/mark/temp/sw4stm32_workspace/relay_unit/Debug
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L0 -DSTM32L031K6Tx -DNUCLEO_L031K6 -DDEBUG -DSTM32L031xx -I"/home/mark/temp/sw4stm32_workspace/relay_unit/Utilities" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/inc" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/device" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/core" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"src/gpio.d" -MT"src/gpio.o" -o "src/gpio.o" "../src/gpio.c"
+Finished building: ../src/gpio.c
+ 
+Building target: relay_unit.elf
+Invoking: MCU GCC Linker
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft -T"/home/mark/temp/sw4stm32_workspace/relay_unit/LinkerScript.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "relay_unit.elf" @"objects.list"   -lm
+Finished building target: relay_unit.elf
+ 
+make --no-print-directory post-build
+Generating binary and Printing size information:
+arm-none-eabi-objcopy -O binary "relay_unit.elf" "relay_unit.bin"
+arm-none-eabi-size "relay_unit.elf"
+   text	   data	    bss	    dec	    hex	filename
+  10732	   1136	   1824	  13692	   357c	relay_unit.elf
+ 
+15:08:27 **** Incremental Build of configuration Debug for project relay_unit ****
+make all 
+make: Nothing to be done for 'all'.
+15:14:00 **** Incremental Build of configuration Debug for project relay_unit ****
+make all 
+Building file: ../src/uart2.c
+Invoking: MCU GCC Compiler
+/home/mark/temp/sw4stm32_workspace/relay_unit/Debug
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L0 -DSTM32L031K6Tx -DNUCLEO_L031K6 -DDEBUG -DSTM32L031xx -I"/home/mark/temp/sw4stm32_workspace/relay_unit/Utilities" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/inc" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/device" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/core" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"src/uart2.d" -MT"src/uart2.o" -o "src/uart2.o" "../src/uart2.c"
+Finished building: ../src/uart2.c
+ 
+Building target: relay_unit.elf
+Invoking: MCU GCC Linker
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft -T"/home/mark/temp/sw4stm32_workspace/relay_unit/LinkerScript.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "relay_unit.elf" @"objects.list"   -lm
+Finished building target: relay_unit.elf
+ 
+make --no-print-directory post-build
+Generating binary and Printing size information:
+arm-none-eabi-objcopy -O binary "relay_unit.elf" "relay_unit.bin"
+arm-none-eabi-size "relay_unit.elf"
+   text	   data	    bss	    dec	    hex	filename
+  10744	   1136	   1824	  13704	   3588	relay_unit.elf
+ 
+15:32:57 **** Incremental Build of configuration Debug for project relay_unit ****
+make all 
+Building file: ../src/main.c
+Invoking: MCU GCC Compiler
+/home/mark/temp/sw4stm32_workspace/relay_unit/Debug
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L0 -DSTM32L031K6Tx -DNUCLEO_L031K6 -DDEBUG -DSTM32L031xx -I"/home/mark/temp/sw4stm32_workspace/relay_unit/Utilities" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/inc" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/device" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/core" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+Finished building: ../src/main.c
+ 
+Building target: relay_unit.elf
+Invoking: MCU GCC Linker
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft -T"/home/mark/temp/sw4stm32_workspace/relay_unit/LinkerScript.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "relay_unit.elf" @"objects.list"   -lm
+Finished building target: relay_unit.elf
+ 
+make --no-print-directory post-build
+Generating binary and Printing size information:
+arm-none-eabi-objcopy -O binary "relay_unit.elf" "relay_unit.bin"
+arm-none-eabi-size "relay_unit.elf"
+   text	   data	    bss	    dec	    hex	filename
+  10732	   1136	   1824	  13692	   357c	relay_unit.elf
+ 
+15:38:58 **** Incremental Build of configuration Debug for project relay_unit ****
+make all 
+make: Nothing to be done for 'all'.
+15:49:42 **** Incremental Build of configuration Debug for project relay_unit ****
+make all 
+Building file: ../src/uart2.c
+Invoking: MCU GCC Compiler
+/home/mark/temp/sw4stm32_workspace/relay_unit/Debug
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L0 -DSTM32L031K6Tx -DNUCLEO_L031K6 -DDEBUG -DSTM32L031xx -I"/home/mark/temp/sw4stm32_workspace/relay_unit/Utilities" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/inc" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/device" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/core" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"src/uart2.d" -MT"src/uart2.o" -o "src/uart2.o" "../src/uart2.c"
+Finished building: ../src/uart2.c
+ 
+Building target: relay_unit.elf
+Invoking: MCU GCC Linker
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft -T"/home/mark/temp/sw4stm32_workspace/relay_unit/LinkerScript.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "relay_unit.elf" @"objects.list"   -lm
+Finished building target: relay_unit.elf
+ 
+make --no-print-directory post-build
+Generating binary and Printing size information:
+arm-none-eabi-objcopy -O binary "relay_unit.elf" "relay_unit.bin"
+arm-none-eabi-size "relay_unit.elf"
+   text	   data	    bss	    dec	    hex	filename
+  10732	   1136	   1824	  13692	   357c	relay_unit.elf
+ 
+15:55:23 **** Incremental Build of configuration Debug for project relay_unit ****
+make all 
+make: Nothing to be done for 'all'.
+15:59:31 **** Incremental Build of configuration Debug for project relay_unit ****
+make all 
+make: Nothing to be done for 'all'.
+16:19:09 **** Incremental Build of configuration Debug for project relay_unit ****
+make all 
+Building file: ../src/main.c
+Invoking: MCU GCC Compiler
+/home/mark/temp/sw4stm32_workspace/relay_unit/Debug
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L0 -DSTM32L031K6Tx -DNUCLEO_L031K6 -DDEBUG -DSTM32L031xx -I"/home/mark/temp/sw4stm32_workspace/relay_unit/Utilities" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/inc" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/device" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/core" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+../src/main.c: In function 'set_cool':
+../src/main.c:38:5: warning: implicit declaration of function 'GPIO_CLEAR' [-Wimplicit-function-declaration]
+     GPIO_CLEAR(A,7);
+     ^~~~~~~~~~
+../src/main.c:38:16: error: 'A' undeclared (first use in this function)
+     GPIO_CLEAR(A,7);
+                ^
+../src/main.c:38:16: note: each undeclared identifier is reported only once for each function it appears in
+src/subdir.mk:39: recipe for target 'src/main.o' failed
+make: *** [src/main.o] Error 1
+16:19:25 **** Incremental Build of configuration Debug for project relay_unit ****
+make all 
+Building file: ../src/main.c
+Invoking: MCU GCC Compiler
+/home/mark/temp/sw4stm32_workspace/relay_unit/Debug
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L0 -DSTM32L031K6Tx -DNUCLEO_L031K6 -DDEBUG -DSTM32L031xx -I"/home/mark/temp/sw4stm32_workspace/relay_unit/Utilities" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/inc" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/device" -I"/home/mark/temp/sw4stm32_workspace/relay_unit/CMSIS/core" -O0 -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+Finished building: ../src/main.c
+ 
+Building target: relay_unit.elf
+Invoking: MCU GCC Linker
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft -T"/home/mark/temp/sw4stm32_workspace/relay_unit/LinkerScript.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "relay_unit.elf" @"objects.list"   -lm
+Finished building target: relay_unit.elf
+ 
+make --no-print-directory post-build
+Generating binary and Printing size information:
+arm-none-eabi-objcopy -O binary "relay_unit.elf" "relay_unit.bin"
+arm-none-eabi-size "relay_unit.elf"
+   text	   data	    bss	    dec	    hex	filename
+  10908	   1136	   1832	  13876	   3634	relay_unit.elf
+ 
+16:19:42 **** Incremental Build of configuration Debug for project relay_unit ****
+make all 
+make: Nothing to be done for 'all'.
+16:32:24 **** Incremental Build of configuration Debug for project display_unit ****
+make all 
+Building file: ../src/main.c
+Invoking: MCU GCC Compiler
+/home/mark/temp/sw4stm32_workspace/display_unit/Debug
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L0 -DSTM32L031K6Tx -DNUCLEO_L031K6 -DDEBUG -DSTM32L031xx -I"/home/mark/temp/sw4stm32_workspace/display_unit/Utilities" -I"/home/mark/temp/sw4stm32_workspace/display_unit/inc" -I"/home/mark/temp/sw4stm32_workspace/display_unit/CMSIS/device" -I"/home/mark/temp/sw4stm32_workspace/display_unit/CMSIS/core" -Os -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"src/main.d" -MT"src/main.o" -o "src/main.o" "../src/main.c"
+../src/main.c: In function 'main':
+../src/main.c:863:34: warning: passing argument 1 of 'handle_settings_keys' discards 'volatile' qualifier from pointer target type [-Wdiscarded-qualifiers]
+             handle_settings_keys(&fanrunminutes, ADDR_fanrunminutes, &application_state,
+                                  ^
+../src/main.c:230:6: note: expected 'int16_t * {aka short int *}' but argument is of type 'volatile int16_t * {aka volatile short int *}'
+ void handle_settings_keys(int16_t* temperature_parameter, uint16_t parameter_eeprom_address, app_state_e *applicaton_state, widget_t * widget, app_state_e draw_previous_screen_state, app_state_e draw_screen_state)
+      ^~~~~~~~~~~~~~~~~~~~
+../src/main.c:876:34: warning: passing argument 1 of 'handle_settings_keys' discards 'volatile' qualifier from pointer target type [-Wdiscarded-qualifiers]
+             handle_settings_keys(&fanidleminutes, ADDR_fanidleminutes, &application_state,
+                                  ^
+../src/main.c:230:6: note: expected 'int16_t * {aka short int *}' but argument is of type 'volatile int16_t * {aka volatile short int *}'
+ void handle_settings_keys(int16_t* temperature_parameter, uint16_t parameter_eeprom_address, app_state_e *applicaton_state, widget_t * widget, app_state_e draw_previous_screen_state, app_state_e draw_screen_state)
+      ^~~~~~~~~~~~~~~~~~~~
+At top level:
+../src/main.c:37:22: warning: 'light_off' defined but not used [-Wunused-const-variable=]
+ static const uint8_t light_off[34] = {16,16,    0,0,0,248,204,2,3,129,193,225,115,58,158,254,7,3,0,96,112,56,31,14,127,243,241,240,124,14,3,0,0,0,};
+                      ^~~~~~~~~
+Finished building: ../src/main.c
+ 
+Building file: ../src/widgets.c
+Invoking: MCU GCC Compiler
+/home/mark/temp/sw4stm32_workspace/display_unit/Debug
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L0 -DSTM32L031K6Tx -DNUCLEO_L031K6 -DDEBUG -DSTM32L031xx -I"/home/mark/temp/sw4stm32_workspace/display_unit/Utilities" -I"/home/mark/temp/sw4stm32_workspace/display_unit/inc" -I"/home/mark/temp/sw4stm32_workspace/display_unit/CMSIS/device" -I"/home/mark/temp/sw4stm32_workspace/display_unit/CMSIS/core" -Os -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"src/widgets.d" -MT"src/widgets.o" -o "src/widgets.o" "../src/widgets.c"
+../src/widgets.c: In function 'draw_widget':
+../src/widgets.c:43:5: warning: enumeration value 'LABEL' not handled in switch [-Wswitch]
+     switch(widget->widget_type)
+     ^~~~~~
+../src/widgets.c:43:5: warning: enumeration value 'BUTTON' not handled in switch [-Wswitch]
+../src/widgets.c: In function 'pass_encoder_to_widget':
+../src/widgets.c:184:47: error: 'widget_t {aka struct <anonymous>}' has no member named 'minimum'
+        else if (widget->numeric_value < widget->minimum) widget->numeric_value = widget->min_value;
+                                               ^~
+../src/widgets.c:107:5: warning: enumeration value 'LABEL' not handled in switch [-Wswitch]
+     switch(widget->widget_type)
+     ^~~~~~
+../src/widgets.c:107:5: warning: enumeration value 'BUTTON' not handled in switch [-Wswitch]
+make: *** [src/widgets.o] Error 1
+src/subdir.mk:75: recipe for target 'src/widgets.o' failed
+16:32:46 **** Incremental Build of configuration Debug for project display_unit ****
+make all 
+Building file: ../src/widgets.c
+Invoking: MCU GCC Compiler
+/home/mark/temp/sw4stm32_workspace/display_unit/Debug
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L0 -DSTM32L031K6Tx -DNUCLEO_L031K6 -DDEBUG -DSTM32L031xx -I"/home/mark/temp/sw4stm32_workspace/display_unit/Utilities" -I"/home/mark/temp/sw4stm32_workspace/display_unit/inc" -I"/home/mark/temp/sw4stm32_workspace/display_unit/CMSIS/device" -I"/home/mark/temp/sw4stm32_workspace/display_unit/CMSIS/core" -Os -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"src/widgets.d" -MT"src/widgets.o" -o "src/widgets.o" "../src/widgets.c"
+../src/widgets.c: In function 'draw_widget':
+../src/widgets.c:43:5: warning: enumeration value 'LABEL' not handled in switch [-Wswitch]
+     switch(widget->widget_type)
+     ^~~~~~
+../src/widgets.c:43:5: warning: enumeration value 'BUTTON' not handled in switch [-Wswitch]
+../src/widgets.c: In function 'pass_encoder_to_widget':
+../src/widgets.c:107:5: warning: enumeration value 'LABEL' not handled in switch [-Wswitch]
+     switch(widget->widget_type)
+     ^~~~~~
+../src/widgets.c:107:5: warning: enumeration value 'BUTTON' not handled in switch [-Wswitch]
+Finished building: ../src/widgets.c
+ 
+Building target: display_unit.elf
+Invoking: MCU GCC Linker
+arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft -T"/home/mark/temp/sw4stm32_workspace/display_unit/LinkerScript.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "display_unit.elf" @"objects.list"   -lm
+Finished building target: display_unit.elf
+ 
+make --no-print-directory post-build
+Generating binary and Printing size information:
+arm-none-eabi-objcopy -O binary "display_unit.elf" "display_unit.bin"
+arm-none-eabi-size "display_unit.elf"
+   text	   data	    bss	    dec	    hex	filename
+  23648	   1184	   1936	  26768	   6890	display_unit.elf
  

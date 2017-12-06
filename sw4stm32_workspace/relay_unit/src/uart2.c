@@ -151,8 +151,13 @@ int Uart2Init(int baud, bool useParity, bool oddParity)
 	temp = USART2->RDR;
 	(void)temp;
 
+
+	// enable the receive interrupt
+	USART2->CR1 |= USART_CR1_RXNEIE;
+
 	// enable the USART
 	USART2->CR1 |= USART_CR1_UE;
+
 
 	NVIC_SetPriority(USART2_IRQn,2); // 3 is lowest priority, 0 is highest
 	NVIC_EnableIRQ(USART2_IRQn); // enable the interrupt in NVIC
@@ -168,8 +173,9 @@ int Uart2TxFree()
 	// so we need to disable interrupts before
 	// calling.
 	NVIC_DisableIRQ(USART2_IRQn); // disable the interrupt in NVIC
-	return BuffAvail(&uart2TxBuff);
+	int temp = BuffAvail(&uart2TxBuff);
 	NVIC_EnableIRQ(USART2_IRQn); // enable the interrupt in NVIC
+	return temp;
 }
 
 int Uart2Tx(uint8_t* data, int len)
@@ -182,6 +188,9 @@ int Uart2Tx(uint8_t* data, int len)
 			break;
 		}
 	}
+	// make sure transmit interrupt is enabled whenever a byte is written,
+	// just in case the uart is idle.
+	USART2->CR1 |= USART_CR1_TXEIE;
 	return count;
 }
 
@@ -191,8 +200,9 @@ int Uart2RxLen()
 	// so we need to disable interrupts before
 	// calling.
 	NVIC_DisableIRQ(USART2_IRQn); // disable the interrupt in NVIC
-	return BuffLevel(&uart2RxBuff);
+	int temp = BuffLevel(&uart2RxBuff);
 	NVIC_EnableIRQ(USART2_IRQn); // enable the interrupt in NVIC
+	return temp;
 }
 
 int Uart2Rx(uint8_t *data, int len)

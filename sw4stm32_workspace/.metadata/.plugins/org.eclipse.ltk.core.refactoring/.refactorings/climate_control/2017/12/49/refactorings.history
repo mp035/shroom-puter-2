@@ -1,3 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">&#x0A;<refactoring comment="Rename resource &apos;climate_control/src/uart.c&apos; to &apos;uart2.c&apos;" description="Rename resource &apos;uart.c&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/uart.c" name="uart2.c" stamp="1512460326356" updateReferences="true"/>&#x0A;<refactoring comment="Rename resource &apos;climate_control/inc/uart.h&apos; to &apos;uart2.h&apos;" description="Rename resource &apos;uart.h&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="inc/uart.h" name="uart2.h" stamp="1512460334758" updateReferences="true"/>
-</session>
