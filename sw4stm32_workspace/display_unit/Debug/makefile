@@ -30,10 +30,10 @@ endif
 all: display_unit.elf
 
 # Tool invocations
-display_unit.elf: $(OBJS) $(USER_OBJS) /home/mark/repositories/shroom-puter-2/sw4stm32_workspace/display_unit/LinkerScript.ld
+display_unit.elf: $(OBJS) $(USER_OBJS) /home/mark/projects/shroomputer2/sw4stm32_workspace/display_unit/LinkerScript.ld
 	@echo 'Building target: $@'
 	@echo 'Invoking: MCU GCC Linker'
-	arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft -T"/home/mark/repositories/shroom-puter-2/sw4stm32_workspace/display_unit/LinkerScript.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "display_unit.elf" @"objects.list" $(USER_OBJS) $(LIBS) -lm
+	arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft -T"/home/mark/projects/shroomputer2/sw4stm32_workspace/display_unit/LinkerScript.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "display_unit.elf" @"objects.list" $(USER_OBJS) $(LIBS) -lm
 	@echo 'Finished building target: $@'
 	@echo ' '
 	$(MAKE) --no-print-directory post-build

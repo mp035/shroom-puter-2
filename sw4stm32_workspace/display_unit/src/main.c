@@ -52,7 +52,8 @@ int16_t startlight = 600;
 int16_t stoplight = 1800;
 volatile int16_t fanrunminutes = 15;
 volatile int16_t fanidleminutes = 2;
-uint64_t fancounter = 0;
+uint64_t fanstart = 0;
+uint64_t fanstop = 0;
 uint32_t next_screen_update = 0;
 uint32_t next_app_gate = 0;
 
@@ -92,8 +93,8 @@ uint8_t output_status = 0;
 #define HUMIDITY(x) //GPIO_WRITE(B, 4, x)
 #define LIGHTING(x) GPIO_WRITE(A, 1, x)
 #define VENTILATION(x) //GPIO_WRITE(B, 5, x)
-#define HEATING(x) peltier_heating = x;
-#define COOLING(x) peltier_cooling = x;
+#define HEATING(x)
+#define COOLING(x)
 /*
 #define HEATING(x) heating(x)
 void heating(uint16_t x)
@@ -227,7 +228,12 @@ void update_setting_screen(widget_t *widget)
     draw_widget(widget);
 }
 
-void handle_settings_keys(int16_t* temperature_parameter, uint16_t parameter_eeprom_address, app_state_e *applicaton_state, widget_t * widget, app_state_e draw_previous_screen_state, app_state_e draw_screen_state)
+void reset_vent_settings(){
+	fanstop = GetSystickMs + (fanidleminutes + fanrunminutes) * 60000;
+	fanstart = fanstop - fanrunminutes * 60000;
+}
+
+void handle_settings_keys(int16_t* temperature_parameter, uint16_t parameter_eeprom_address, app_state_e *applicaton_state, widget_t * widget, app_state_e draw_previous_screen_state, app_state_e draw_screen_state, void (*reset_function)(void))
 {
     if (RotaryEncoderHasActivity())
     {
@@ -241,6 +247,7 @@ void handle_settings_keys(int16_t* temperature_parameter, uint16_t parameter_eep
             *temperature_parameter = widget->numeric_value;
             *applicaton_state = draw_previous_screen_state;
 			eeprom_write(parameter_eeprom_address, *temperature_parameter);
+			if (reset_function) reset_function();
             break;
         default:
             *applicaton_state = draw_screen_state;
@@ -297,12 +304,12 @@ int main (void)
 	menuItem_t rhMenuItems[] = {
 			{"GO BACK       ", APPL_MENU, &mainMenu},
 			{"HUMIDITY SET  ", APPL_SETUP_HUMIDITY_SET, 0},
-			{"HUMIDITY  BAND", APPL_SETUP_HUMIDITY_BAND_SET, 0},
+			//{"HUMIDITY  BAND", APPL_SETUP_HUMIDITY_BAND_SET, 0},
 			{"EXIT MENU     ", APPL_SETUP_HOME, 0}
 	};
 	rhMenu.currentItem = 0;
 	rhMenu.items = rhMenuItems;
-	rhMenu.numItems = 4;
+	rhMenu.numItems = 3;
 
 	menuItem_t lightMenuItems[] = {
 			{"GO BACK       ", APPL_MENU, &mainMenu},
@@ -374,20 +381,20 @@ int main (void)
 	menuItem_t *menuItemDisableLight = &disableMenuItems[4];
 	menuItem_t *menuItemDisableVent = &disableMenuItems[5];
 
-
+#define UPDATE_TIME_SECONDS 5
 
 
     while (1)
     {
         if (next_screen_update <= GetSystickMs())
-{
-        	next_screen_update += 5000;// check references to door_open_time_in_seconds if changing this value.
+        {
+        	next_screen_update += (UPDATE_TIME_SECONDS * 1000);
             trh_error = read_temp_rh_sensor();
             if (application_state == APPL_HOME)
                 application_state = APPL_DRAW_HOME; // force home screen refresh if required.
             if (application_state == APPL_DOOR_OPEN)
             {
-                door_open_time_in_seconds -= 5; // this should line up with the number of seconds that this loop is called.
+                door_open_time_in_seconds -= UPDATE_TIME_SECONDS;
                 if (door_open_time_in_seconds <= 0)
                 {
                     application_state = APPL_SETUP_HOME;
@@ -401,52 +408,56 @@ int main (void)
             }
             else
             {
-            	if ((GetSystickMs() - fancounter) < (fanrunminutes * 60000))
+            	if (GetSystickMs() > fanstop)
             	{
-            		if (disable_vent)
-            		{
+            		// fan counter has rolled over
             			output_status &= ~(STATUS_VENTILATING);
             			VENTILATION(0);
-            		}
-            		else
-            		{
-            			output_status |= STATUS_VENTILATING;
-            			VENTILATION(1);
-            		}
+            		fanstop += (fanrunminutes + fanidleminutes) * 60000;
+            		fanstart = fanstop - fanrunminutes * 60000;
             	}
-            	else if ((GetSystickMs() - fancounter)
-            			< ((fanrunminutes + fanidleminutes) * 60000))
+            	else if (GetSystickMs() > fanstart)
             	{
-            		output_status &= ~(STATUS_VENTILATING);
-            		VENTILATION(0);
-            	}
-            	else // fancounter has rolled over
+            		// ventilation should run continuously
+            		// because we have not had enough ventilation
+            		// from the humidifier during the cycle
+            		if (disable_vent)
+					{
+						output_status &= ~(STATUS_VENTILATING);
+						VENTILATION(0);
+					}
+					else
+					{
+						output_status |= STATUS_VENTILATING;
+						VENTILATION(1);
+					}
+				}
+            	else
             	{
-            		fancounter += (fanrunminutes + fanidleminutes) * 60000;
-            		output_status &= ~(STATUS_VENTILATING);
-            		VENTILATION(0);
+            		// do not ventilate (the humidifier may control the fan
+            		// and move fanstart accordingly
+					output_status &= ~(STATUS_VENTILATING);
+					VENTILATION(0);
+
             	}
+
 
             	if ((humidity > humidityset) || disable_humidity)
             	{
             		output_status &= ~(STATUS_HUMIDIFYING);
             		HUMIDITY(0);
             	}
-            	else if (humidity < (humidityset - humidityband))
+            	else
             	{
             		output_status |= STATUS_HUMIDIFYING;
             		HUMIDITY(1);
-            	}
 
-            	// if the humidity set point is > 90% and humidity is above the setpoint then use the fan to lower humidity
-            	if (
-            			(humidityset > 900)
-						&& (humidity > (humidityset + humidityband))
-						&& ! disable_vent
-            	)
-            	{
-            		output_status |= STATUS_VENTILATING;
-            		VENTILATION(1);
+            		// run the ventilator as well when humidifying
+            		if (GetSystickMs() < fanstart){
+						output_status |= STATUS_VENTILATING;
+						VENTILATION(1);
+						fanstart += UPDATE_TIME_SECONDS * 1000;
+            		}
             	}
 
             	uint16_t ltemp;
@@ -485,59 +496,28 @@ int main (void)
 
             	// Temperature control algorithms.
 
-            	static int32_t last_temp = 235;// set last temp at the most common setpoint to start with.
-            	last_temp -= temperature;
-
             	if (disable_temp)
             	{
             		output_status &= ~(STATUS_HEATING | STATUS_COOLING);
             	}
             	else
             	{
-            		if (last_temp > 0) // temperature is falling
+            		if (temperature > (temperatureset + temperatureband))
             		{
-            			// if the temperature is falling and we are below the set point, then raise the temperature duty
-            			if(temperature < temperatureset){
-            				output_status |= STATUS_HEATING;
-            				output_status &= ~(STATUS_COOLING);
-            			}
-
+            			output_status |= STATUS_COOLING;
+            			output_status &= ~(STATUS_HEATING);
             		}
-            		else if (last_temp < 0) // temperature is rising
+            		else if (temperature < (temperatureset - temperatureband))
             		{
-            			// if the temperature is rising and we are above the set point, then lower the temperature duty
-            			if(temperature > temperatureset)
-            			{
-            				output_status |= STATUS_COOLING;
-            				output_status &= ~(STATUS_HEATING);
-            			}
+            			output_status |= STATUS_HEATING;
+            			output_status &= ~(STATUS_COOLING);
             		}
-            		else // temperature is stable
+            		else
             		{
-            			// when the temperature is stable, only adjust duty if we are outside band
-
-            			if (temperature > (temperatureset + temperatureband))
-            			{
-            				output_status |= STATUS_COOLING;
-            				output_status &= ~(STATUS_HEATING);
-            			}
-            			else if (temperature < (temperatureset - temperatureband))
-            			{
-            				output_status |= STATUS_HEATING;
-            				output_status &= ~(STATUS_COOLING);
-            			}
-            			else
-            			{
-            				//stable temperature within band, do not adjust duty
-            				output_status &= ~(STATUS_COOLING);
-            				output_status &= ~(STATUS_HEATING);
-            			}
-
+            			output_status &= ~(STATUS_COOLING);
+            			output_status &= ~(STATUS_HEATING);
             		}
             	}
-
-            	last_temp = temperature;
-
 
             	if (output_status & STATUS_HEATING)
             	{
@@ -593,8 +573,6 @@ int main (void)
             }
             else
             {
-                // alternate between peltier duty and measured temp.
-                // screen refreshes every 5 seconds, so work with that for now.
                 TEXTLINE(1);
                 OledDisplayString("TEMP:");
                 printshort(temperature / 10, 3, 0);
@@ -604,25 +582,6 @@ int main (void)
                 OledDisplayChar('C');
                 OledDisplayChar(' ');
                 OledDisplayChar(' ');
-
-                /*
-                TEXTLINE(2);
-                OledDisplayString("DUTY:");
-                OledDisplayChar(' ');
-                if (peltier_duty_setting < 0)
-                {
-                	OledDisplayChar('-');
-                }
-                else
-                {
-                	OledDisplayChar(' ');
-                }
-                printshort(abs(peltier_duty_setting), 3, 0);
-                OledDisplayChar('%');
-                OledDisplayChar(' ');
-                OledDisplayChar(' ');
-                OledDisplayChar(' ');
-                */
 
                 TEXTLINE(2);
                 OledDisplayString(" R/H:");
@@ -757,7 +716,7 @@ int main (void)
 
             temptime = 0xFFFF;
             handle_settings_keys((int16_t*)&temptime, 0xFFFF, &application_state,
-                    &numwidget, APPL_DRAW_MENU, APPL_DRAW_TIME_SET);
+                    &numwidget, APPL_DRAW_MENU, APPL_DRAW_TIME_SET, 0);
             if (temptime != 0xFFFF)
             {
 				// FIXME: We need to set the time on STM32
@@ -784,7 +743,7 @@ int main (void)
             break;
         case APPL_TEMP_SET:
             handle_settings_keys(&temperatureset, ADDR_temperatureset, &application_state,
-                    &numwidget, APPL_DRAW_MENU, APPL_DRAW_TEMP_SET);
+                    &numwidget, APPL_DRAW_MENU, APPL_DRAW_TEMP_SET, 0);
             break;
         case APPL_SETUP_TEMP_BAND_SET:
         	setup_decimal_widget(temperatureband, &numwidget);
@@ -797,7 +756,7 @@ int main (void)
             break;
         case APPL_TEMP_BAND_SET:
             handle_settings_keys(&temperatureband, ADDR_temperatureband, &application_state,
-                    &numwidget, APPL_DRAW_MENU, APPL_DRAW_TEMP_BAND_SET);
+                    &numwidget, APPL_DRAW_MENU, APPL_DRAW_TEMP_BAND_SET, 0);
             break;
         case APPL_SETUP_HUMIDITY_SET:
                 setup_decimal_widget(humidityset, &numwidget);
@@ -810,8 +769,9 @@ int main (void)
             break;
         case APPL_HUMIDITY_SET:
             handle_settings_keys(&humidityset, ADDR_humidityset, &application_state,
-                    &numwidget, APPL_DRAW_MENU, APPL_DRAW_HUMIDITY_SET);
+                    &numwidget, APPL_DRAW_MENU, APPL_DRAW_HUMIDITY_SET, 0);
             break;
+            /*
         case APPL_SETUP_HUMIDITY_BAND_SET:
         	setup_decimal_widget(humidityband, &numwidget);
             draw_setting_screen("HUMIDITY BAND ", 0, &numwidget,"%");
@@ -822,8 +782,9 @@ int main (void)
             application_state = APPL_HUMIDITY_BAND_SET;
             break;
         case APPL_HUMIDITY_BAND_SET:
-            handle_settings_keys(&humidityband, ADDR_humidityband, &application_state, &numwidget, APPL_DRAW_MENU, APPL_DRAW_HUMIDITY_BAND_SET);
+            handle_settings_keys(&humidityband, ADDR_humidityband, &application_state, &numwidget, APPL_DRAW_MENU, APPL_DRAW_HUMIDITY_BAND_SET, 0);
             break;
+            */
         case APPL_SETUP_LIGHT_ON_SET:
         	setup_time_widget(startlight, &numwidget);
         	application_state = APPL_DRAW_LIGHT_ON_SET;
@@ -835,7 +796,7 @@ int main (void)
             break;
         case APPL_LIGHT_ON_SET:
             handle_settings_keys(&startlight, ADDR_startlight, &application_state,
-                    &numwidget, APPL_DRAW_MENU, APPL_DRAW_LIGHT_ON_SET);
+                    &numwidget, APPL_DRAW_MENU, APPL_DRAW_LIGHT_ON_SET, 0);
             break;
         case APPL_SETUP_LIGHT_OFF_SET:
         	setup_time_widget(stoplight, &numwidget);
@@ -848,7 +809,7 @@ int main (void)
             break;
         case APPL_LIGHT_OFF_SET:
             handle_settings_keys(&stoplight, ADDR_stoplight, &application_state,
-                    &numwidget, APPL_DRAW_MENU, APPL_DRAW_LIGHT_OFF_SET);
+                    &numwidget, APPL_DRAW_MENU, APPL_DRAW_LIGHT_OFF_SET, 0);
             break;
         case APPL_SETUP_FAN_RUN_SET:
         	setup_3digit_integer_widget(fanrunminutes, &numwidget);
@@ -861,7 +822,7 @@ int main (void)
             break;
         case APPL_FAN_RUN_SET:
             handle_settings_keys(&fanrunminutes, ADDR_fanrunminutes, &application_state,
-                    &numwidget, APPL_DRAW_MENU, APPL_DRAW_FAN_RUN_SET);
+                    &numwidget, APPL_DRAW_MENU, APPL_DRAW_FAN_RUN_SET, reset_vent_settings);
             break;
         case APPL_SETUP_FAN_OFF_SET:
         	setup_3digit_integer_widget(fanidleminutes, &numwidget);
@@ -874,7 +835,7 @@ int main (void)
             break;
         case APPL_FAN_OFF_SET:
             handle_settings_keys(&fanidleminutes, ADDR_fanidleminutes, &application_state,
-                    &numwidget, APPL_DRAW_MENU, APPL_DRAW_FAN_OFF_SET);
+                    &numwidget, APPL_DRAW_MENU, APPL_DRAW_FAN_OFF_SET, reset_vent_settings);
             break;
         case APPL_DISABLE_ALL: // EN/DIS ALL
         	if (disable_temp && disable_humidity &&  disable_light && disable_vent)
