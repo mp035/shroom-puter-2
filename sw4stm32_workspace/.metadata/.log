@@ -913,3 +913,28 @@ java.lang.NullPointerException
 
 !ENTRY org.eclipse.core.resources 2 10035 2018-11-24 20:44:41.376
 !MESSAGE The workspace will exit with unsaved changes in this session.
+!SESSION 2018-11-24 20:57:29.866 -----------------------------------------------
+eclipse.buildId=4.6.3.M20170301-0400
+java.version=1.8.0_151
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_AU
+Framework arguments:  -pluginCustomization configuration/st_pref.ini -product org.eclipse.epp.package.cpp.product
+Command-line arguments:  -os linux -ws gtk -arch x86_64 -pluginCustomization configuration/st_pref.ini -product org.eclipse.epp.package.cpp.product
+
+!ENTRY org.eclipse.core.resources 2 10035 2018-11-24 20:57:33.790
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY fr.ac6.mcu.ide 1 1 2018-11-24 20:57:40.226
+!MESSAGE Started RMI Server, listening on port 21112
+
+!ENTRY net.sourceforge.vrapper.eclipse 1 0 2018-11-24 20:57:42.497
+!MESSAGE No .vrapperrc or _vrapperrc found.
+
+!ENTRY net.sourceforge.vrapper.eclipse 1 0 2018-11-24 20:57:42.519
+!MESSAGE No .vrapperrc or _vrapperrc found.
+
+!ENTRY org.eclipse.launchbar.core 2 0 2018-11-24 21:02:00.625
+!MESSAGE Enablement expression is missing for descriptor type org.eclipse.cdt.debug.core.coreBuildDescriptorType
+
+!ENTRY org.eclipse.launchbar.core 2 0 2018-11-24 21:02:00.625
+!MESSAGE Enablement expression is missing for config provider for org.eclipse.cdt.debug.core.coreBuildDescriptorType

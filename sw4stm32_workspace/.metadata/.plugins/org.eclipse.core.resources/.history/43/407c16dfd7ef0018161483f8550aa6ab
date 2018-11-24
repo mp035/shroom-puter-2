@@ -304,12 +304,12 @@ int main (void)
 	menuItem_t rhMenuItems[] = {
 			{"GO BACK       ", APPL_MENU, &mainMenu},
 			{"HUMIDITY SET  ", APPL_SETUP_HUMIDITY_SET, 0},
-			{"HUMIDITY  BAND", APPL_SETUP_HUMIDITY_BAND_SET, 0},
+			//{"HUMIDITY  BAND", APPL_SETUP_HUMIDITY_BAND_SET, 0},
 			{"EXIT MENU     ", APPL_SETUP_HOME, 0}
 	};
 	rhMenu.currentItem = 0;
 	rhMenu.items = rhMenuItems;
-	rhMenu.numItems = 4;
+	rhMenu.numItems = 3;
 
 	menuItem_t lightMenuItems[] = {
 			{"GO BACK       ", APPL_MENU, &mainMenu},
@@ -442,20 +442,17 @@ int main (void)
             	}
 
 
-            	if ((humidity > (humidityset + humidityband)) || disable_humidity)
+            	if ((humidity > humidityset) || disable_humidity)
             	{
             		output_status &= ~(STATUS_HUMIDIFYING);
             		HUMIDITY(0);
             	}
-            	else if (humidity < (humidityset - humidityband))
+            	else
             	{
             		output_status |= STATUS_HUMIDIFYING;
             		HUMIDITY(1);
 
-            	}
-
-            	// run the ventilator whenever we are humidifying
-            	if (output_status & STATUS_HUMIDIFYING){
+            		// run the ventilator as well when humidifying
             		if (GetSystickMs() < fanstart){
 						output_status |= STATUS_VENTILATING;
 						VENTILATION(1);
@@ -774,6 +771,7 @@ int main (void)
             handle_settings_keys(&humidityset, ADDR_humidityset, &application_state,
                     &numwidget, APPL_DRAW_MENU, APPL_DRAW_HUMIDITY_SET, 0);
             break;
+            /*
         case APPL_SETUP_HUMIDITY_BAND_SET:
         	setup_decimal_widget(humidityband, &numwidget);
             draw_setting_screen("HUMIDITY BAND ", 0, &numwidget,"%");
@@ -786,6 +784,7 @@ int main (void)
         case APPL_HUMIDITY_BAND_SET:
             handle_settings_keys(&humidityband, ADDR_humidityband, &application_state, &numwidget, APPL_DRAW_MENU, APPL_DRAW_HUMIDITY_BAND_SET, 0);
             break;
+            */
         case APPL_SETUP_LIGHT_ON_SET:
         	setup_time_widget(startlight, &numwidget);
         	application_state = APPL_DRAW_LIGHT_ON_SET;

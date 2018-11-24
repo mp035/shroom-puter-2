@@ -452,10 +452,7 @@ int main (void)
             		output_status |= STATUS_HUMIDIFYING;
             		HUMIDITY(1);
 
-            	}
-
-            	// run the ventilator whenever we are humidifying
-            	if (output_status & STATUS_HUMIDIFYING){
+            		// run the ventilator as well when humidifying
             		if (GetSystickMs() < fanstart){
 						output_status |= STATUS_VENTILATING;
 						VENTILATION(1);
