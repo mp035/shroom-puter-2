@@ -81,15 +81,15 @@ static void _eepromLock(void)
 
 uint32_t eeprom_read(uint16_t id)
 {
-	if (id >= EEPROM_SIZE) id = 0; // only allow access within the eeprom range.
+	if (id >= EEPROM_SIZE) return 0xFFFFFFFF; // only allow access within the eeprom range.
 	uint32_t address = id * 4 + EEPROM_START_ADDRESS;
 	return *(__IO uint32_t *)address;
 }
 
 uint32_t eeprom_write(uint16_t id, uint32_t data)
 {
+	if (id >= EEPROM_SIZE) return 1; // only allow access within the eeprom range.
 	_eepromUnlock();
-	if (id >= EEPROM_SIZE) id = 0; // only allow access within the eeprom range.
 	uint32_t address = id * 4 + EEPROM_START_ADDRESS;
 	*(__IO uint32_t *)address = data;
 	uint32_t response = _eepromWaitForLastOperation();

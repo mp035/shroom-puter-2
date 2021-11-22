@@ -75,7 +75,7 @@ src/%.o: ../src/%.c
 	@echo 'Building file: $<'
 	@echo 'Invoking: MCU GCC Compiler'
 	@echo $(PWD)
-	arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L0 -DSTM32L031K6Tx -DNUCLEO_L031K6 -DDEBUG -DSTM32L031xx -I"/home/mark/temp/sw4stm32_workspace/display_unit/Utilities" -I"/home/mark/temp/sw4stm32_workspace/display_unit/inc" -I"/home/mark/temp/sw4stm32_workspace/display_unit/CMSIS/device" -I"/home/mark/temp/sw4stm32_workspace/display_unit/CMSIS/core" -Os -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"$(@:%.o=%.d)" -MT"$@" -o "$@" "$<"
+	arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft -DSTM32 -DSTM32L0 -DSTM32L031K6Tx -DNUCLEO_L031K6 -DDEBUG -DSTM32L031xx -I"/home/mark/projects/shroomputer2/sw4stm32_workspace/display_unit/Utilities" -I"/home/mark/projects/shroomputer2/sw4stm32_workspace/display_unit/inc" -I"/home/mark/projects/shroomputer2/sw4stm32_workspace/display_unit/CMSIS/device" -I"/home/mark/projects/shroomputer2/sw4stm32_workspace/display_unit/CMSIS/core" -Os -g3 -Wall -fmessage-length=0 -ffunction-sections -c -MMD -MP -MF"$(@:%.o=%.d)" -MT"$@" -o "$@" "$<"
 	@echo 'Finished building: $<'
 	@echo ' '
 

@@ -9,11 +9,10 @@
 #define ROTARY_ENCODER_H_
 
 
-void RotaryEncoderInit(void);
-int RotaryEncoderGetValue(void);
-int RotaryEncoderGetPressed(void);
-int RotaryEncoderHasActivity(void);
-
-
+void RotaryEncoderInit();
+int RotaryEncoderGetValue();
+int RotaryEncoderGetPressed();
+int RotaryEncoderHasActivity();
+void RotaryEncoderSystickService();
 
 #endif /* ROTARY_ENCODER_H_ */
