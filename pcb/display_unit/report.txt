@@ -1,0 +1,53 @@
+Info: Backing up file "/home/mark/repositories/shroom-puter-2/pcb/display_unit/sym-lib-table" to file "/home/mark/repositories/shroom-puter-2/pcb/display_unit/rescue-backup/sym-lib-table-2019-09-16-21-32-45".
+Info: Backing up file "/home/mark/repositories/shroom-puter-2/pcb/display_unit/display_unit.sch" to file "/home/mark/repositories/shroom-puter-2/pcb/display_unit/rescue-backup/display_unit-2019-09-16-21-32-45.sch".
+Info: Backing up file "/home/mark/repositories/shroom-puter-2/pcb/display_unit/display_unit.pro" to file "/home/mark/repositories/shroom-puter-2/pcb/display_unit/rescue-backup/display_unit-2019-09-16-21-32-45.pro".
+Info: Backing up file "/home/mark/repositories/shroom-puter-2/pcb/display_unit/display_unit-cache.lib" to file "/home/mark/repositories/shroom-puter-2/pcb/display_unit/rescue-backup/display_unit-cache-2019-09-16-21-32-45.lib".
+Info: Backing up file "/home/mark/repositories/shroom-puter-2/pcb/display_unit/display_unit-rescue.lib" to file "/home/mark/repositories/shroom-puter-2/pcb/display_unit/rescue-backup/display_unit-rescue-2019-09-16-21-32-45.lib".
+Info: Backing up file "/home/mark/repositories/shroom-puter-2/pcb/display_unit/display_unit-rescue.dcm" to file "/home/mark/repositories/shroom-puter-2/pcb/display_unit/rescue-backup/display_unit-rescue-2019-09-16-21-32-45.dcm".
+Symbol "ROTARY-ENCODER" mapped to symbol library "custom_switch".
+Symbol "GND" mapped to symbol library "power".
+Symbol "+3.3V" mapped to symbol library "power".
+Symbol "GND" mapped to symbol library "power".
+Warning: No symbol "Conn_01x06" found in symbol library table.
+Symbol "+3.3V" mapped to symbol library "power".
+Warning: No symbol "Conn_01x05" found in symbol library table.
+Symbol "GND" mapped to symbol library "power".
+Warning: No symbol "C" found in symbol library table.
+Warning: No symbol "C" found in symbol library table.
+Symbol "+3.3V" mapped to symbol library "power".
+Symbol "GND" mapped to symbol library "power".
+Symbol "GND" mapped to symbol library "power".
+Warning: No symbol "C" found in symbol library table.
+Warning: No symbol "R" found in symbol library table.
+Warning: No symbol "STM32L031K6Tx" found in symbol library table.
+Symbol "GND" mapped to symbol library "power".
+Symbol "+3.3V" mapped to symbol library "power".
+Warning: No symbol "CP" found in symbol library table.
+Warning: No symbol "CP" found in symbol library table.
+Warning: No symbol "LM2936-3.3" found in symbol library table.
+Symbol "096_INCH_OLED" mapped to symbol library "custom_lcd".
+Symbol "+3.3V" mapped to symbol library "power".
+Symbol "GND" mapped to symbol library "power".
+Symbol "GND" mapped to symbol library "power".
+Symbol "GND" mapped to symbol library "power".
+Symbol "+3.3V" mapped to symbol library "power".
+Symbol "GND" mapped to symbol library "power".
+Warning: No symbol "Crystal" found in symbol library table.
+Warning: No symbol "C" found in symbol library table.
+Warning: No symbol "C" found in symbol library table.
+Symbol "GND" mapped to symbol library "power".
+Warning: No symbol "Q_NMOS_GDS" found in symbol library table.
+Symbol "GND" mapped to symbol library "power".
+Symbol "VDD" mapped to symbol library "power".
+Symbol "VDD" mapped to symbol library "power".
+Symbol "PWR_FLAG" mapped to symbol library "power".
+Symbol "PWR_FLAG" mapped to symbol library "power".
+Symbol "TERMINAL_ELEMENT14_5MM_X2" mapped to symbol library "custom_connector".
+Symbol "TERMINAL_ELEMENT14_5MM_X3" mapped to symbol library "custom_connector".
+Symbol "TERMINAL_ELEMENT14_5MM_X2" mapped to symbol library "custom_connector".
+Symbol "TERMINAL_ELEMENT14_5MM_X2" mapped to symbol library "custom_connector".
+Warning: No symbol "R" found in symbol library table.
+Warning: No symbol "R" found in symbol library table.
+Warning: No symbol "R" found in symbol library table.
+Symbol "+3.3V" mapped to symbol library "power".
+Info: Symbol library table mapping complete!

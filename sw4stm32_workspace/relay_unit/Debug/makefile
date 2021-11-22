@@ -30,10 +30,10 @@ endif
 all: relay_unit.elf
 
 # Tool invocations
-relay_unit.elf: $(OBJS) $(USER_OBJS) /home/mark/temp/sw4stm32_workspace/relay_unit/LinkerScript.ld
+relay_unit.elf: $(OBJS) $(USER_OBJS) /home/mark/repositories/shroom-puter-2/sw4stm32_workspace/relay_unit/LinkerScript.ld
 	@echo 'Building target: $@'
 	@echo 'Invoking: MCU GCC Linker'
-	arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft -T"/home/mark/temp/sw4stm32_workspace/relay_unit/LinkerScript.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "relay_unit.elf" @"objects.list" $(USER_OBJS) $(LIBS) -lm
+	arm-none-eabi-gcc -mcpu=cortex-m0plus -mthumb -mfloat-abi=soft -T"/home/mark/repositories/shroom-puter-2/sw4stm32_workspace/relay_unit/LinkerScript.ld" -Wl,-Map=output.map -Wl,--gc-sections -o "relay_unit.elf" @"objects.list" $(USER_OBJS) $(LIBS) -lm
 	@echo 'Finished building target: $@'
 	@echo ' '
 	$(MAKE) --no-print-directory post-build

@@ -522,6 +522,9 @@ int main (void)
             		}
             	}
 
+            	last_temp = temperature;
+
+
             	if (output_status & STATUS_HEATING)
             	{
             		COOLING(0);
@@ -576,6 +579,8 @@ int main (void)
             }
             else
             {
+                // alternate between peltier duty and measured temp.
+                // screen refreshes every 5 seconds, so work with that for now.
                 TEXTLINE(1);
                 OledDisplayString("TEMP:");
                 printshort(temperature / 10, 3, 0);
@@ -585,6 +590,25 @@ int main (void)
                 OledDisplayChar('C');
                 OledDisplayChar(' ');
                 OledDisplayChar(' ');
+
+                /*
+                TEXTLINE(2);
+                OledDisplayString("DUTY:");
+                OledDisplayChar(' ');
+                if (peltier_duty_setting < 0)
+                {
+                	OledDisplayChar('-');
+                }
+                else
+                {
+                	OledDisplayChar(' ');
+                }
+                printshort(abs(peltier_duty_setting), 3, 0);
+                OledDisplayChar('%');
+                OledDisplayChar(' ');
+                OledDisplayChar(' ');
+                OledDisplayChar(' ');
+                */
 
                 TEXTLINE(2);
                 OledDisplayString(" R/H:");

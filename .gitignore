@@ -50,3 +50,6 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+
+# mp035
+sw4stm32_workspace/.metadata/

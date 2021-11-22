@@ -28,7 +28,8 @@ uint64_t fridge_counter = 0;
 void set_cool(int cool){
 	if (cool ^ GPIO_READ(A,7)){
 		// this requests a change of state
-		if (GetSystickMs() - fridge_counter > MINIMUM_COOL)
+		uint64_t temp = GetSystickMs();
+		if (temp - fridge_counter > MINIMUM_COOL)
 		{
 			if (cool){
 				GPIO_SET(A,7);
@@ -81,7 +82,7 @@ int main(void)
 			}
 			else
 			{
-				GPIO_CLR(A,7);
+				set_cool(0);
 				GPIO_CLR(A,6);
 			}
 

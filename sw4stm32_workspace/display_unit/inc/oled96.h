@@ -46,8 +46,4 @@ void OledGotoXY(uint8_t x, uint8_t y);
 
 #define OLED_NUMERIC_OFFSET (48)
 
-//FIXME: These are place holders.  Remove them.
-#define LCDRefresh(x)
-#define LCDService()
-
 #endif /* OLED96_H_ */
